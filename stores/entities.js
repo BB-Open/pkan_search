@@ -9,9 +9,11 @@ const PASSWORD = 'Sas242!!'
 export const useEntityStore = defineStore({
   id: 'entity-store',
   state: () => ({
-          entities: ['youtube', 'twitch'],
-          suggestions: ['a', 'b'],
-          query: 'B'
+          entities: [],
+          entityCount: 0,
+          suggestions: [],
+          query: '',
+          isBlur : false
   }),
   actions: {
     async getSolr(){
@@ -24,6 +26,7 @@ export const useEntityStore = defineStore({
           }
           )
         this.entities = dataset_res.data.response.docs
+        this.entityCount = dataset_res.data.response.numFound
       } catch(err){
         throw err.message
       }
@@ -31,7 +34,7 @@ export const useEntityStore = defineStore({
         let suggest_res = await axios.get(
           SOLR_SUGGET_URI,
           { params: {
-              'suggest.build' : true,
+//              'suggest.build' : true,
               'suggest.q': this.query.toLowerCase(),
               'suggest': true,
               'suggest.dictionary': 'mySuggester',
@@ -40,6 +43,8 @@ export const useEntityStore = defineStore({
         )
         if (suggest_res.data.suggest.mySuggester[this.query.toLowerCase()].numFound > 0) {
           this.suggestions =  suggest_res.data.suggest.mySuggester[this.query.toLowerCase()].suggestions
+        } else {
+          this.suggestions = []
         }
       } catch(err){
         throw err.message
@@ -50,6 +55,7 @@ export const useEntityStore = defineStore({
   getters: {
     entityList: state => state.entities,
     is_suggestions: state => state.suggestions.length > 0,
+    suggestionList: state => state.suggestions.map( sug => sug.term),
   },
 
 })

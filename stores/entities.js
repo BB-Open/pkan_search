@@ -1,8 +1,10 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
 
-const SOLR_URI='http://test.datenadler.de/solr/LGB2/select'
-const SOLR_SUGGET_URI='http://test.datenadler.de/solr/LGB2/suggest'
+//const SOLR_SELECT_URI='http://test.datenadler.de/solr/LGB3/select'
+//const SOLR_SUGGEST_URI='http://test.datenadler.de/solr/LGB3/suggest'
+const SOLR_SELECT_URI='http://flask.datenadler.lan/solr_request'
+const SOLR_SUGGEST_URI='http://flask.datenadler.lan'
 
 const PASSWORD = 'Sas242!!'
 
@@ -19,7 +21,7 @@ export const useEntityStore = defineStore({
     async getSolr(){
       try {
         let dataset_res = await axios.post(
-          SOLR_URI,
+          SOLR_SELECT_URI,
           {
             query: 'dcterms_title:*' + this.query + '*',
             limit: 100
@@ -32,7 +34,7 @@ export const useEntityStore = defineStore({
       }
       try {
         let suggest_res = await axios.get(
-          SOLR_SUGGET_URI,
+          SOLR_SUGGEST_URI,
           { params: {
 //              'suggest.build' : true,
               'suggest.q': this.query.toLowerCase(),
@@ -55,7 +57,8 @@ export const useEntityStore = defineStore({
   getters: {
     entityList: state => state.entities,
     is_suggestions: state => state.suggestions.length > 0,
-    suggestionList: state => state.suggestions.map( sug => sug.term),
+    suggestionList: state => state.suggestions.map(
+      sug => { return {label: sug.term, count: sug.weight}}),
   },
 
 })

@@ -1,38 +1,41 @@
 <template>
-<div>
- <div class="simple-typeahead">
-    <input class="simple-typeahead-input"
-           v-model='entityStore.query'
-           @keyup='entityStore.getSolr'
-           @blur='onBlur'
-           @focus='onFocus'
-    /><span class="simple-typeahead-count" v-if='entityStore.entityCount>0'>Treffer: {{entityStore.entityCount}}</span>
-   <!--
-       <div v-if="is_visible" class="simple-typeahead-list">
-         <div class="simple-typeahead-list-header" v-if="$slots['list-header']"><slot name="list-header"></slot></div>
-         <div
-           class="simple-typeahead-list-item"
-           :class="{ 'simple-typeahead-list-item-active': currentSelectionIndex == index }"
-           v-for="(item, index) in entityStore.suggestionList"
-           :key="index"
-           @mousedown.prevent
-           @click="selectItem(item)"
-           @mouseenter="currentSelectionIndex = index"
-         >
-           <div class="simple-typeahead-list-item-text" >{{item.label}}</div>
-           <div class="simple-typeahead-list-item-count">[{{item.count}}]</div>
-         </div>
-       </div>
-   -->
-     </div>
-  <div class='entity_payload'>
-    <div v-for='entity in entityStore.entities'>
-      <div class='entity_dcterms_title'>{{ entity.dcterms_title[0] }} </div>
-      <div class='entity_dcterms_description'>{{ entity.dcterms_description[0].slice(0, 255) }} </div>
-      <div class='entity_dcterms_description'>{{ entity.dcterms_description[0].slice(0, 255) }} </div>
-    </div>
-  </div>
-</div>
+    <NuxtLayout name="search">
+        <h1>DatenAdler: Das Open-Data-Portal für Brandenburg</h1>
+        <div>
+            <div class="simple-typeahead">
+                <input class="simple-typeahead-input"
+                       v-model='entityStore.query'
+                       @keyup='entityStore.getSolr'
+                       @blur='onBlur'
+                       @focus='onFocus'
+                /><span class="simple-typeahead-count" v-if='entityStore.entityCount>0'>Treffer: {{entityStore.entityCount}}</span>
+                <!--
+                    <div v-if="is_visible" class="simple-typeahead-list">
+                      <div class="simple-typeahead-list-header" v-if="$slots['list-header']"><slot name="list-header"></slot></div>
+                      <div
+                        class="simple-typeahead-list-item"
+                        :class="{ 'simple-typeahead-list-item-active': currentSelectionIndex == index }"
+                        v-for="(item, index) in entityStore.suggestionList"
+                        :key="index"
+                        @mousedown.prevent
+                        @click="selectItem(item)"
+                        @mouseenter="currentSelectionIndex = index"
+                      >
+                        <div class="simple-typeahead-list-item-text" >{{item.label}}</div>
+                        <div class="simple-typeahead-list-item-count">[{{item.count}}]</div>
+                      </div>
+                    </div>
+                -->
+            </div>
+            <div class='entity_payload'>
+                <div v-for='entity in entityStore.entities'>
+                    <div class='entity_dcterms_title'>{{ entity.dcterms_title[0] }}</div>
+                    <div class='entity_dcterms_description'>{{ entity.dcterms_description[0].slice(0, 255) }}</div>
+                    <div class='entity_dcterms_description'>{{ entity.dcterms_description[0].slice(0, 255) }}</div>
+                </div>
+            </div>
+        </div>
+    </NuxtLayout>
 </template>
 
 

@@ -6,7 +6,7 @@ const BASE_URL = 'https://backend.datenadler.de/@search?fullobjects=1';
 export const usePloneStore = defineStore({
     id: 'plone-store',
     state: () => ({
-        'plone': {}
+        'ploneSubject': {}
     }),
 
     actions: {
@@ -66,12 +66,12 @@ export const usePloneStore = defineStore({
         },
         async ContentBySubject(type, tag) {
             console.log('Loading Data for ' + type + ' ' + tag)
-            if (this.plone[type] === undefined) {
-                this.plone[type] = {};
-            } else if (this.plone[type][tag] !== undefined && this.plone[type][tag]['@id'] !== undefined) {
+            if (this.ploneSubject[type] === undefined) {
+                this.ploneSubject[type] = {};
+            } else if (this.ploneSubject[type][tag] !== undefined && this.ploneSubject[type][tag]['@id'] !== undefined) {
                 return
             }
-            this.plone[type][tag] = {
+            this.ploneSubject[type][tag] = {
                 'title': 'Titel wird geladen.',
                 'description': 'Beschreibung wird geladen.',
                 'text': {'data': '<div>Text wird geladen.</div>'}
@@ -80,24 +80,22 @@ export const usePloneStore = defineStore({
 
             res = this.extractSingleContent(res);
             if (res !== undefined) {
-                this.plone[type][tag] = res
+                this.ploneSubject[type][tag] = res
             } else {
-                this.plone[type][tag] = {
+                this.ploneSubject[type][tag] = {
                     'title': 'Inhalt nicht gefunden.',
                     'description': '',
                     'text': {'data': ''}
                 };
             }
-            console.log(this.ploneState)
             // todo: Aria Polite
             // 'Die Seite ' + result.title + ' wurde geladen.'
         }
     },
 
     getters: {
-        ploneState: state => state.plone,
         PortalTypeSubject: state => {
-            return (portal_type, tag) => state.plone[portal_type][tag]
+            return (portal_type, tag) => state.ploneSubject[portal_type][tag]
         }
     },
 

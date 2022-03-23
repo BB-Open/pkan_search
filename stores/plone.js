@@ -65,15 +65,17 @@ export const usePloneStore = defineStore({
             return res.data.items[0]
         },
         async ContentBySubject(type, tag) {
+            console.log('Loading Data for ' + type + ' ' + 'tag')
             if (this.plone[type] === undefined) {
                 this.plone[type] = {};
+            } else if (this.plone[type][tag] !== undefined && this.plone[type][tag]['@id'] !== undefined) {
+                return
             }
             this.plone[type][tag] = {
                 'title': 'Titel wird geladen.',
                 'description': 'Beschreibung wird geladen.',
                 'text': {'data': '<div>Text wird geladen.</div>'}
             };
-            // todo: load data
             let res = await this.QueryData(type, tag, 'created', undefined, 'reverse', 1);
 
             res = this.extractSingleContent(res);
@@ -94,6 +96,9 @@ export const usePloneStore = defineStore({
 
     getters: {
         ploneState: state => state.plone,
+        PortalTypeSubject: state => {
+            return (portal_type, tag) => state.plone[portal_type][tag]
+        }
     },
 
 })

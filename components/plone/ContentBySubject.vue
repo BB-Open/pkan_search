@@ -1,8 +1,7 @@
 <template>
-    <h1>{{ data.title }}</h1>
-    <div class="description" v-if="data.description">{{ data.description}}</div>
-    <div v-html="data.text.data"></div>
-    {{data}}
+    <h1>{{ ploneStore.PortalTypeSubject(props.portal_type, props.tag).title }}</h1>
+    <div class="description" v-if="ploneStore.PortalTypeSubject(props.portal_type, props.tag).description">{{ ploneStore.PortalTypeSubject(props.portal_type, props.tag).description}}</div>
+    <div v-html="ploneStore.PortalTypeSubject(props.portal_type, props.tag).text.data"></div>
 </template>
 
 <script setup lang="ts">
@@ -10,16 +9,12 @@
 
     const ploneStore = usePloneStore();
 
-
     const props = defineProps({
         portal_type: {type: String, required: true},
         tag: {type: String, required: true},
     });
 
     ploneStore.ContentBySubject(props.portal_type, props.tag);
-
-    // todo: How to make reactive
-    let data = ploneStore.ploneState[props.portal_type][props.tag];
 </script>
 
 <style scoped>

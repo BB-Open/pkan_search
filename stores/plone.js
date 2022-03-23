@@ -65,7 +65,7 @@ export const usePloneStore = defineStore({
             return res.data.items[0]
         },
         async ContentBySubject(type, tag) {
-            console.log('Loading Data for ' + type + ' ' + 'tag')
+            console.log('Loading Data for ' + type + ' ' + tag)
             if (this.plone[type] === undefined) {
                 this.plone[type] = {};
             } else if (this.plone[type][tag] !== undefined && this.plone[type][tag]['@id'] !== undefined) {

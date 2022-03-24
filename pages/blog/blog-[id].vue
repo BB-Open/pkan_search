@@ -1,13 +1,15 @@
 <template>
     <NuxtLayout name="plone">
-        <h1>{{ $route.params.id }}</h1>
-        <p>Das ist eine dynamischer Seite</p>
+        <ContentByUID :uid="$route.params.id"></ContentByUID>
     </NuxtLayout>
 </template>
 
+
 <script>
+    import ContentByUID from "~/components/plone/ContentByUID"
     export default {
-        name: "blog-[id].vue",
+        name: "blog-[id]",
+        components: {ContentByUID}
     }
 </script>
 

@@ -1,17 +1,15 @@
 <template>
     <div role="alert">
-        <div class="portalMessage error" v-if="value">
+        <div class="portalMessage error" v-if="messageStore.errorMessage">
             <div>Fehler</div>
-            <div>{{value}}</div>
+            <div>{{messageStore.errorMessage}}</div>
         </div>
     </div>
 </template>
 
-<script>
-    export default {
-        name: "PkanStatus"
-        // todo
-    }
+<script setup lang="ts">
+    import {useMessageStore} from '~/stores/messages.js'
+    const messageStore = useMessageStore();
 </script>
 
 <style scoped>

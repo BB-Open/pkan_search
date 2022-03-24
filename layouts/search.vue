@@ -8,7 +8,7 @@
         <hr/>
         <PkanBreadcrumb></PkanBreadcrumb>
     </div>
-    <main class="content_container" id="maincontent">
+    <main class="content_container singlecolumncontent" id="maincontent">
         <PkanStatus></PkanStatus>
         <div class="main_content ">
         <slot />

@@ -1,12 +1,15 @@
 <template>
     <NuxtLayout name="plone">
-        <h1>Body Content</h1>
+        <h1>Aktuelles</h1>
+        <ListingBySubject tag="blog" portal_type="Document" title="Aktuelles" base_url="/blog/blog-"></ListingBySubject>
     </NuxtLayout>
 </template>
 
 <script>
+    import ListingBySubject from "~/components/plone/ListingBySubject"
     export default {
-        name: "blog"
+        name: "blog",
+        components: {ListingBySubject}
     }
 </script>
 

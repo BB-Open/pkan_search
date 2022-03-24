@@ -267,8 +267,13 @@ button:focus {
   display: none;
 }
 
-.main_content {
+.singlecolumncontent .main_content {
   width: 100%;
+  margin-right: 2%;
+}
+
+.twocolumncontent .main_content {
+  width: 75%;
   margin-right: 2%;
 }
 

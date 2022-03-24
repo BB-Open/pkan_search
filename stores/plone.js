@@ -1,15 +1,30 @@
 import {defineStore} from 'pinia';
 import axios from 'axios';
 
+import {useMessageStore} from '~/stores/messages.js'
+
 const BASE_URL = 'https://backend.datenadler.de/@search?fullobjects=1';
+const PLONE_UNREACHABLE_MESSAGE = 'Teile des dargestellten Inhalts werden aus dem Plone Backend geladen. ' +
+    'Leider scheint das Plone Backend gerade nicht erreichbar zu sein. ' +
+    'Bitte versuchen Sie die Seite neu zu laden oder wenden Sie sich an den Admin.';
 
 export const usePloneStore = defineStore({
     id: 'plone-store',
     state: () => ({
-        'ploneSubject': {}
+        'ploneSubject': {},
+        'ploneListing': {},
+        'ploneUID': {}
     }),
 
     actions: {
+        get_message_store(){
+            return useMessageStore()
+        },
+        handle_error(){
+          let messageStore = this.get_message_store();
+          messageStore.write_assertive(PLONE_UNREACHABLE_MESSAGE);
+          messageStore.write_error(PLONE_UNREACHABLE_MESSAGE);
+        },
         removeSelfClosingTags(html) {
             // this is ugly but we need it to clean plone html
             if (html === undefined) {
@@ -58,17 +73,28 @@ export const usePloneStore = defineStore({
                     }
 
                 }
-            )
+            ).catch(function (error) {
+                console.log('Error', error);
+                this.handle_error()
+            }.bind(this));
 
         },
         extractSingleContent(res) {
             return res.data.items[0]
         },
+        extractListingContent(res) {
+            return res.data.items
+        },
         async ContentBySubject(type, tag) {
-            console.log('Loading Data for ' + type + ' ' + tag)
+            console.log('Loading Data for ' + type + ' ' + tag);
+            let messageStore = this.get_message_store()
             if (this.ploneSubject[type] === undefined) {
                 this.ploneSubject[type] = {};
             } else if (this.ploneSubject[type][tag] !== undefined && this.ploneSubject[type][tag]['@id'] !== undefined) {
+                let message = 'Die Seite ' + this.ploneSubject[type][tag]['title'] + ' wurde geladen.';
+                messageStore.write_polite(message);
+                messageStore.write_error('');
+                messageStore.write_assertive('');
                 return
             }
             this.ploneSubject[type][tag] = {
@@ -77,6 +103,10 @@ export const usePloneStore = defineStore({
                 'text': {'data': '<div>Text wird geladen.</div>'}
             };
             let res = await this.QueryData(type, tag, 'created', undefined, 'reverse', 1);
+
+            if (res === undefined) {
+                return
+            }
 
             res = this.extractSingleContent(res);
             if (res !== undefined) {
@@ -88,15 +118,93 @@ export const usePloneStore = defineStore({
                     'text': {'data': ''}
                 };
             }
-            // todo: Aria Polite
-            // 'Die Seite ' + result.title + ' wurde geladen.'
-        }
+            let message = 'Die Seite ' + this.ploneSubject[type][tag]['title'] + ' wurde geladen.';
+            messageStore.write_polite(message);
+            messageStore.write_error('');
+            messageStore.write_assertive('');
+        },
+        async ListingBySubject(type, tag, title) {
+            console.log('Loading Listing Data for ' + type + ' ' + tag);
+            let messageStore = this.get_message_store();
+            if (this.ploneListing[type] === undefined) {
+                this.ploneListing[type] = {};
+            } else if (this.ploneListing[type][tag] !== undefined && this.ploneListing[type][tag]['items'] !== undefined) {
+                let message = 'Die Seite ' + title + ' wurde geladen.';
+                messageStore.write_polite(message);
+                messageStore.write_error('');
+                messageStore.write_assertive('');
+                return
+            }
+            this.ploneListing[type][tag] = [];
+            let res = await this.QueryData(type, tag, 'created', undefined, 'reverse', undefined);
+
+            if (res === undefined) {
+                return
+            }
+
+            res = this.extractListingContent(res);
+            if (res !== undefined) {
+                this.ploneListing[type][tag] = res
+            } else {
+                this.ploneListing[type][tag] = {
+                    'title': 'Inhalt nicht gefunden.',
+                    'description': '',
+                    'text': {'data': ''}
+                };
+            }
+            let message = 'Die Seite ' + title + ' wurde geladen.';
+            messageStore.write_polite(message);
+            messageStore.write_error('');
+            messageStore.write_assertive('');
+        },
+        async ContentByUID(uid) {
+            console.log('Loading Data for UID ' + uid);
+            let messageStore = this.get_message_store();
+            if (this.ploneUID[uid] !== undefined && this.ploneUID[uid]['@id'] !== undefined) {
+                let message = 'Die Seite ' + this.ploneUID[uid]['title'] + ' wurde geladen.';
+                messageStore.write_polite(message);
+                messageStore.write_error('');
+                messageStore.write_assertive('');
+                return
+            }
+            this.ploneUID[uid] = {
+                'title': 'Titel wird geladen.',
+                'description': 'Beschreibung wird geladen.',
+                'text': {'data': '<div>Text wird geladen.</div>'}
+            };
+            let res = await this.QueryData(undefined, undefined, 'created', uid, 'reverse', 1);
+
+            if (res === undefined) {
+                return
+            }
+
+            res = this.extractSingleContent(res);
+            if (res !== undefined) {
+                this.ploneUID[uid] = res
+            } else {
+                this.ploneUID[uid] = {
+                    'title': 'Inhalt nicht gefunden.',
+                    'description': '',
+                    'text': {'data': ''}
+                };
+            }
+            let message = 'Die Seite ' + this.ploneUID[uid]['title'] + ' wurde geladen.';
+            messageStore.write_polite(message);
+            messageStore.write_error('');
+            messageStore.write_assertive('');
+        },
     },
 
     getters: {
         PortalTypeSubject: state => {
             return (portal_type, tag) => state.ploneSubject[portal_type][tag]
-        }
+        },
+        PortalTypeSubjectListing: state => {
+            return (portal_type, tag) => state.ploneListing[portal_type][tag]
+        },
+        UID: state => {
+            return (uid) => state.ploneUID[uid]
+        },
     },
 
 })

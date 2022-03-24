@@ -1,12 +1,16 @@
 <template>
     <NuxtLayout name="plone">
-        <h1>Body Content</h1>
+        <ProblemForm :last_route="$router.options.history.state.back"></ProblemForm>
     </NuxtLayout>
 </template>
 
 <script>
+    import ProblemForm from "~/components/form/ProblemForm"
     export default {
-        name: "problem"
+        name: "problem",
+        components: {
+            ProblemForm
+        }
     }
 </script>
 

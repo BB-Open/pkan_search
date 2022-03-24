@@ -1,7 +1,5 @@
 import {defineStore} from 'pinia';
-import axios from 'axios';
 
-const BASE_URL = 'https://backend.datenadler.de/@search?fullobjects=1';
 
 export const useMessageStore = defineStore({
     id: 'messages',

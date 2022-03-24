@@ -4,7 +4,7 @@ import axios from 'axios';
 //const SOLR_SELECT_URI='http://test.datenadler.de/solr/LGB3/select'
 //const SOLR_SUGGEST_URI='http://test.datenadler.de/solr/LGB3/suggest'
 const SOLR_SELECT_URI='http://flask.datenadler.lan/solr_request'
-const SOLR_SUGGEST_URI='http://flask.datenadler.lan'
+const SOLR_SUGGEST_URI='http://flask.datenadler.lan/solr_suggest'
 
 const PASSWORD = 'Sas242!!'
 
@@ -19,13 +19,24 @@ export const useEntityStore = defineStore({
   }),
   actions: {
     async getSolr(){
-      try {
-        let dataset_res = await axios.post(
-          SOLR_SELECT_URI,
-          {
-            query: 'dcterms_title:*' + this.query + '*',
-            limit: 100
-          }
+/*      if (!query) {
+        const effective_query = query;
+      } else
+      {
+        const effective_query = this.query;
+      }
+*/      try {
+        let dataset_res = await axios({
+          method: 'POST',
+          url: SOLR_SELECT_URI,
+          data: {
+            query: this.query,
+            limit: 4
+          },
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            'Accept': 'application/json',
+          }}
           )
         this.entities = dataset_res.data.response.docs
         this.entityCount = dataset_res.data.response.numFound
@@ -33,16 +44,13 @@ export const useEntityStore = defineStore({
         throw err.message
       }
       try {
-        let suggest_res = await axios.get(
-          SOLR_SUGGEST_URI,
-          { params: {
-//              'suggest.build' : true,
+        let suggest_res = await axios({
+          method: 'POST',
+          url:SOLR_SUGGEST_URI,
+          data: { params: {
               'suggest.q': this.query.toLowerCase(),
-              'suggest': true,
-              'suggest.dictionary': 'mySuggester',
-              'suggest.count': 10,
             }},
-        )
+        })
         if (suggest_res.data.suggest.mySuggester[this.query.toLowerCase()].numFound > 0) {
           this.suggestions =  suggest_res.data.suggest.mySuggester[this.query.toLowerCase()].suggestions
         } else {

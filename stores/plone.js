@@ -2,6 +2,7 @@ import {defineStore} from 'pinia';
 import axios from 'axios';
 
 import {useMessageStore} from '~/stores/messages.js'
+import {useBreadcrumbStore} from '~/stores/breadcrumb.js'
 
 const BASE_URL = 'https://backend.datenadler.de/@search?fullobjects=1';
 const PLONE_UNREACHABLE_MESSAGE = 'Teile des dargestellten Inhalts werden aus dem Plone Backend geladen. ' +
@@ -19,6 +20,9 @@ export const usePloneStore = defineStore({
     actions: {
         get_message_store(){
             return useMessageStore()
+        },
+        get_breadcrumb_store(){
+            return useBreadcrumbStore()
         },
         handle_error(){
           let messageStore = this.get_message_store();
@@ -85,16 +89,20 @@ export const usePloneStore = defineStore({
         extractListingContent(res) {
             return res.data.items
         },
-        async ContentBySubject(type, tag) {
+        async ContentBySubject(type, tag, write_title=true) {
             console.log('Loading Data for ' + type + ' ' + tag);
-            let messageStore = this.get_message_store()
+            let messageStore = this.get_message_store();
+            let breadcrumbStore = this.get_breadcrumb_store()
             if (this.ploneSubject[type] === undefined) {
                 this.ploneSubject[type] = {};
             } else if (this.ploneSubject[type][tag] !== undefined && this.ploneSubject[type][tag]['@id'] !== undefined) {
-                let message = 'Die Seite ' + this.ploneSubject[type][tag]['title'] + ' wurde geladen.';
-                messageStore.write_polite(message);
-                messageStore.write_error('');
-                messageStore.write_assertive('');
+                if (write_title === true) {
+                    breadcrumbStore.set_title(this.ploneSubject[type][tag]['title']);
+                    let message = 'Die Seite ' + this.ploneSubject[type][tag]['title'] + ' wurde geladen.';
+                    messageStore.write_polite(message);
+                    messageStore.write_error('');
+                    messageStore.write_assertive('');
+                }
                 return
             }
             this.ploneSubject[type][tag] = {
@@ -102,6 +110,10 @@ export const usePloneStore = defineStore({
                 'description': 'Beschreibung wird geladen.',
                 'text': {'data': '<div>Text wird geladen.</div>'}
             };
+            if (write_title === true) {
+                breadcrumbStore.set_title(this.ploneSubject[type][tag]['title']);
+            }
+
             let res = await this.QueryData(type, tag, 'created', undefined, 'reverse', 1);
 
             if (res === undefined) {
@@ -118,10 +130,14 @@ export const usePloneStore = defineStore({
                     'text': {'data': ''}
                 };
             }
-            let message = 'Die Seite ' + this.ploneSubject[type][tag]['title'] + ' wurde geladen.';
-            messageStore.write_polite(message);
-            messageStore.write_error('');
-            messageStore.write_assertive('');
+            if (write_title === true) {
+                breadcrumbStore.set_title(this.ploneSubject[type][tag]['title']);
+                let message = 'Die Seite ' + this.ploneSubject[type][tag]['title'] + ' wurde geladen.';
+                messageStore.write_polite(message);
+                messageStore.write_error('');
+                messageStore.write_assertive('');
+            }
+
         },
         async ListingBySubject(type, tag, title) {
             console.log('Loading Listing Data for ' + type + ' ' + tag);
@@ -160,6 +176,7 @@ export const usePloneStore = defineStore({
         async ContentByUID(uid) {
             console.log('Loading Data for UID ' + uid);
             let messageStore = this.get_message_store();
+            let breadcrumbStore = this.get_breadcrumb_store()
             if (this.ploneUID[uid] !== undefined && this.ploneUID[uid]['@id'] !== undefined) {
                 let message = 'Die Seite ' + this.ploneUID[uid]['title'] + ' wurde geladen.';
                 messageStore.write_polite(message);
@@ -172,6 +189,7 @@ export const usePloneStore = defineStore({
                 'description': 'Beschreibung wird geladen.',
                 'text': {'data': '<div>Text wird geladen.</div>'}
             };
+            breadcrumbStore.set_title(this.ploneUID[uid]['title']);
             let res = await this.QueryData(undefined, undefined, 'created', uid, 'reverse', 1);
 
             if (res === undefined) {
@@ -188,6 +206,7 @@ export const usePloneStore = defineStore({
                     'text': {'data': ''}
                 };
             }
+            breadcrumbStore.set_title(this.ploneUID[uid]['title']);
             let message = 'Die Seite ' + this.ploneUID[uid]['title'] + ' wurde geladen.';
             messageStore.write_polite(message);
             messageStore.write_error('');

@@ -9,7 +9,7 @@
 
     const ploneStore = usePloneStore();
 
-    ploneStore.ContentBySubject('Document', 'seitentext');
+    ploneStore.ContentBySubject('Document', 'seitentext', false);
 </script>
 
 <style scoped>

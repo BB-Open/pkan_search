@@ -1,16 +1,23 @@
 <template>
-    <div class="breadcrumb hidesmallscreen" aria-label="Pfadangabe">
-        <div>
-            <span class="describer">Sie sind hier: </span><span> Todo </span><span> <i class="fa fa-caret-right"></i> </span><span> Todo </span>
+    <client-only>
+        <div class="breadcrumb hidesmallscreen" aria-label="Pfadangabe">
+            <div><span class="describer">Sie sind hier: </span>
+                <span v-for="item in breadcrumbStore.BCElements">
+        <span v-if="item !== '/'"> <i class="fa fa-caret-right"></i> </span>
+
+        <NuxtLink class="" :to="item"> {{ breadcrumbStore.BCTitle(item) }} </NuxtLink>
+      </span>
+            </div>
         </div>
-    </div>
+    </client-only>
 </template>
 
-<script>
-    export default {
-        name: "PkanBreadcrumb"
-        // todo
-    }
+<script setup lang="ts">
+    import {useBreadcrumbStore} from '~/stores/breadcrumb.js'
+
+    const breadcrumbStore = useBreadcrumbStore();
+
+    breadcrumbStore.get_elements();
 </script>
 
 <style scoped>
@@ -35,6 +42,11 @@
 
     .breadcrumb p {
         margin-bottom: 0;
+    }
+
+    .fa {
+        padding-left: 5px;
+        padding-right: 5px;
     }
 
 </style>

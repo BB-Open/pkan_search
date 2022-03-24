@@ -59,10 +59,11 @@ const selectItem = (item) => {
   entityStore.query = item.label.replaceAll(/(<([^>]+)>)/gi, "");
   entityStore.getSolr()
 }
-/*const onBlur = () => {
+const onBlur = () => {
   entityStore.isBlur = true
 }
-*/const onFocus = () => {
+
+const onFocus = () => {
   entityStore.isBlur = false
 }
 

@@ -1,8 +1,10 @@
 <template>
+    <div>
     <NuxtLink :to="'/' + encodeURIComponent(item.id)" :aria-label="item.dcterms_title[0]+ weiterlesen">
-      <h3 class="element_title">{{ item.dcterms_title[0] }}</h3>
+      <h2 class="element_title">{{ item.dcterms_title[0] }}</h2>
     </NuxtLink>
     <p class="element_description">{{ item.dcterms_description[0].split('.')[0] }}.</p>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -13,8 +15,9 @@
 
 <style scoped>
     .element_title {
-        margin-bottom: 10px;
-       font-size: small;
+       margin-bottom: 5px;
+       font-size: 1rem;
+        color: inherit;
     }
 
     .element_logo img {
@@ -24,7 +27,7 @@
     .element_description {
         margin-bottom: 0;
         margin-top: 0;
-        font-size: xx-small;
+        font-size: 0.8rem;
     }
 
     .hide {

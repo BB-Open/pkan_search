@@ -1,13 +1,16 @@
 <template>
   <div>
     <div class="simple-typeahead">
-      <input class="simple-typeahead-input"
-             v-model='entityStore.query'
-             @keyup='entityStore.getSolr'
-             @blur='onBlur'
-             @focus='onFocus'
-             placeholder="Suchbegriffe eingeben"
-      /><span class="simple-typeahead-count" v-if='entityStore.entityCount>0'>Treffer: {{entityStore.entityCount}}</span>
+      <div class="simple-typeahead-input-block">
+        <input class="simple-typeahead-input"
+               v-model='entityStore.query'
+               @keyup='entityStore.getSolr'
+               @blur='onBlur'
+               @focus='onFocus'
+               placeholder="Suchbegriffe eingeben"
+        />
+        <span class="simple-typeahead-count" v-if='entityStore.entityCount>0'>Treffer: {{entityStore.entityCount}}</span>
+        </div>
       <div v-if="is_visible" class="simple-typeahead-list">
         <div class="simple-typeahead-list-header" v-if="$slots['list-header']"><slot name="list-header"></slot></div>
         <div
@@ -52,10 +55,7 @@ const currentSelectionIndex = ref(undefined)
 const entityStore = useEntityStore()
 const query = entityStore.query
 const selectItem = (item) => {
-/*  let split = entityStore.query.split(' ');
-  split[split.length - 1] = item.label;
-  entityStore.query = split.join(' ');
-*/
+
   entityStore.query = item.label.replaceAll(/(<([^>]+)>)/gi, "");
   entityStore.getSolr()
 }
@@ -73,12 +73,19 @@ const is_visible = computed( () => !entityStore.isBlur && entityStore.is_suggest
 
 <style scoped>
 .simple-typeahead {
-  width: 30%;
+  width: 50%;
 }
+
+.simple-typeahead-input-block {
+  display: inline-block;
+  width: 100%;
+}
+
 .simple-typeahead > input {
   margin-bottom: 0;
 }
 .simple-typeahead .simple-typeahead-count {
+  margin-left: 1em;
 }
 
 .simple-typeahead .simple-typeahead-list {

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class='testtest'>
     <NuxtLink :to="'/' + encodeURIComponent(item.id)" :aria-label="item.dcterms_title[0]+ weiterlesen">
       <h2 class="element_title">{{ item.dcterms_title[0] }}</h2>
     </NuxtLink>

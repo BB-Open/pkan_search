@@ -13,7 +13,6 @@
         <span class="simple-typeahead-count">Treffer: {{entityStore.entityCount}}</span>
         </div>
       <div v-if="is_visible" class="simple-typeahead-list">
-        <div class="simple-typeahead-list-header" v-if="$slots['list-header']"><slot name="list-header"></slot></div>
         <div
             class="simple-typeahead-list-item"
             :class="{ 'simple-typeahead-list-item-active': currentSelectionIndex === index }"
@@ -31,6 +30,9 @@
 </template>
 
 <script setup lang="ts">
+
+//<div class="simple-typeahead-list-header" v-if="$slots['list-header']"><slot name="list-header"></slot></div>
+
 
 import { useEntityStore } from '~/stores/entities'
 import {ref, onMounted, nextTick} from 'vue'
@@ -71,23 +73,28 @@ entityStore.getSolr()
 
 <style scoped>
 .simple-typeahead {
-  width: 50%;
+  position: relative;
 }
 
 .simple-typeahead-input-block {
-  display: inline-block;
-  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
-.simple-typeahead > input {
+.simple-typeahead-input-block > input {
+  flex: 1;
   margin-bottom: 0;
 }
 .simple-typeahead .simple-typeahead-count {
   margin-left: 1em;
+  white-space: nowrap;
 }
 
 .simple-typeahead .simple-typeahead-list {
+  column-width: 30ch;
   position: absolute;
+  left : 0;
+  right : 0;
   border: none;
   max-height: 400px;
   overflow-y: auto;
@@ -108,6 +115,7 @@ entityStore.getSolr()
   border-right: 0.1rem solid #d1d1d1;
 }
 .simple-typeahead .simple-typeahead-list .simple-typeahead-list-item {
+
   cursor: pointer;
   background-color: #f5f5f5;
   padding: 0.3rem 0.5rem;

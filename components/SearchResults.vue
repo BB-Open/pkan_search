@@ -1,7 +1,7 @@
 <template>
     <div class="result">
     <Pagination></Pagination>
-    <ol>
+    <ol class="result-list">
         <li v-if="entityStore.entityCount > 0" v-for="item in entityStore.entities" >
             <DataSetSimple :item="item"></DataSetSimple>
         </li>
@@ -19,6 +19,9 @@
 </script>
 
 <style scoped>
+    .result-list {
+      margin-top: 7%;
+    }
     ol ::marker {
         content: counter(list-item) ")\00A0";
     }

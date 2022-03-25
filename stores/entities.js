@@ -47,8 +47,8 @@ export const useEntityStore = defineStore({
           data: {
             query: this.query,
             // todo: from and to with pagination
-            // from: (this.pagination_page - 1) * this.perPageResults,
-            // to: this.pagination_page * this.perPageResults
+            start: (this.pagination_page - 1) * this.perPageResults,
+            rows: this.perPageResults
           },
           headers: {
             "Access-Control-Allow-Origin": "*",
@@ -92,14 +92,11 @@ export const useEntityStore = defineStore({
       sug => { return {label: sug.term, count: sug.weight}}),
     perPage: state => state.perPageResults,
     numberOfPages: state => {
-        let res = state.entities.length / state.perPageResults
-        if (state.perPageResults * res < state.entities.length){
-            res = res + 1
-        }
-        return res
+        let res = state.entityCount / state.perPageResults;
+        return Math.ceil(res)
 
     }
   },
 
-})
+});
 

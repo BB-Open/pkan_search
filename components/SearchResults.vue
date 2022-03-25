@@ -22,5 +22,8 @@
 </script>
 
 <style scoped>
+    ol ::marker {
+        content: counter(list-item) ")\00A0";
+    }
 
 </style>

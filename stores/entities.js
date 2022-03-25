@@ -4,8 +4,8 @@ import {useMessageStore} from '~/stores/messages.js'
 
 //const SOLR_SELECT_URI='http://test.datenadler.de/solr/LGB3/select'
 //const SOLR_SUGGEST_URI='http://test.datenadler.de/solr/LGB3/suggest'
-const SOLR_SELECT_URI='http://127.0.0.1:5000/solr_request'
-const SOLR_SUGGEST_URI='http://127.0.0.1:5000/solr_suggest'
+const SOLR_SELECT_URI='http://flask.datenadler.lan/solr_request'
+const SOLR_SUGGEST_URI='http://flask.datenadler.lan/solr_suggest'
 
 export const FLASK_UNREACHABLE_MESSAGE = 'Teile des dargestellten Inhalts werden aus dem Flask Backend geladen. ' +
     'Leider scheint das Flask Backend gerade nicht erreichbar zu sein. ' +
@@ -34,21 +34,15 @@ export const useEntityStore = defineStore({
           messageStore.write_error(FLASK_UNREACHABLE_MESSAGE);
       },
     async getSolr(){
-/*      if (!query) {
-        const effective_query = query;
-      } else
-      {
-        const effective_query = this.query;
-      }
-*/      try {
+      try {
         let dataset_res = await axios({
           method: 'POST',
           url: SOLR_SELECT_URI,
           data: {
             query: this.query,
             // todo: from and to with pagination
-            start: (this.pagination_page - 1) * this.perPageResults,
-            rows: this.perPageResults
+//            start: (this.pagination_page - 1) * this.perPageResults,
+//            rows: this.perPageResults
           },
           headers: {
             "Access-Control-Allow-Origin": "*",

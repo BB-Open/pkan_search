@@ -3,13 +3,14 @@
     <div class="simple-typeahead">
       <div class="simple-typeahead-input-block">
         <input class="simple-typeahead-input"
-               v-model='entityStore.query'
-               @keyup='entityStore.getSolr'
-               @blur='onBlur'
-               @focus='onFocus'
-               placeholder="Suchbegriffe eingeben"
+               v-model="entityStore.query"
+               @keyup="entityStore.getSolr"
+               @blur="onBlur"
+               @focus="onFocus"
+               placeholder="Bitte Suchbegriffe eingeben"
+               ref="searchInput"
         />
-        <span class="simple-typeahead-count" v-if='entityStore.entityCount>0'>Treffer: {{entityStore.entityCount}}</span>
+        <span class="simple-typeahead-count">Treffer: {{entityStore.entityCount}}</span>
         </div>
       <div v-if="is_visible" class="simple-typeahead-list">
         <div class="simple-typeahead-list-header" v-if="$slots['list-header']"><slot name="list-header"></slot></div>
@@ -19,18 +20,11 @@
             v-for="(item, index) in entityStore.suggestionList"
             :key="index"
             @mousedown.prevent
-            @click="selectItem(item)"
+            @click="onSelectItem(item)"
             @mouseenter="currentSelectionIndex = index"
         >
           <div class="simple-typeahead-list-item-text" v-html='item.label'></div>
         </div>
-      </div>
-    </div>
-    <div class='entity_payload'>
-      <div v-for='entity in entityStore.entities'>
-        <div class='entity_dcterms_title'>{{ entity.dcterms_title[0] }}</div>
-        <div class='entity_dcterms_description'>{{ entity.dcterms_description[0].slice(0, 255) }}</div>
-        <NuxtLink :to="'/datails&id=' + encodeURIComponent(entity.id)" :aria-label="entity.dcterms_title[0]+ weiterlesen">Weiterlesen</NuxtLink>
       </div>
     </div>
   </div>
@@ -39,26 +33,24 @@
 <script setup lang="ts">
 
 import { useEntityStore } from '~/stores/entities'
-
-/* import {onMounted} from "@vue/runtime-core";
-
-onMounted( () => {
-  if (process.server) {
-    entityStore.query = '*:*'
-    entityStore.getSolr()
-    entityStore.query = ''
-  }
-})
-*/
+import {ref, onMounted, nextTick} from 'vue'
 
 const currentSelectionIndex = ref(undefined)
 const entityStore = useEntityStore()
-const query = entityStore.query
-const selectItem = (item) => {
+
+const searchInput = ref()
+
+onMounted(() => {
+  console.log('onMounted')
+  nextTick(() => searchInput.value.focus())
+})
+
+const onSelectItem = (item) => {
 
   entityStore.query = item.label.replaceAll(/(<([^>]+)>)/gi, "");
   entityStore.getSolr()
 }
+
 const onBlur = () => {
   entityStore.isBlur = true
 }
@@ -68,6 +60,12 @@ const onFocus = () => {
 }
 
 const is_visible = computed( () => !entityStore.isBlur && entityStore.is_suggestions)
+
+console.log('onSSR')
+
+// Load entity store for SSR
+entityStore.getSolr()
+
 
 </script>
 

@@ -4,7 +4,7 @@ import {useMessageStore} from '~/stores/messages.js'
 
 //const SOLR_SELECT_URI='http://test.datenadler.de/solr/LGB3/select'
 //const SOLR_SUGGEST_URI='http://test.datenadler.de/solr/LGB3/suggest'
-const SOLR_SELECT_URI='http://flask.datenadler.lan/solr_request'
+const SOLR_SELECT_URI='http://flask.datenadler.lan/solr_search'
 const SOLR_SUGGEST_URI='http://flask.datenadler.lan/solr_suggest'
 
 export const FLASK_UNREACHABLE_MESSAGE = 'Teile des dargestellten Inhalts werden aus dem Flask Backend geladen. ' +

@@ -13,7 +13,7 @@
         <span class="simple-typeahead-count">Treffer: {{entityStore.entityCount}}</span>
         </div>
       <div v-if="is_visible" class="simple-typeahead-list">
-        <div
+        <li
             class="simple-typeahead-list-item"
             :class="{ 'simple-typeahead-list-item-active': currentSelectionIndex === index }"
             v-for="(item, index) in entityStore.suggestionList"
@@ -21,18 +21,15 @@
             @mousedown.prevent
             @click="onSelectItem(item)"
             @mouseenter="currentSelectionIndex = index"
+            v-html='item.label'
         >
-          <div class="simple-typeahead-list-item-text" v-html='item.label'></div>
-        </div>
+        </li>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-
-//<div class="simple-typeahead-list-header" v-if="$slots['list-header']"><slot name="list-header"></slot></div>
-
 
 import { useEntityStore } from '~/stores/entities'
 import {ref, onMounted, nextTick} from 'vue'
@@ -92,34 +89,20 @@ entityStore.getSolr()
 
 .simple-typeahead .simple-typeahead-list {
   column-width: 30ch;
+  list-style-type: none; /* Remove bullets */
   position: absolute;
   left : 0;
   right : 0;
-  border: none;
   max-height: 400px;
   overflow-y: auto;
-  border-bottom: 0.1rem solid #d1d1d1;
   z-index: 9;
 }
-.simple-typeahead .simple-typeahead-list .simple-typeahead-list-header {
-  background-color: #f5f5f5;
-  padding: 0.6rem 1rem;
-  border-bottom: 0.1rem solid #d1d1d1;
-  border-left: 0.1rem solid #d1d1d1;
-  border-right: 0.1rem solid #d1d1d1;
-}
-.simple-typeahead .simple-typeahead-list .simple-typeahead-list-footer {
-  background-color: #f5f5f5;
-  padding: 0.6rem 1rem;
-  border-left: 0.1rem solid #d1d1d1;
-  border-right: 0.1rem solid #d1d1d1;
-}
-.simple-typeahead .simple-typeahead-list .simple-typeahead-list-item {
 
+.simple-typeahead .simple-typeahead-list .simple-typeahead-list-item {
   cursor: pointer;
   background-color: #f5f5f5;
   padding: 0.3rem 0.5rem;
-  border-bottom: 0.1rem solid #d1d1d1;
+  /*border-bottom: 0.1rem solid #d1d1d1;*/
   border-left: 0.1rem solid #d1d1d1;
   border-right: 0.1rem solid #d1d1d1;
   font-size: x-small;
@@ -130,15 +113,6 @@ entityStore.getSolr()
 }
 .simple-typeahead .simple-typeahead-list .simple-typeahead-list-item.simple-typeahead-list-item-active {
   background-color: #e1e1e1;
-}
-
-.simple-typeahead .simple-typeahead-list .simple-typeahead-list-item-text {
-  display: inline-block;
-}
-.simple-typeahead .simple-typeahead-list .simple-typeahead-list-item-count {
-  display: inline-block;
-  float: left;
-  padding-left: 1em;
 }
 
 .entity_payload {

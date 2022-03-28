@@ -1,5 +1,6 @@
 import { defineNuxtConfig } from 'nuxt3'
 
+
 export default defineNuxtConfig({
     buildModules: ['@pinia/nuxt'],
     server: {
@@ -9,5 +10,17 @@ export default defineNuxtConfig({
         '~/assets/styles.css',
         '~/assets/plone_styles.css',
         '~/assets/font_awesome/font-awesome.min.css'
-    ]
+    ],
+    meta: {
+        htmlAttrs: {
+            lang: 'de'
+        },
+        title: 'DatenAdler: Das Open-Data-Portal für Brandenburg',
+        meta: [
+            { charset: 'utf-8' },
+            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+            { hid: 'description', name: 'description', content: 'A vue frontend for pkan' }
+        ],
+        link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    },
 })

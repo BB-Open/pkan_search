@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <label class="textsearch">
+    <div class="hidden_help_text">Geben Sie hier die Suchbegriffe ein, um in den Datensätzen zu suchen. Die Ergebnisse werden dynamisch geladen.</div>
     <div class="simple-typeahead">
       <div class="simple-typeahead-input-block">
         <input class="simple-typeahead-input"
@@ -9,6 +10,7 @@
                @focus="onFocus"
                placeholder="Bitte Suchbegriffe eingeben"
                ref="searchInput"
+               type="text"
         />
         <span class="simple-typeahead-count">Treffer: {{entityStore.entityCount}}</span>
         </div>
@@ -26,7 +28,7 @@
         </li>
       </div>
     </div>
-  </div>
+  </label>
 </template>
 
 <script setup lang="ts">
@@ -61,10 +63,6 @@ const onFocus = () => {
 const is_visible = computed( () => !entityStore.isBlur && entityStore.is_suggestions)
 
 console.log('onSSR')
-
-// Load entity store for SSR
-entityStore.getSolr()
-
 
 </script>
 

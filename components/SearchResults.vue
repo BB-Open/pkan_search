@@ -15,7 +15,10 @@
     import Pagination from "~/components/Pagination.vue";
     import DataSetSimple from '~/components/DataSetSimple.vue'
 
-    const entityStore = useEntityStore()
+    const entityStore = useEntityStore();
+
+    // Load entity store for SSR
+    entityStore.getSolr()
 </script>
 
 <style scoped>

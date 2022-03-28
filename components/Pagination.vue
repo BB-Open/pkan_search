@@ -4,11 +4,11 @@
 </template>
 
 <script setup lang="ts">
-    import { useEntityStore } from '~/stores/entities'
-    // import VPagination from "vue3-pagination";
+    import {useEntityStore} from '~/stores/entities'
+
+    const entityStore = useEntityStore();
 
 
-    const entityStore = useEntityStore()
 </script>
 
 <style scoped>

@@ -33,16 +33,17 @@
 
 <script setup lang="ts">
 
-import { useEntityStore } from '~/stores/entities'
-import {ref, onMounted, nextTick} from 'vue'
+  import {useEntityStore} from '~/stores/entities'
+  import {nextTick, onMounted, ref} from 'vue'
 
-const currentSelectionIndex = ref(undefined)
+  const currentSelectionIndex = ref(undefined)
 const entityStore = useEntityStore()
 
 const searchInput = ref()
 
 onMounted(() => {
   console.log('onMounted')
+  console.log(searchInput)
   nextTick(() => searchInput.value.focus())
 })
 
@@ -103,7 +104,7 @@ console.log('onSSR')
   /*border-bottom: 0.1rem solid #d1d1d1;*/
   border-left: 0.1rem solid #d1d1d1;
   border-right: 0.1rem solid #d1d1d1;
-  font-size: x-small;
+  font-size: 0.7rem;
 }
 
 .simple-typeahead .simple-typeahead-list .simple-typeahead-list-item:last-child {
@@ -111,19 +112,6 @@ console.log('onSSR')
 }
 .simple-typeahead .simple-typeahead-list .simple-typeahead-list-item.simple-typeahead-list-item-active {
   background-color: #e1e1e1;
-}
-
-.entity_payload {
-  width: 100%;
-  font-size: small;
-  padding-top: 1em;
-}
-.entity_dcterms_title {
-  font-size: small;
-  padding-top: 1em;
-}
-.entity_dcterms_description {
-  font-size: xx-small;
 }
 
 </style>

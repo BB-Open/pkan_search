@@ -5,7 +5,7 @@
       <div class="simple-typeahead-input-block">
         <input class="simple-typeahead-input"
                v-model="entityStore.query"
-               @keyup="entityStore.getSolr"
+               @keyup="entityStore.reset_pagination_and_solr_get"
                @blur="onBlur"
                @focus="onFocus"
                placeholder="Bitte Suchbegriffe eingeben"
@@ -43,12 +43,10 @@ const searchInput = ref()
 
 onMounted(() => {
   console.log('onMounted')
-  console.log(searchInput)
   nextTick(() => searchInput.value.focus())
 })
 
 const onSelectItem = (item) => {
-
   entityStore.query = item.label.replaceAll(/(<([^>]+)>)/gi, "");
   entityStore.getSolr()
 }
@@ -112,6 +110,13 @@ console.log('onSSR')
 }
 .simple-typeahead .simple-typeahead-list .simple-typeahead-list-item.simple-typeahead-list-item-active {
   background-color: #e1e1e1;
+}
+  .simple-typeahead {
+    margin-bottom: 8%;
+  }
+
+@media (max-width: 640px){
+
 }
 
 </style>

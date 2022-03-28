@@ -22,9 +22,6 @@
 </script>
 
 <style scoped>
-    .result-list {
-      margin-top: 7%;
-    }
     ol ::marker {
         content: counter(list-item) ")\00A0";
     }

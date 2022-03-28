@@ -9,7 +9,8 @@
     "@pinia/nuxt": "^0.1.8",
     "@vueuse/core": "^8.0.1",
     "axios": "^0.26.1",
-    "pinia": "^2.0.11"
+    "pinia": "^2.0.11",
+    "vuejs-paginate-next": "^1.0.2"
   },
   "devDependencies": {
     "nuxt3": "^3.0.0-27453291.e891ea0"

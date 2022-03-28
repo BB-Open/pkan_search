@@ -33,6 +33,10 @@ export const useEntityStore = defineStore({
             messageStore.write_assertive(FLASK_UNREACHABLE_MESSAGE);
             messageStore.write_error(FLASK_UNREACHABLE_MESSAGE);
         },
+        reset_pagination_and_solr_get(){
+            this.pagination_page = 1;
+            this.getSolr()
+        },
         async query_solr(url, data) {
             return axios({
                 method: 'POST',
@@ -49,10 +53,10 @@ export const useEntityStore = defineStore({
         },
         async getSolr() {
             let data = {
-                query: this.query,
+                q: this.query,
                 // todo: from and to with pagination
-                // start: (this.pagination_page - 1) * this.perPageResults,
-                // rows: this.perPageResults
+                start: (this.pagination_page - 1) * this.perPageResults,
+                rows: this.perPageResults
             };
             let dataset_res = await this.query_solr(SOLR_SELECT_URI, data);
 

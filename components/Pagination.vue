@@ -1,6 +1,7 @@
 <template>
-    <div class="hidden_help_text" id="page_description">Für die Seitenverwaltung nutzen Sie die Pfeiltasten zum wechseln
-        zwischen den Buttons. Bestätigen sie mit Enter. Mit Tab verlassen sie die Seitenverwaltung.
+    <div class="hidden_help_text" id="page_description">Sie befinden sich auf der Seitenverwaltung. Hier können Sie durch die Suchergebnisse blättern.
+        Für die Steuerung der Seitenverwaltung nutzen Sie die Tab-Taste zum wechseln
+        zwischen den Links. Bestätigen sie mit Enter. Mit der Tab-Taste können Sie die Seitenverwaltung ebenso verlassen.
     </div>
     <paginate
             :page-count="entityStore.numberOfPages"

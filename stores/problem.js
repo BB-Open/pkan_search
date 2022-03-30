@@ -2,16 +2,7 @@ import {defineStore} from 'pinia';
 import {useMessageStore} from '~/stores/messages.js'
 import axios from 'axios';
 
-
-const MY_URL = 'https://datenadler.de'
-const FLASK_URL_MESSAGE = 'http://127.0.0.1:5000/send_email'
-
-export const FLASK_UNREACHABLE_MESSAGE = 'Teile des dargestellten Inhalts werden aus dem Flask Backend geladen. ' +
-    'Leider scheint das Flask Backend gerade nicht erreichbar zu sein. ' +
-    'Bitte versuchen Sie die Seite neu zu laden oder wenden Sie sich an den Admin.';
-
-
-
+import {MY_URL, FLASK_UNREACHABLE_MESSAGE, FLASK_URL_MESSAGE} from '/etc/pkan/nuxt_config'
 
 export const useProblemStore = defineStore({
     id: 'problem',

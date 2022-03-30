@@ -4,10 +4,7 @@ import axios from 'axios';
 import {useMessageStore} from '~/stores/messages.js'
 import {useBreadcrumbStore} from '~/stores/breadcrumb.js'
 
-const BASE_URL = 'https://backend.datenadler.de/@search?fullobjects=1';
-const PLONE_UNREACHABLE_MESSAGE = 'Teile des dargestellten Inhalts werden aus dem Plone Backend geladen. ' +
-    'Leider scheint das Plone Backend gerade nicht erreichbar zu sein. ' +
-    'Bitte versuchen Sie die Seite neu zu laden oder wenden Sie sich an den Admin.';
+import {PLONE_UNREACHABLE_MESSAGE, BASE_URL} from '/etc/pkan/nuxt_config'
 
 export const usePloneStore = defineStore({
     id: 'plone-store',

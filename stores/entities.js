@@ -1,17 +1,8 @@
 import {defineStore} from 'pinia';
 import axios from 'axios';
 import {useMessageStore} from '~/stores/messages.js'
+import {FLASK_UNREACHABLE_MESSAGE, SOLR_SUGGEST_URI, SOLR_SELECT_URI} from "/etc/pkan/nuxt_config";
 
-//const SOLR_SELECT_URI='http://test.datenadler.de/solr/LGB3/select'
-//const SOLR_SUGGEST_URI='http://test.datenadler.de/solr/LGB3/suggest'
-const SOLR_SELECT_URI='http://flask.datenadler.lan/solr_search'
-const SOLR_SUGGEST_URI='http://flask.datenadler.lan/solr_suggest'
-
-export const FLASK_UNREACHABLE_MESSAGE = 'Teile des dargestellten Inhalts werden aus dem Flask Backend geladen. ' +
-    'Leider scheint das Flask Backend gerade nicht erreichbar zu sein. ' +
-    'Bitte versuchen Sie die Seite neu zu laden oder wenden Sie sich an den Admin.';
-
-const PASSWORD = 'Sas242!!'
 
 export const useEntityStore = defineStore({
     id: 'entity-store',

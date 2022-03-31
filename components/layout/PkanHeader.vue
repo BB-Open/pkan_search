@@ -4,10 +4,10 @@
     <div class="logo-container content_container">
       <div class="logo logo-left"><a class="image-link" href="https://www.brandenburg.de"
                                      title="Link zum Landesportal Brandenburg">
-        <img src="../../assets/brandenburg-logo.png" alt="Link zum Landesportal Brandenburg"/></a>
+        <img src="../../public/brandenburg-logo.png" alt="Link zum Landesportal Brandenburg"/></a>
       </div>
       <div class="logo logo-right"><a class="image-link" href="/" title="Link zur Startseite">
-        <img src="../../assets/datenadler-logo.png" alt="Link zur Startseite"/></a>
+        <img src="../../public/datenadler-logo.png" alt="Link zur Startseite"/></a>
       </div>
     </div>
 

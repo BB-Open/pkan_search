@@ -1,8 +1,14 @@
 <template>
     <div class='distributions'>
       <span class="distribution" v-for="dist in distributions">
-        <a v-if="dist.dcat_downloadURL" :href="dist.dcat_downloadURL">{{dist.dcterms_format}}</a>
-        <a v-else v-if="dist.dcat_accessURL" :href="dist.dcat_accessURL">{{dist.dcterms_format}}</a>
+        <a v-if="dist.dcat_downloadURL" :href="dist.dcat_downloadURL">
+          <span v-if="dist.dcterms_format" >{{dist.dcterms_format}}</span>
+          <span v-else >Zugang</span>
+        </a>
+        <a v-else v-if="dist.dcat_accessURL" :href="dist.dcat_accessURL">
+          <span v-if="dist.dcterms_format" >{{dist.dcterms_format}}</span>
+          <span v-else >Zugang</span>
+        </a>
       </span>
     </div>
 </template>

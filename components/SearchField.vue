@@ -7,13 +7,17 @@
 
 <script setup lang="ts">
 
-  import {useEntityStore} from '~/stores/entities'
+import {useEntityStore} from '~/stores/entities'
 
-const entityStore = useEntityStore()
+const entityStore = useEntityStore();
+
+entityStore.query = '';
 
 function redirect_search() {
-  let router = useRouter()
-  router.push('/search')
+  let router = useRouter();
+  if (entityStore.query !== '') {
+    router.push('/search')
+  }
 }
 
 </script>

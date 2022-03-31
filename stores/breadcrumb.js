@@ -7,7 +7,8 @@ export const useBreadcrumbStore = defineStore({
         titles: {
             '/': 'Startseite',
             '/blog': 'Aktuelles',
-            '/problem': 'Fehler melden'
+            '/problem': 'Fehler melden',
+            '/search': 'Suche'
         },
         elements: ['/'],
     }),

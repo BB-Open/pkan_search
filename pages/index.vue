@@ -1,29 +1,26 @@
 <template>
     <NuxtLayout name="search">
-        <h1>DatenAdler: Das Open-Data-Portal für Brandenburg</h1>
-        <SearchSuggest></SearchSuggest>
-        <SearchResults></SearchResults>
+        <SearchField></SearchField>
+        <ContentBySubject portal_type="Document" tag="startseite"></ContentBySubject>
+        <div class="hidesmallscreen">
+            <h2>Kategorien:</h2>
+            <div>Todo</div>
+        </div>
     </NuxtLayout>
 </template>
 
 
-<script setup lang="ts">
-import SearchSuggest from "~/components/SearchSuggest.vue";
-import SearchResults from "~/components/SearchResults.vue"
+<script>
+    import ContentBySubject from "~/components/plone/ContentBySubject"
+    import SearchField from "~/components/SearchField"
+    export default {
+        name: "index",
+        components: {ContentBySubject, SearchField}
+    }
 
-import { useMessageStore } from '~/stores/messages'
-
-    const messageStore = useMessageStore();
-    messageStore.write_polite('Die Startseite für das Open-Data-Portal Brandenburg wurde geladen. Sie befinden sich auf einer Suchseite. Inhalte werden mit jeder Eingabe neu geladen.');
-    messageStore.write_assertive('');
-    messageStore.write_error('');
 
 </script>
 
 <style scoped>
-
-    h1 {
-        font-size: 1.5rem;
-    }
 
 </style>

@@ -36,16 +36,20 @@
         <nuxt-link class="router-link" to="/blog">Aktuelles</nuxt-link>
         <hr class="hidebigscreen"/>
       </li>
-      <li>
+      <li class="hidebigscreen">
         <nuxt-link to="/accessibility" class="router-link">Barrierefreiheit</nuxt-link>
         <hr class="hidebigscreen"/>
       </li>
-      <li>
+      <li class="hidebigscreen">
         <nuxt-link to="/data_protection" class="router-link">Datenschutz</nuxt-link>
         <hr class="hidebigscreen"/>
       </li>
-      <li>
+      <li class="hidebigscreen">
         <nuxt-link to="/impressum" class="router-link">Impressum</nuxt-link>
+      </li>
+      <li>
+        <nuxt-link class="router-link" to="/search">Suche</nuxt-link>
+        <hr class="hidebigscreen"/>
       </li>
     </ul>
   </nav>
@@ -113,10 +117,6 @@
   }
 
   .menu .icon_box {
-    display: none;
-  }
-
-  .hidebigscreen {
     display: none;
   }
 

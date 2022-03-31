@@ -530,6 +530,10 @@ select {
   font-weight: bold;
 }
 
+.columns {
+  break-after: column
+}
+
 @media (max-width: 640px) {
 
   .info_column_right {
@@ -612,6 +616,10 @@ select {
 
   h2 {
     font-size: 1.4rem;
+  }
+
+  .twocolumncontent {
+    justify-content: unset;
   }
 }
 

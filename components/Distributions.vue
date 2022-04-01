@@ -4,12 +4,12 @@
         <a v-if="dist.dcat_downloadURL" :href="dist.dcat_downloadURL">
           <span v-if="dist.dcterms_title" >{{dist.dcterms_title}}</span>
           <span v-else v-if="dist.dcterms_format">{{dist.dcterms_format}}</span>
-          <span v-else>{{Download}}</span>
+          <span v-else>Download</span>
         </a>
         <a v-else v-if="dist.dcat_accessURL" :href="dist.dcat_accessURL">
           <span v-if="dist.dcterms_title" >{{dist.dcterms_title}}</span>
           <span v-else v-if="dist.dcterms_format">{{dist.dcterms_format}}</span>
-          <span v-else >Zugang</span>
+          <span v-else>Zugang</span>
         </a>
       </span>
     </div>

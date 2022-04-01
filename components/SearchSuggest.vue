@@ -38,32 +38,32 @@
   import {nextTick, onMounted, ref} from 'vue'
 
   const currentSelectionIndex = ref(undefined)
-const entityStore = useEntityStore()
+  const entityStore = useEntityStore()
 
-const searchInput = ref()
+  const searchInput = ref()
 
-onMounted(() => {
-  console.log('onMounted')
-  nextTick(() => {searchInput.value.focus()})
-})
+  onMounted(() => {
+    console.log('onMounted')
+    setTimeout(() => {searchInput.value.focus()}, 10)
+  })
 
-const onSelectItem = (item) => {
-  entityStore.query = item.label.replaceAll(/(<([^>]+)>)/gi, "");
-  entityStore.getSolr()
-}
+  const onSelectItem = (item) => {
+    entityStore.query = item.label.replaceAll(/(<([^>]+)>)/gi, "");
+    entityStore.getSolr()
+  }
 
-const onBlur = () => {
-  entityStore.isBlur = true
-  searchInput.value.focus()
-}
+  const onBlur = () => {
+    entityStore.isBlur = true
+    searchInput.value.focus()
+  }
 
-const onFocus = () => {
-  entityStore.isBlur = false
-}
+  const onFocus = () => {
+    entityStore.isBlur = false
+  }
 
-const is_visible = computed( () => !entityStore.isBlur && entityStore.is_suggestions)
+  const is_visible = computed( () => !entityStore.isBlur && entityStore.is_suggestions)
 
-console.log('onSSR')
+  console.log('onSSR')
 
 </script>
 

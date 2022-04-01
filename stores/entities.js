@@ -54,14 +54,14 @@ export const useEntityStore = defineStore({
             if (dataset_res === undefined) {
 
             } else {
-                console.log(dataset_res)
+                //console.log(dataset_res)
                 this.entities = dataset_res.data.response.docs;
                 this.entityCount = dataset_res.data.response.numFound
             }
 
             data = {
                 params: {
-                    'suggest.q': this.query.toLowerCase(),
+                    'suggest.q': this.query,
                 }
             };
 
@@ -70,8 +70,8 @@ export const useEntityStore = defineStore({
             if (suggest_res === undefined) {
 
             } else {
-                if (suggest_res.data.suggest.mySuggester[this.query.toLowerCase()].numFound > 0) {
-                    this.suggestions = suggest_res.data.suggest.mySuggester[this.query.toLowerCase()].suggestions
+                if (suggest_res.data.suggest.mySuggester[this.query].numFound > 0) {
+                    this.suggestions = suggest_res.data.suggest.mySuggester[this.query].suggestions
                 } else {
                     this.suggestions = []
                 }

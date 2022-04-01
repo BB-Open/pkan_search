@@ -10,18 +10,18 @@ export const useMessageStore = defineStore({
     }),
     actions: {
         write_assertive(message) {
-            console.log('Assertive Message')
-            console.log(message)
+//            console.log('Assertive Message')
+//            console.log(message)
             this.aria_assertive = message
         },
         write_polite(message) {
-            console.log('Polite Message')
-            console.log(message)
+//            console.log('Polite Message')
+//            console.log(message)
             this.aria_polite = message
         },
         write_error(message) {
-            console.log('Error Message')
-            console.log(message)
+//            console.log('Error Message')
+//            console.log(message)
             this.error = message
         }
 

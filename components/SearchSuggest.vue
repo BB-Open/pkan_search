@@ -11,6 +11,7 @@
                placeholder="Bitte Suchbegriffe eingeben"
                ref="searchInput"
                type="text"
+               autofocus
         />
         <span class="simple-typeahead-count">Treffer: {{entityStore.entityCount}}</span>
         </div>
@@ -43,7 +44,7 @@ const searchInput = ref()
 
 onMounted(() => {
   console.log('onMounted')
-  nextTick(() => searchInput.value.focus())
+  nextTick(() => {searchInput.value.focus()})
 })
 
 const onSelectItem = (item) => {
@@ -53,6 +54,7 @@ const onSelectItem = (item) => {
 
 const onBlur = () => {
   entityStore.isBlur = true
+  searchInput.value.focus()
 }
 
 const onFocus = () => {

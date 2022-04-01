@@ -1,7 +1,7 @@
 <template>
   <label class="textsearch">
     <div class="hidden_help_text">Geben Sie hier die Suchbegriffe ein, um in den Datensätzen zu suchen. Sie werden automatisch zur Suchseite weiter geleitet, sobald Sie eine Taste betätigen.</div>
-    <input type="text" v-model="entityStore.query" placeholder="In den Datensätzen suchen" class="single_line_edit" @keyup="redirect_search">
+    <input type="text" v-model="entityStore.query" placeholder="In den Datensätzen suchen" class="single_line_edit" @keyup="redirect_search" autofocus>
   </label>
 </template>
 

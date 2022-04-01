@@ -10,7 +10,7 @@
       <Publisher v-if='entityStore.dataset' :publisher="entityStore.dataset.dct_publisher">
       </Publisher>
 
-      <ContactPoint v-if='entityStore.dataset' :contactpoint="JSON.parse(entityStore.dataset.dcat_contactPoint)">
+      <ContactPoint v-if='entityStore.dataset' :contactPoint="JSON.parse(entityStore.dataset.dcat_contactPoint[0])">
       </ContactPoint>
 
       </div>
@@ -20,6 +20,9 @@
 <script setup lang='ts'>
     import {onMounted} from 'vue';
     import {useEntityStore} from '~/stores/entities'
+    import Distributions from "~/components/Distributions.vue";
+    import Publisher from "~/components/Publisher.vue";
+    import ContactPoint from "~/components/ContactPoint.vue";
 
     const entityStore = useEntityStore()
     const route = useRoute()

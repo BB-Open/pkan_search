@@ -1,19 +1,21 @@
 import {defineStore} from 'pinia';
 import axios from 'axios';
 import {useMessageStore} from '~/stores/messages.js'
-import {FLASK_UNREACHABLE_MESSAGE, SOLR_SUGGEST_URI, SOLR_SELECT_URI} from "/etc/pkan/nuxt_config";
+import {FLASK_UNREACHABLE_MESSAGE, SOLR_SUGGEST_URI, SOLR_SELECT_URI, SOLR_PICK_URI} from "/etc/pkan/nuxt_config";
 
 
 export const useEntityStore = defineStore({
     id: 'entity-store',
     state: () => ({
+        dataset_uri: undefined,
+        dataset : undefined,
         entities: [],
         entityCount: 0,
-        suggestions: [],
-        query: '',
         isBlur: false,
         perPageResults: 10,
         pagination_page: 1,
+        suggestions: [],
+        query: '',
     }),
     actions: {
         get_message_store() {
@@ -45,7 +47,6 @@ export const useEntityStore = defineStore({
         async getSolr() {
             let data = {
                 q: this.query,
-                // todo: from and to with pagination
                 start: (this.pagination_page - 1) * this.perPageResults,
                 rows: this.perPageResults
             };
@@ -76,6 +77,13 @@ export const useEntityStore = defineStore({
                     this.suggestions = []
                 }
             }
+        },
+        async getDataset() {
+            let data = {
+                q: this.dataset_uri,
+            };
+            let dataset_res = await this.query_solr(SOLR_PICK_URI, data);
+            this.dataset = dataset_res.data.response.docs[0];
         }
     },
 

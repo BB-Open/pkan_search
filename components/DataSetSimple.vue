@@ -1,6 +1,6 @@
 <template>
     <div class='testtest'>
-      <NuxtLink v-if="item.dcterms_title" :to="'/' + encodeURIComponent(item.id)" :aria-label="item.dcterms_title[0] + ' weiterlesen'">
+      <NuxtLink v-if="item.dcterms_title" :to="'/dataset' + encodeURIComponent(item.id)" :aria-label="item.dcterms_title[0] + ' weiterlesen'">
         <h2 class="element_title">{{ item.dcterms_title[0] }}</h2>
       </NuxtLink>
         <NuxtLink v-if="!item.dcterms_title" :to="'/' + encodeURIComponent(item.id)"

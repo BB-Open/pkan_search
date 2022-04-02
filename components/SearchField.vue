@@ -1,13 +1,14 @@
 <template>
   <label class="textsearch">
     <div class="hidden_help_text">Geben Sie hier die Suchbegriffe ein, um in den Datensätzen zu suchen. Sie werden automatisch zur Suchseite weiter geleitet, sobald Sie eine Taste betätigen.</div>
-    <input type="text" v-model="entityStore.query" placeholder="In den Datensätzen suchen" class="single_line_edit" @keyup="redirect_search" autofocus>
+    <input ref="startInput" type="text" v-model="entityStore.query" placeholder="In den Datensätzen suchen" class="single_line_edit" @keyup="redirect_search">
   </label>
 </template>
 
 <script setup lang="ts">
 
 import {useEntityStore} from '~/stores/entities'
+import {onMounted} from "vue";
 
 const entityStore = useEntityStore();
 
@@ -19,7 +20,11 @@ function redirect_search() {
     router.push('/search')
   }
 }
-
+// focussing the input on entering the site
+const startInput = ref()
+onMounted(() => {
+  setTimeout(() => {startInput.value.focus()}, 10)
+})
 </script>
 
 <style scoped>

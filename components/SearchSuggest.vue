@@ -13,7 +13,7 @@
                type="text"
                autofocus
         />
-        <span class="simple-typeahead-count">Treffer: {{entityStore.entityCount}}</span>
+        <span class="simple-typeahead-count">Treffer: {{entityStore.entityTotalCount}}</span>
         </div>
       <div v-if="is_visible" class="simple-typeahead-list">
         <li
@@ -95,15 +95,16 @@
   max-height: 400px;
   overflow-y: auto;
   z-index: 9;
+  background-color: #f5f5f5 ;
 }
 
 .simple-typeahead .simple-typeahead-list .simple-typeahead-list-item {
   cursor: pointer;
   background-color: #f5f5f5;
   padding: 0.3rem 0.5rem;
-  /*border-bottom: 0.1rem solid #d1d1d1;*/
+  /*border-bottom: 0.1rem solid #d1d1d1;
   border-left: 0.1rem solid #d1d1d1;
-  border-right: 0.1rem solid #d1d1d1;
+  border-right: 0.1rem solid #d1d1d1;*/
   font-size: 0.7rem;
 }
 

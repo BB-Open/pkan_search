@@ -10,7 +10,7 @@ export const useEntityStore = defineStore({
         dataset_uri: undefined,
         dataset : undefined,
         entities: [],
-        entityCount: 0,
+        entityTotalCount: 0,
         facets : {
             'dcterms_publisher_facet': {val:'', count:0},
             'dcat_theme_facet': {val:'', count:0},
@@ -61,7 +61,7 @@ export const useEntityStore = defineStore({
             } else {
                 //console.log(dataset_res)
                 this.entities = dataset_res.data.response.docs;
-                this.entityCount = dataset_res.data.response.numFound;
+                this.entityTotalCount = dataset_res.data.response.numFound;
                 this.facets = dataset_res.data.facets;
             }
 
@@ -94,6 +94,7 @@ export const useEntityStore = defineStore({
 
     getters: {
         entityList: state => state.entities,
+        entityCount: state => state.entities.length,
         is_suggestions: state => state.suggestions.length > 0,
         suggestionList: state => state.suggestions.map(
             sug => {
@@ -101,7 +102,7 @@ export const useEntityStore = defineStore({
             }),
         perPage: state => state.perPageResults,
         numberOfPages: state => {
-            let res = state.entityCount / state.perPageResults;
+            let res = state.entityTotalCount / state.perPageResults;
             return Math.ceil(res)
 
         }

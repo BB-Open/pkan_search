@@ -2,7 +2,7 @@
     <div class="result">
     <Pagination></Pagination>
     <ol class="result-list">
-        <li v-if="entityStore.entityCount > 0" v-for="item in entityStore.entities" >
+        <li v-if="entityStore.entityTotalCount > 0" v-for="item in entityStore.entities" >
             <DataSetSimple :item="item"></DataSetSimple>
         </li>
     </ol>

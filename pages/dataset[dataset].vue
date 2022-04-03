@@ -13,6 +13,9 @@
       <ContactPoint v-if='entityStore.dataset && entityStore.dataset.dcat_contactPoint' :contactPoint="JSON.parse(entityStore.dataset.dcat_contactPoint[0])">
       </ContactPoint>
 
+      <License v-if='entityStore.dataset && entityStore.dataset.dcterms_license_facet' :license="entityStore.dataset.dcterms_license_facet">
+      </License>
+
       </div>
     </NuxtLayout>
 </template>

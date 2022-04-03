@@ -1,5 +1,5 @@
 <template>
-    <facet v-if="entityStore.facets.dct_publisher_facet" :facet="entityStore.facets.dct_publisher_facet" :facetName="'Herausgeber'"></facet>
+    <facet v-if="entityStore.facets.dcterms_publisher_facet" :facet="entityStore.facets.dcterms_publisher_facet" :facetName="'Herausgeber'"></facet>
     <facet v-if="entityStore.facets.dcat_theme_facet" :facet="entityStore.facets.dcat_theme_facet" :facetName="'Kategorien'"></facet>
 </template>
 

@@ -12,7 +12,7 @@ export const useEntityStore = defineStore({
         entities: [],
         entityCount: 0,
         facets : {
-            'dct_publisher_facet': {val:'', count:0},
+            'dcterms_publisher_facet': {val:'', count:0},
             'dcat_theme_facet': {val:'', count:0},
         },
         isBlur: false,

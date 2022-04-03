@@ -7,7 +7,7 @@
       <Distributions v-if='entityStore.dataset' :distributions="JSON.parse(entityStore.dataset.dcat_distribution)" >
       </Distributions>
 
-      <Publisher v-if='entityStore.dataset && entityStore.dataset.dct_publisher' :publisher="entityStore.dataset.dct_publisher">
+      <Publisher v-if='entityStore.dataset && entityStore.dataset.dcterms_publisher' :publisher="entityStore.dataset.dcterms_publisher">
       </Publisher>
 
       <ContactPoint v-if='entityStore.dataset && entityStore.dataset.dcat_contactPoint' :contactPoint="JSON.parse(entityStore.dataset.dcat_contactPoint[0])">

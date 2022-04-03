@@ -11,6 +11,7 @@ export const useEntityStore = defineStore({
         dataset : undefined,
         entities: [],
         entityCount: 0,
+        facetFields : {'dct_publisher_facet':[]},
         isBlur: false,
         perPageResults: 10,
         pagination_page: 1,
@@ -57,7 +58,8 @@ export const useEntityStore = defineStore({
             } else {
                 //console.log(dataset_res)
                 this.entities = dataset_res.data.response.docs;
-                this.entityCount = dataset_res.data.response.numFound
+                this.entityCount = dataset_res.data.response.numFound;
+                this.facetFields = dataset_res.data.facet_counts.facet_fields;
             }
 
             data = {

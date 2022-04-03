@@ -7,8 +7,7 @@
                 <SearchResults></SearchResults>
             </div>
             <section class="hidesmallscreen">
-                <h2 class="controls_heading">Kriterien</h2>
-                <div>Todo</div>
+                <facets></facets>
             </section>
         </div>
 
@@ -21,6 +20,7 @@
     import SearchResults from "~/components/SearchResults.vue"
 
     import {useMessageStore} from '~/stores/messages'
+    import Facets from "~/components/facets.vue";
 
     const messageStore = useMessageStore();
     messageStore.write_polite('Die Suchseite für das Open-Data-Portal Brandenburg wurde geladen. Inhalte werden mit jeder Eingabe neu geladen.');

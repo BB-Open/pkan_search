@@ -1,26 +1,19 @@
 <template>
   <div>
-    <h2>{{facetFieldName}}</h2>
-    <div v-for='nameCount in facetNameCount'>
-      <span class='name_column'>{{nameCount[0]}}</span><span class='count_column'>{{nameCount[1]}}</span>
+    <h4>{{facetName}}</h4>
+    <div v-for='item in facet.buckets'>
+      <span v-if="item.count > 0" class='name_column'>{{item.val}}</span>
+      <span v-if="item.count > 0" class='count_column'>{{item.count}}</span>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const facet = defineProps({
-  facetField: {type: Array, required: true},
-  facetFieldName: {type: String, required: true},
+const props = defineProps({
+  facet: {type: Object, required: true},
+  facetName: {type: String, required: true},
 });
 
-const chunk = <T>(arr: T[], size: number): T[][] =>
-    [...Array(Math.ceil(arr.length / size))].map((_, i) =>
-        arr.slice(size * i, size + size * i)
-    );
-
-const facetNameCount = computed(() => {
-  return chunk(facet.facetField,2)
-})
 </script>
 
 <style scoped>

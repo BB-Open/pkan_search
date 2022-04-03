@@ -1,5 +1,6 @@
 <template>
-    <facet  :facetField="entityStore.facetFields.dct_publisher_facet" :facetFieldName="'Herausgeber'"></facet>
+    <facet v-if="entityStore.facets.dct_publisher_facet" :facet="entityStore.facets.dct_publisher_facet" :facetName="'Herausgeber'"></facet>
+    <facet v-if="entityStore.facets.dcat_theme_facet" :facet="entityStore.facets.dcat_theme_facet" :facetName="'Kategorien'"></facet>
 </template>
 
 v-for="(facetField, facetFieldName) in entityStore.facetFields"
@@ -9,6 +10,6 @@ v-for="(facetField, facetFieldName) in entityStore.facetFields"
       const entityStore = useEntityStore();
 </script>
 
-<style scoped>
+<Kategorienylecatego_ scoped>
 
-</style>
+</Kategorienylecatego_>

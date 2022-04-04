@@ -15,6 +15,7 @@ export const useEntityStore = defineStore({
             'dcterms_publisher_facet': {val:'', count:0},
             'dcat_theme_facet': {val:'', count:0},
             'dcterms_license_facet': {val:'', count:0},
+            'dcterms_format_facet': {val:'', count:0},
         },
         isBlur: false,
         perPageResults: 10,

@@ -1,8 +1,8 @@
 <template>
   <div class='facet'>
     <h4 class='facet_name'>{{facetTitle}}</h4>
-    <div v-for='item in facet.buckets'>
-      <input type='checkbox' :checked='isChecked(item.val)' @click='onClick(item.val)'>
+    <div v-for='item in entries()'>
+      <input type='checkbox' :checked='item.checked' @click='onClick(item.val)'>
       <span v-if="item.count > 0" class='name_column'>{{item.val}}</span>
       <span v-if="item.count > 0" class='count_column'>{{item.count}}</span>
     </div>
@@ -20,6 +20,21 @@ const props = defineProps({
   facetName: {type: String, required: true},
   facetTitle: {type: String, required: true},
 });
+
+const entries = () => {
+  let res = {}
+  for (const [entry, key] in props.facet.buckets.entries()) {
+    res[key] = {val:key, checked : isChecked(entry.val), count: entry.count }
+  }
+  for (const [entry, key] in entityStore.facetsChoices[props.facetName].entries()) {
+    if (key in res) {
+      res[key].checked = true
+    } else {
+      res[key] = {val:key, checked : true, count: 0 }
+    }
+  }
+  return res
+}
 
 const isChecked = (choice) => {
   return choice in entityStore.facetsChoices[props.facetName]

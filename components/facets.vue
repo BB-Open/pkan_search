@@ -1,23 +1,19 @@
 <template>
   <div class="facets">
-    <facet v-if="entityStore.facets.dcterms_format_facet"
-           :facet="entityStore.facets.dcterms_format_facet"
+    <facet :facet="entityStore.facets.dcterms_format_facet"
            :facetTitle="'Formate'"
            :facetName="'dcterms_format_facet'"
     ></facet>
-    <facet v-if="entityStore.facets.dcat_theme_facet"
-           :facet="entityStore.facets.dcat_theme_facet"
+    <facet :facet="entityStore.facets.dcat_theme_facet"
            :facetTitle="'Kategorien'"
            :facetName="'dcat_theme_facet'"
     ></facet>
-    <facet v-if="entityStore.facets.dcterms_license_facet"
-           :facet="entityStore.facets.dcterms_license_facet"
+    <facet :facet="entityStore.facets.dcterms_license_facet"
            :facetTitle="'Lizenzen'"
            :facetName="'dcterms_license_facet'"
     ></facet>
 
-    <facet v-if="entityStore.facets.dcterms_publisher_facet"
-           :facet="entityStore.facets.dcterms_publisher_facet"
+    <facet :facet="entityStore.facets.dcterms_publisher_facet"
            :facetTitle="'Datenbereitsteller'"
            :facetName="'dcterms_publisher_facet'"
     ></facet>

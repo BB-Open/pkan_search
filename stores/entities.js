@@ -17,6 +17,12 @@ export const useEntityStore = defineStore({
             'dcterms_license_facet': {val:'', count:0},
             'dcterms_format_facet': {val:'', count:0},
         },
+        facetsChoices : {
+            'dcterms_publisher_facet': {},
+            'dcat_theme_facet': {},
+            'dcterms_license_facet': {},
+            'dcterms_format_facet': {},
+        },
         isBlur: false,
         perPageResults: 10,
         pagination_page: 1,
@@ -54,7 +60,8 @@ export const useEntityStore = defineStore({
             let data = {
                 q: this.query,
                 start: (this.pagination_page - 1) * this.perPageResults,
-                rows: this.perPageResults
+                rows: this.perPageResults,
+                choices: this.facetsChoices,
             };
             let dataset_res = await this.query_solr(SOLR_SELECT_URI, data);
 

@@ -3,8 +3,8 @@
     <h4 class='facet_name'>{{facetTitle}}</h4>
     <div v-for='item in entries'>
       <input type='checkbox' :checked='item.checked' @click='onClick(item.val)'>
-      <span v-if="item.count > 0" class='name_column'>{{item.val}}</span>
-      <span v-if="item.count > 0" class='count_column'>{{item.count}}</span>
+      <span v-if="item.count > 0 || item.checked" class='name_column'>{{item.val}}</span>
+      <span v-if="item.count > 0 || item.checked" class='count_column'>{{item.count}}</span>
     </div>
   </div>
 </template>
@@ -25,7 +25,7 @@ const props = defineProps({
 const entries = computed(() => {
   const res = {};
   if (props.facet.buckets) {
-    for (const entry of props.facet?.buckets) {
+    for (const entry of entityStore.facets[props.facetName]?.buckets) {
       res[entry.val] = {val : entry.val, checked : isChecked(entry.val), count: entry.count }
     }
   }

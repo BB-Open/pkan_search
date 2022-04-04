@@ -4,6 +4,7 @@ import {useMessageStore} from '~/stores/messages.js'
 import {FLASK_UNREACHABLE_MESSAGE, SOLR_SUGGEST_URI, SOLR_SELECT_URI, SOLR_PICK_URI} from "/etc/pkan/nuxt_config";
 
 
+
 export const useEntityStore = defineStore({
     id: 'entity-store',
     state: () => ({
@@ -12,10 +13,10 @@ export const useEntityStore = defineStore({
         entities: [],
         entityTotalCount: 0,
         facets : {
-            'dcterms_publisher_facet': {val:'', count:0},
-            'dcat_theme_facet': {val:'', count:0},
-            'dcterms_license_facet': {val:'', count:0},
-            'dcterms_format_facet': {val:'', count:0},
+            'dcterms_publisher_facet': {buckets:[]},
+            'dcat_theme_facet': {buckets:[]},
+            'dcterms_license_facet': {buckets:[]},
+            'dcterms_format_facet': {buckets:[]},
         },
         facetsChoices : {
             'dcterms_publisher_facet': {},
@@ -71,7 +72,16 @@ export const useEntityStore = defineStore({
                 //console.log(dataset_res)
                 this.entities = dataset_res.data.response.docs;
                 this.entityTotalCount = dataset_res.data.response.numFound;
-                this.facets = dataset_res.data.facets;
+                if (dataset_res.data.facets.count == 0) {
+                this.facets = {
+                    'dcterms_publisher_facet': {buckets:[]},
+                    'dcat_theme_facet': {buckets:[]},
+                    'dcterms_license_facet': {buckets:[]},
+                    'dcterms_format_facet': {buckets:[]},
+                }} else
+                    {
+                        this.facets = dataset_res.data.facets;
+                    }
             }
 
             data = {

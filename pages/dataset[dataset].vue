@@ -2,7 +2,7 @@
     <NuxtLayout name="search">
       <div>
       <h1 class="dcterms_title" v-if='entityStore.dataset'>{{ entityStore.dataset.dcterms_title[0] }}</h1>
-      <h2 class="dcterms_description" v-if='entityStore.dataset'>{{ entityStore.dataset.dcterms_description[0] }}</h2>
+      <h2 class="dcterms_description" v-if='entityStore.description'>{{ entityStore.dataset.dcterms_description[0] }}</h2>
 
       <Distributions v-if='entityStore.dataset' :distributions="JSON.parse(entityStore.dataset.dcat_distribution)" >
       </Distributions>

@@ -1,5 +1,6 @@
 <template>
   <div class="facets">
+    <h2 class="hidden_help_text">Suchkriterien</h2>
     <facet :facet="entityStore.facets.dcterms_format_facet"
            :facetTitle="'Formate'"
            :facetName="'dcterms_format_facet'"
@@ -29,6 +30,6 @@ v-for="(facetField, facetFieldName) in entityStore.facetFields"
 
 <style scoped>
 .facets {
-  margin-top: 2em;
+  margin-top: 2rem;
 }
 </style>

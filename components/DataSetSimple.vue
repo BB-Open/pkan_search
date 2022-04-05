@@ -9,7 +9,7 @@
         </NuxtLink>
       <p class="element_description" v-if="item.dcterms_description">{{ item.dcterms_description[0].split('.')[0] }}. ...</p>
       <p class="element_description" v-if="!item.dcterms_description">Keine Beschreibung verfügbar</p>
-      <Distributions :distributions="JSON.parse(item.dcat_distribution)" >
+      <Distributions v-if="item.dcat_distribution" :distributions="JSON.parse(item.dcat_distribution)" >
       </Distributions>
     </div>
 </template>

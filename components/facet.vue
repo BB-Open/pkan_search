@@ -57,7 +57,7 @@
         } else {
             entityStore.facetsChoices[props.facetName][choice] = 1
         }
-        entityStore.getSolr();
+        entityStore.reset_pagination_and_solr_get();
     };
 </script>
 

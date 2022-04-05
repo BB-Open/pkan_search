@@ -17,8 +17,13 @@
 
     const entityStore = useEntityStore();
 
+    onMounted(() => {
+        entityStore.reset_pagination_and_solr_get()
+    })
+
     // Load entity store for SSR
-    entityStore.getSolr()
+    entityStore.reset_pagination_and_solr_get()
+
 </script>
 
 <style scoped>

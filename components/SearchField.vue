@@ -12,10 +12,11 @@ import {onMounted} from "vue";
 
 const entityStore = useEntityStore();
 
-entityStore.query = '';
+entityStore.reset_all();
+
+const router = useRouter();
 
 function redirect_search() {
-  let router = useRouter();
   if (entityStore.query !== '') {
     router.push('/search')
   }

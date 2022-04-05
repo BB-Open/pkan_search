@@ -3,9 +3,7 @@
         <li class="box"
             v-for="item in elements"
             @click="onClick(item.title)">
-            <nuxt-link
-                    to="/search"
-                    class="lightbutton button vocabbutton">
+            <a class="lightbutton button vocabbutton">
                 <div class="category_label">
                     <div class="category_icon">
                         <i :class="item.icon + ' bb-ifa'"
@@ -15,7 +13,7 @@
                     </div>
                     <div class="category_text">{{item.title}}</div>
                 </div>
-            </nuxt-link>
+            </a>
         </li>
     </ul>
 </template>
@@ -24,6 +22,7 @@
     import {useEntityStore} from '~/stores/entities'
 
     const entityStore = useEntityStore();
+    const router = useRouter();
 
     const elements = [
         {
@@ -80,18 +79,9 @@
         },
     ];
 
-    entityStore.facetsChoices = {
-        'dcterms_publisher_facet': {},
-        'dcat_theme_facet': {},
-        'dcterms_license_facet': {},
-        'dcterms_format_facet': {},
-    };
-
     const onClick = (choice) => {
         entityStore.facetsChoices['dcat_theme_facet'][choice] = 1;
-        let router = useRouter();
         router.push('/search')
-
     };
 </script>
 

@@ -44,17 +44,17 @@
 
   onMounted(() => {
     console.log('onMounted')
-    setTimeout(() => {searchInput?.value.focus()}, 10)
+    setTimeout(() => {searchInput?.value?.focus()}, 10)
   })
 
   const onSelectItem = (item) => {
     entityStore.query = item.label.replaceAll(/(<([^>]+)>)/gi, "");
-    entityStore.getSolr()
+    entityStore.reset_pagination_and_solr_get()
   }
 
   const onBlur = () => {
     entityStore.isBlur = true
-    searchInput?.value.focus()
+    searchInput?.value?.focus()
   }
 
   const onFocus = () => {

@@ -3,6 +3,19 @@ import axios from 'axios';
 import {useMessageStore} from '~/stores/messages.js'
 import {FLASK_UNREACHABLE_MESSAGE, SOLR_SUGGEST_URI, SOLR_SELECT_URI, SOLR_PICK_URI} from "/etc/pkan/nuxt_config";
 
+const facetsChoicesDefault = {
+    'dcterms_publisher_facet': {},
+    'dcat_theme_facet': {},
+    'dcterms_license_facet': {},
+    'dcterms_format_facet': {},
+};
+
+const facetsDefault = {
+    'dcterms_publisher_facet': {buckets:[]},
+    'dcat_theme_facet': {buckets:[]},
+    'dcterms_license_facet': {buckets:[]},
+    'dcterms_format_facet': {buckets:[]},
+};
 
 
 export const useEntityStore = defineStore({
@@ -12,18 +25,9 @@ export const useEntityStore = defineStore({
         dataset : undefined,
         entities: [],
         entityTotalCount: 0,
-        facets : {
-            'dcterms_publisher_facet': {buckets:[]},
-            'dcat_theme_facet': {buckets:[]},
-            'dcterms_license_facet': {buckets:[]},
-            'dcterms_format_facet': {buckets:[]},
-        },
-        facetsChoices : {
-            'dcterms_publisher_facet': {},
-            'dcat_theme_facet': {},
-            'dcterms_license_facet': {},
-            'dcterms_format_facet': {},
-        },
+        // We need deep clone here
+        facets : JSON.parse(JSON.stringify(facetsDefault)),
+        facetsChoices : JSON.parse(JSON.stringify(facetsChoicesDefault)),
         isBlur: false,
         perPageResults: 10,
         pagination_page: 1,
@@ -39,8 +43,29 @@ export const useEntityStore = defineStore({
             messageStore.write_assertive(FLASK_UNREACHABLE_MESSAGE);
             messageStore.write_error(FLASK_UNREACHABLE_MESSAGE);
         },
+        reset_facetsChoices(){
+            // we need deep clone here
+            this.facetsChoices = JSON.parse(JSON.stringify(facetsChoicesDefault));
+        },
+        reset_query(){
+            this.query = ''
+        },
+        reset_facets(){
+            // we need deep clone here
+            this.facets = JSON.parse(JSON.stringify(facetsDefault))
+        },
+        reset_pagination(){
+            this.pagination_page = 1
+        },
+        reset_all(){
+            this.reset_facets();
+            this.reset_facetsChoices();
+            this.reset_query();
+            this.reset_pagination();
+            console.log('Reset all');
+        },
         reset_pagination_and_solr_get(){
-            this.pagination_page = 1;
+            this.reset_pagination();
             this.getSolr()
         },
         async query_solr(url, data) {
@@ -73,12 +98,8 @@ export const useEntityStore = defineStore({
                 this.entities = dataset_res.data.response.docs;
                 this.entityTotalCount = dataset_res.data.response.numFound;
                 if (dataset_res.data.facets.count == 0) {
-                this.facets = {
-                    'dcterms_publisher_facet': {buckets:[]},
-                    'dcat_theme_facet': {buckets:[]},
-                    'dcterms_license_facet': {buckets:[]},
-                    'dcterms_format_facet': {buckets:[]},
-                }} else
+                    this.reset_facets()
+                } else
                     {
                         this.facets = dataset_res.data.facets;
                     }

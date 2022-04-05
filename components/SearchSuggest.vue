@@ -44,7 +44,7 @@
 
   onMounted(() => {
     console.log('onMounted')
-    setTimeout(() => {searchInput.value.focus()}, 10)
+    setTimeout(() => {searchInput?.value.focus()}, 10)
   })
 
   const onSelectItem = (item) => {
@@ -54,7 +54,7 @@
 
   const onBlur = () => {
     entityStore.isBlur = true
-    searchInput.value.focus()
+    searchInput?.value.focus()
   }
 
   const onFocus = () => {

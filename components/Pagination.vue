@@ -3,7 +3,7 @@
         Für die Steuerung der Seitenverwaltung nutzen Sie die Tab-Taste zum wechseln
         zwischen den Links. Bestätigen sie mit Enter. Mit der Tab-Taste können Sie die Seitenverwaltung ebenso verlassen.
     </div>
-    <paginate v-if='entityStore.entityCount == entityStore.perPageResults'
+    <paginate v-if='entityStore.entityTotalCount > entityStore.perPageResults'
             :page-count="entityStore.numberOfPages"
             v-model="entityStore.pagination_page"
             prev-text="Vorherige"

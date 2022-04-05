@@ -2,8 +2,7 @@
     <div class='distributions'>
       <span class="distribution" v-for="dist in distributions">
         <a v-if="dist.dcat_downloadURL" :href="dist.dcat_downloadURL">
-          <span v-if="dist.dcterms_title" >{{dist.dcterms_title}}</span>
-              <span v-if="dist.dcterms_format">[{{dist.dcterms_format}}]</span>
+          <span v-if="dist.dcterms_title" >{{dist.dcterms_title}}</span> <span v-if="dist.dcterms_format">[{{dist.dcterms_format}}]</span>
         </a>
         <a v-else v-if="dist.dcat_accessURL" :href="dist.dcat_accessURL">
           <span v-if="dist.dcterms_title" >{{dist.dcterms_title}}</span>

@@ -4,7 +4,7 @@
         <ContentBySubject portal_type="Document" tag="startseite"></ContentBySubject>
         <div class="hidesmallscreen">
             <h2>Kategorien:</h2>
-            <div>Todo</div>
+            <StartFacets></StartFacets>
         </div>
     </NuxtLayout>
 </template>
@@ -13,9 +13,10 @@
 <script>
     import ContentBySubject from "~/components/plone/ContentBySubject"
     import SearchField from "~/components/SearchField"
+    import StartFacets from "~/components/StartFacets"
     export default {
         name: "index",
-        components: {ContentBySubject, SearchField}
+        components: {ContentBySubject, SearchField, StartFacets}
     }
 
 

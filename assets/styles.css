@@ -621,6 +621,10 @@ select {
   .twocolumncontent {
     justify-content: unset;
   }
+
+  .columns {
+    break-after: unset;
+  }
 }
 
 

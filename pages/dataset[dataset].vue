@@ -68,7 +68,7 @@
     .dct_description {
         margin-bottom: 0;
         margin-top: 0;
-        font-size: 1.0rem;
+        font-size: 1.2rem;
     }
 
     .header {

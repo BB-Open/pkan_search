@@ -59,16 +59,16 @@
 </script>
 
 <style scoped>
-    .dcterms_title {
+    .dct_title {
        margin-bottom: 5px;
        font-size: 1.8rem;
         color: inherit;
     }
 
-    .dcterms_description {
+    .dct_description {
         margin-bottom: 0;
         margin-top: 0;
-        font-size: 1.3rem;
+        font-size: 1.0rem;
     }
 
     .header {

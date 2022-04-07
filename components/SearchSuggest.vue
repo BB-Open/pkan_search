@@ -69,7 +69,7 @@
 
 <style scoped>
 .simple-typeahead {
-  position: relative;
+  margin-bottom: 0.3rem;
 }
 
 .simple-typeahead-input-block {
@@ -89,13 +89,11 @@
 .simple-typeahead .simple-typeahead-list {
   column-width: 30ch;
   list-style-type: none; /* Remove bullets */
-  position: absolute;
   left : 0;
   right : 0;
-  max-height: 400px;
-  overflow-y: auto;
-  z-index: 9;
   background-color: #f5f5f5 ;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
 }
 
 .simple-typeahead .simple-typeahead-list .simple-typeahead-list-item {
@@ -115,7 +113,7 @@
   background-color: #e1e1e1;
 }
   .simple-typeahead {
-    margin-bottom: 8%;
+/*    margin-bottom: 8%; */
   }
 
 @media (max-width: 640px){

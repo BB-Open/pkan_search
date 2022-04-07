@@ -2,11 +2,11 @@
     <NuxtLayout name="search">
       <div v-if="entityStore.dataset">
         <div class="header">
-          <h1 class="dcterms_title">{{ entityStore.dataset.dct_title[0] }}</h1>
+          <h1 class="dct_title">{{ entityStore.dataset.dct_title[0] }}</h1>
         </div>
 
         <div class="header">
-          <h2 class="dcterms_description" v-if='entityStore.dataset.dct_description'>{{ entityStore.dataset.dct_description[0] }}</h2>
+          <h2 class="dct_description" v-if='entityStore.dataset.dct_description'>{{ entityStore.dataset.dct_description[0] }}</h2>
         </div>
 
         <div class="header" v-if="entityStore.dataset.dcat_distribution">
@@ -52,7 +52,8 @@
 
     onMounted( () => {
       entityStore.dataset_uri = route.params.dataset
-      entityStore.getDataset()
+      setTimeout(() => {entityStore.getDataset()}, 10)
+
 })
 
 </script>

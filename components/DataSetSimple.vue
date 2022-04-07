@@ -1,14 +1,14 @@
 <template>
     <div class='dataset'>
-      <NuxtLink v-if="item.dcterms_title" :to="'/dataset' + encodeURIComponent(item.id)" :aria-label="item.dcterms_title[0] + ' weiterlesen'">
-        <h2 class="dataset_title">{{ item.dcterms_title[0] }}</h2>
+      <NuxtLink v-if="item.dct_title" :to="'/dataset' + encodeURIComponent(item.id)" :aria-label="item.dct_title[0] + ' weiterlesen'">
+        <h2 class="dataset_title">{{ item.dct_title[0] }}</h2>
       </NuxtLink>
-        <NuxtLink v-if="!item.dcterms_title" :to="'/' + encodeURIComponent(item.id)"
+        <NuxtLink v-if="!item.dct_title" :to="'/' + encodeURIComponent(item.id)"
                   :aria-label="item.id + ' weiterlesen'">
             <h2 class="dataset_title">{{ item.id }}</h2>
         </NuxtLink>
-      <p class="dataset_description" v-if="item.dcterms_description">{{ item.dcterms_description[0].split('.')[0] }}. ...</p>
-      <p class="dataset_description" v-if="!item.dcterms_description">Keine Beschreibung verfügbar</p>
+      <p class="dataset_description" v-if="item.dct_description">{{ item.dct_description[0].split('.')[0] }}. ...</p>
+      <p class="dataset_description" v-if="!item.dct_description">Keine Beschreibung verfügbar</p>
       <Distributions v-if="item.dcat_distribution" :distributions="JSON.parse(item.dcat_distribution)" >
       </Distributions>
       <Datasets v-if="item.dcat_servesDataset" :datasets="JSON.parse(item.dcat_servesDataset)" ></Datasets>

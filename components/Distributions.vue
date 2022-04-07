@@ -1,12 +1,12 @@
 <template>
-    <div class='distributions'>
-      <span class="distribution" v-for="dist in distributions">
+    <div class="distribution_div">
+      <span class="distribution_item" v-for="dist in distributions">
         <a v-if="dist.dcat_downloadURL" :href="dist.dcat_downloadURL">
-          <span v-if="dist.dcterms_title" >{{dist.dcterms_title}}</span> <span v-if="dist.dcterms_format">[{{dist.dcterms_format}}]</span>
+          <span v-if="dist.dct_title" >{{dist.dct_title}}</span> <span v-if="dist.dct_format">[{{dist.dct_format}}]</span>
         </a>
         <a v-else v-if="dist.dcat_accessURL" :href="dist.dcat_accessURL">
-          <span v-if="dist.dcterms_title" >{{dist.dcterms_title}}</span>
-          <span v-if="dist.dcterms_format">[{{dist.dcterms_format}}]</span>
+          <span v-if="dist.dct_title" >{{dist.dct_title}}</span>
+          <span v-if="dist.dct_format">[{{dist.dct_format}}]</span>
         </a>
       </span>
     </div>
@@ -19,7 +19,7 @@
 </script>
 
 <style scoped>
-    .distribution {
+    .distribution_item {
       margin-right : 1em;
     }
 

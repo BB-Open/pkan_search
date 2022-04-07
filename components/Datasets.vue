@@ -3,7 +3,7 @@
       <ul>
       <li class="datasets_dataset" v-for="dataset in datasets">
         <a class="datasets_dataset_link" :href="dataset.dct_dataset">
-          {{dataset.dcterms_title}}
+          {{dataset.dct_title}}
         </a>
       </li>
       </ul>

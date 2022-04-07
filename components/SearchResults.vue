@@ -30,7 +30,7 @@
     .result-list {
       margin-top : -1rem;
     }
-    .result ol ::marker {
+    .result-list->ol ::marker {
         content: counter(list-item) ")\00A0";
     }
 

@@ -4,18 +4,18 @@ import {useMessageStore} from '~/stores/messages.js'
 import {FLASK_UNREACHABLE_MESSAGE, SOLR_SUGGEST_URI, SOLR_SELECT_URI, SOLR_PICK_URI} from "/etc/pkan/nuxt_config";
 
 const facetsChoicesDefault = {
-    'dcterms_publisher_facet': {},
+    'dct_publisher_facet': {},
     'dcat_theme_facet': {},
-    'dcterms_license_facet': {},
-    'dcterms_format_facet': {},
+    'dct_license_facet': {},
+    'dct_format_facet': {},
     'rdf_type': {},
 };
 
 const facetsDefault = {
-    'dcterms_publisher_facet': {buckets:[]},
+    'dct_publisher_facet': {buckets:[]},
     'dcat_theme_facet': {buckets:[]},
-    'dcterms_license_facet': {buckets:[]},
-    'dcterms_format_facet': {buckets:[]},
+    'dct_license_facet': {buckets:[]},
+    'dct_format_facet': {buckets:[]},
     'rdf_type': {buckets:[]},
 };
 

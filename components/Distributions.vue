@@ -1,6 +1,6 @@
 <template>
-    <div class="distribution_div">
-      <span class="distribution_item" v-for="dist in distributions">
+    <ul class="distribution_div">
+      <li class="distribution_item" v-for="dist in distributions">
         <a v-if="dist.dcat_downloadURL" :href="dist.dcat_downloadURL">
           <span v-if="dist.dct_title" >{{dist.dct_title}}</span> <span v-if="dist.dct_format">[{{dist.dct_format}}]</span>
         </a>
@@ -8,8 +8,8 @@
           <span v-if="dist.dct_title" >{{dist.dct_title}}</span>
           <span v-if="dist.dct_format">[{{dist.dct_format}}]</span>
         </a>
-      </span>
-    </div>
+      </li>
+    </ul>
 </template>
 
 <script setup lang="ts">
@@ -21,10 +21,6 @@
 <style scoped>
     .distribution_item {
       margin-right : 1em;
-    }
-
-    li ::marker {
-         content: "aa";
     }
 
     .element_title {

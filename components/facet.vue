@@ -64,34 +64,34 @@
 <style scoped>
 
     .checked {
-        font-weight: 700;
+      font-weight: 700;
     }
 
     .facet {
-        margin-top: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .facet h3{
+      font-size: 1.2rem;
+      font-style: normal;
     }
 
     .facet_name {
-        margin-bottom: 0.1rem;
+      margin-bottom: 0.1rem;
     }
 
     .name_column {
-        font-size: 0.8rem;
+      font-size: 0.8rem;
     }
 
     .count_column {
-        margin-left: 1rem;
-        font-size: 0.8rem;
+      margin-left: 1rem;
+      font-size: 0.8rem;
     }
 
     ul {
-        margin-top: 0;
-        margin-bottom: 0;
+      margin-top: 0;  /* important for vertical alignment */
+      margin-bottom: 0; /* important for vertical alignment */
     }
 
-    h3 {
-        font-size: 1.2rem;
-        font-weight: 700;
-        font-style: italic;
-    }
 </style>

@@ -1,22 +1,40 @@
 <template>
     <NuxtLayout name="search">
       <div v-if="entityStore.dataset">
-        <h1 class="dcterms_title">{{ entityStore.dataset.dcterms_title[0] }}</h1>
-        <h2 class="dcterms_description" v-if='entityStore.dataset.dcterms_description'>{{ entityStore.dataset.dcterms_description[0] }}</h2>
+        <div class="header">
+          <h1 class="dcterms_title">{{ entityStore.dataset.dct_title[0] }}</h1>
+        </div>
 
-      <Distributions v-if='entityStore.dataset.dcat_distribution' :distributions="JSON.parse(entityStore.dataset.dcat_distribution[0])" >
-      </Distributions>
-      <Datasets v-if='entityStore.dataset.dcat_servesDataset' :datasets="JSON.parse(entityStore.dataset.dcat_servesDataset)" >
-      </Datasets>
+        <div class="header">
+          <h2 class="dcterms_description" v-if='entityStore.dataset.dct_description'>{{ entityStore.dataset.dct_description[0] }}</h2>
+        </div>
 
-      <Publisher v-if='entityStore.dataset && entityStore.dataset.dcterms_publisher' :publisher="entityStore.dataset.dcterms_publisher">
-      </Publisher>
+        <div class="header" v-if="entityStore.dataset.dcat_distribution">
+          <h3 class="dataset_header">Links:</h3>
+          <Distributions v-if='entityStore.dataset.dcat_distribution' :distributions="JSON.parse(entityStore.dataset.dcat_distribution)" >
+          </Distributions>
+        </div>
 
-      <ContactPoint v-if='entityStore.dataset && entityStore.dataset.dcat_contactPoint' :contactPoint="JSON.parse(entityStore.dataset.dcat_contactPoint[0])">
-      </ContactPoint>
+        <div class="header" v-if="entityStore.dataset.dcat_servesDataset">
+          <h3 class="dataset_header">Angebotene Datensätze:</h3>
+          <Datasets v-if='entityStore.dataset.dcat_servesDataset' :datasets="JSON.parse(entityStore.dataset.dcat_servesDataset)" >
+          </Datasets>
+        </div>
 
-      <License v-if='entityStore.dataset && entityStore.dataset.dcterms_license_facet' :license="entityStore.dataset.dcterms_license_facet">
-      </License>
+        <div class="header" v-if="entityStore.dataset.dcat_servesDataset">
+          <Publisher v-if='entityStore.dataset.dct_publisher' :publisher="entityStore.dataset.dct_publisher">
+          </Publisher>
+        </div>
+
+        <div class="header">
+          <ContactPoint v-if='entityStore.dataset.dcat_contactPoint' :contactPoint="JSON.parse(entityStore.dataset.dcat_contactPoint[0])">
+          </ContactPoint>
+        </div>
+
+        <div class="header">
+          <License v-if='entityStore.dataset.dct_license_facet' :license="entityStore.dataset.dct_license_facet">
+          </License>
+        </div>
 
       </div>
     </NuxtLayout>
@@ -52,6 +70,8 @@
         font-size: 1.3rem;
     }
 
-
+    .header {
+      margin-bottom: 1rem;
+    }
 
 </style>

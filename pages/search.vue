@@ -47,14 +47,14 @@
     }
 
     section {
-        width: 30%;
-        padding-left: 15px;
+        width: 25%;
+        padding-left: 1.4rem;
     }
 
     .content {
         flex-direction: column;
         flex-wrap: wrap;
-        width: 70%
+        width: 75%
     }
 
     @media (max-width: 640px) {

@@ -1,4 +1,5 @@
 <template>
+  <div>
     <div class="hidden_help_text" id="page_description">Sie befinden sich auf der Seitenverwaltung. Hier können Sie durch die Suchergebnisse blättern.
         Für die Steuerung der Seitenverwaltung nutzen Sie die Tab-Taste zum wechseln
         zwischen den Links. Bestätigen sie mit Enter. Mit der Tab-Taste können Sie die Seitenverwaltung ebenso verlassen.
@@ -23,6 +24,7 @@
             :click-handler="entityStore.getSolr"
     >
     </paginate>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -35,7 +37,11 @@
 </script>
 
 <style scoped>
-
+  .pagination {
+    padding :0; /* important for vertical allignment */
+    margin : 0; /* important for vertical allignment */
+    margin-bottom: 0.8rem; /* anjustable */
+  }
 
 
 </style>

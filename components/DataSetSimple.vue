@@ -11,7 +11,10 @@
       <p class="dataset_description" v-if="!item.dct_description">Keine Beschreibung verfügbar</p>
       <Distributions v-if="item.dcat_distribution" :distributions="JSON.parse(item.dcat_distribution)" >
       </Distributions>
-      <Datasets v-if="item.dcat_servesDataset" :datasets="JSON.parse(item.dcat_servesDataset)" ></Datasets>
+      <div v-if="item.dcat_servesDataset">
+        <h3 class="dataset_header">Angebotene Datensätze:</h3>
+        <Datasets :datasets="JSON.parse(item.dcat_servesDataset)" ></Datasets>
+      </div>
     </div>
 </template>
 
@@ -26,9 +29,9 @@
 <style scoped>
 
     .dataset_title {
-      margin-top: 0.5rem;
-      margin-bottom: 5px;
-      font-size: 1rem;
+      margin-top : 0; /* important for vertical alignment */
+      margin-bottom: 0.2rem; /* adjustable */
+      font-size: 1.2rem; /* adjustable */
       color: inherit;
     }
     .element_logo img {
@@ -36,13 +39,13 @@
     }
 
     .dataset_description {
-        margin-bottom: 0;
-        margin-top: 0;
-        font-size: 0.9rem;
+        margin-top: 0; /* important for vertical alignment */
+        margin-bottom: 0.2rem; /* adjustable */
+        font-size: 0.9rem;  /* adjustable */
     }
 
-    .hide {
-        display: none
+    .dataset_header {
+      font-size: 1rem;  /* adjustable */
     }
 
 </style>

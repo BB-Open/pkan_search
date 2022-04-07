@@ -1,5 +1,5 @@
 <template>
-    <div class='datasets'><span>Angebotene Datensätze:</span>
+    <div class='datasets'>
       <ul>
       <li class="datasets_dataset" v-for="dataset in datasets">
         <a class="datasets_dataset_link" :href="dataset.dct_dataset">
@@ -18,8 +18,6 @@
 
 <style scoped>
     .datasets_dataset{
-      margin-right : 1em;
-    }
-    .datasets_dataset_link {
+      margin-right : 1em;  /* adjustable */
     }
 </style>

@@ -2,7 +2,7 @@
     <div class="result">
     <Pagination></Pagination>
     <ol class="result-list" :start='entityStore.offset'>
-        <li v-if="entityStore.entityTotalCount > 0" v-for="item in entityStore.entities" >
+        <li class="result-list-item" v-if="entityStore.entityTotalCount > 0" v-for="item in entityStore.entities" >
             <DataSetSimple :item="item"></DataSetSimple>
         </li>
     </ol>
@@ -28,10 +28,17 @@
 
 <style scoped>
     .result-list {
-      margin-top : -1rem;
+      margin: unset; /* important for vertical allignment */
+      padding-left : 1rem;
     }
+
     .result-list->ol ::marker {
-        content: counter(list-item) ")\00A0";
+      content: counter(list-item) ")\00A0";
     }
+
+    .result-list-item {
+      margin-bottom: 0.5rem; /* adjustable margin */
+    }
+
 
 </style>

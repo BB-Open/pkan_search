@@ -1,11 +1,13 @@
 <template>
     <NuxtLayout name="search">
-      <div>
-      <h1 class="dcterms_title" v-if='entityStore.dataset'>{{ entityStore.dataset.dcterms_title[0] }}</h1>
-      <h2 class="dcterms_description" v-if='entityStore.description'>{{ entityStore.dataset.dcterms_description[0] }}</h2>
+      <div v-if="entityStore.dataset">
+        <h1 class="dcterms_title">{{ entityStore.dataset.dcterms_title[0] }}</h1>
+        <h2 class="dcterms_description" v-if='entityStore.dataset.dcterms_description'>{{ entityStore.dataset.dcterms_description[0] }}</h2>
 
-      <Distributions v-if='entityStore.dataset' :distributions="JSON.parse(entityStore.dataset.dcat_distribution)" >
+      <Distributions v-if='entityStore.dataset.dcat_distribution' :distributions="JSON.parse(entityStore.dataset.dcat_distribution[0])" >
       </Distributions>
+      <Datasets v-if='entityStore.dataset.dcat_servesDataset' :datasets="JSON.parse(entityStore.dataset.dcat_servesDataset)" >
+      </Datasets>
 
       <Publisher v-if='entityStore.dataset && entityStore.dataset.dcterms_publisher' :publisher="entityStore.dataset.dcterms_publisher">
       </Publisher>

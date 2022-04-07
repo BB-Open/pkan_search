@@ -13,15 +13,16 @@
            :facetTitle="'Lizenzen'"
            :facetName="'dcterms_license_facet'"
     ></facet>
-
     <facet :facet="entityStore.facets.dcterms_publisher_facet"
            :facetTitle="'Datenbereitsteller'"
            :facetName="'dcterms_publisher_facet'"
     ></facet>
+    <facet :facet="entityStore.facets.rdf_type"
+           :facetTitle="'Datentyp'"
+           :facetName="'rdf_type'"
+    ></facet>
   </div>
 </template>
-
-v-for="(facetField, facetFieldName) in entityStore.facetFields"
 
 <script setup lang="ts">
       import { useEntityStore } from '~/stores/entities'

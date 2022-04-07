@@ -8,6 +8,7 @@ const facetsChoicesDefault = {
     'dcat_theme_facet': {},
     'dcterms_license_facet': {},
     'dcterms_format_facet': {},
+    'rdf_type': {},
 };
 
 const facetsDefault = {
@@ -15,6 +16,7 @@ const facetsDefault = {
     'dcat_theme_facet': {buckets:[]},
     'dcterms_license_facet': {buckets:[]},
     'dcterms_format_facet': {buckets:[]},
+    'rdf_type': {buckets:[]},
 };
 
 
@@ -136,16 +138,18 @@ export const useEntityStore = defineStore({
         entityList: state => state.entities,
         entityCount: state => state.entities.length,
         is_suggestions: state => state.suggestions.length > 0,
-        suggestionList: state => state.suggestions.map(
-            sug => {
-                return {label: sug.term, count: sug.weight}
-            }),
-        perPage: state => state.perPageResults,
         numberOfPages: state => {
             let res = state.entityTotalCount / state.perPageResults;
             return Math.ceil(res)
-
-        }
+        },
+        perPage: state => state.perPageResults,
+        offset: state => {
+            return state.perPageResults * (state.pagination_page - 1) + 1
+        },
+        suggestionList: state => state.suggestions.map(
+          sug => {
+              return {label: sug.term, count: sug.weight}
+          }),
     },
 
 });

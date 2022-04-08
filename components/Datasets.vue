@@ -2,9 +2,9 @@
     <div class='datasets'>
       <ul>
       <li class="datasets_dataset" v-for="dataset in datasets">
-        <a class="datasets_dataset_link" :href="dataset.dct_dataset">
+        <NuxtLink :to="'/dataset' + encodeURIComponent(dataset.dct_dataset)" >
           {{dataset.dct_title}}
-        </a>
+        </NuxtLink>
       </li>
       </ul>
     </div>

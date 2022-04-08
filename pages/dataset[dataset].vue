@@ -2,7 +2,7 @@
     <NuxtLayout name="search">
       <div v-if="entityStore.dataset">
         <div class="header">
-          <h1 class="dct_title">{{ entityStore.dataset.dct_title[0] }}</h1>
+          <h1 class="dct_title" v-if="entityStore.dataset.dct_title">{{ entityStore.dataset.dct_title[0] }}</h1>
         </div>
 
         <div class="header">
@@ -46,6 +46,7 @@
     import Distributions from "~/components/Distributions.vue";
     import Publisher from "~/components/Publisher.vue";
     import ContactPoint from "~/components/ContactPoint.vue";
+    import License from "~/components/License.vue";
 
     const entityStore = useEntityStore()
     const route = useRoute()

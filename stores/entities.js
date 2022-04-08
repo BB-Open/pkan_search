@@ -24,7 +24,7 @@ export const useEntityStore = defineStore({
     id: 'entity-store',
     state: () => ({
         dataset_uri: undefined,
-        dataset : undefined,
+        dataset : {},
         entities: [],
         entityTotalCount: 0,
         // We need deep clone here

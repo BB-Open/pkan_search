@@ -8,7 +8,7 @@
 <script setup lang="ts" >
 
     const props = defineProps({
-        license: {type: Object, required: true},
+        license: {type: String, required: true},
     });
 
 </script>

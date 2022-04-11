@@ -15,6 +15,17 @@
           </Distributions>
         </div>
 
+        <div class="header" v-if="entityStore.dataset.dcat_endpointURL">
+          <h3 class="dataset_header">Service URIs:</h3>
+          <ul class="endpoint_div">
+            <li class="endpoint_item" v-for="endpoint in entityStore.dataset.dcat_endpointURL">
+              <a :href="endpoint">
+                {{endpoint}}
+              </a>
+            </li>
+          </ul>
+        </div>
+
         <div class="header" v-if="entityStore.dataset.dcat_servesDataset">
           <h3 class="dataset_header">Angebotene Datensätze:</h3>
           <Datasets v-if='entityStore.dataset.dcat_servesDataset' :datasets="JSON.parse(entityStore.dataset.dcat_servesDataset)" >
@@ -75,5 +86,10 @@
     .header {
       margin-bottom: 1rem;
     }
+
+    .endpoint_item {
+      margin-right : 1em;
+    }
+
 
 </style>

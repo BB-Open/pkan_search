@@ -17,13 +17,8 @@
 
         <div class="header" v-if="entityStore.dataset.dcat_endpointURL">
           <h3 class="dataset_header">Service URIs:</h3>
-          <ul class="endpoint_div">
-            <li class="endpoint_item" v-for="endpoint in entityStore.dataset.dcat_endpointURL">
-              <a :href="endpoint">
-                {{endpoint}}
-              </a>
-            </li>
-          </ul>
+          <Endpoints v-if='entityStore.dataset.dcat_endpointURL' :endpoints="JSON.parse(entityStore.dataset.dcat_endpointURL)" >
+          </Endpoints>
         </div>
 
         <div class="header" v-if="entityStore.dataset.dcat_servesDataset">
@@ -55,6 +50,7 @@
     import {onMounted} from 'vue';
     import {useEntityStore} from '~/stores/entities'
     import Distributions from "~/components/Distributions.vue";
+    import Endpoints from "~/components/Endpoints.vue";
     import Publisher from "~/components/Publisher.vue";
     import ContactPoint from "~/components/ContactPoint.vue";
     import License from "~/components/License.vue";

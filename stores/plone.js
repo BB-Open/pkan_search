@@ -136,6 +136,39 @@ export const usePloneStore = defineStore({
             }
 
         },
+        async ListingByType(type, title){
+            console.log('Loading Listing Data for ' + type);
+            let messageStore = this.get_message_store();
+            if (this.ploneListing[type] !== undefined && this.ploneListing[type]['items'] !== undefined) {
+                let message = 'Die Seite ' + title + ' wurde geladen.';
+                messageStore.write_polite(message);
+                messageStore.write_error('');
+                messageStore.write_assertive('');
+                return
+            }
+            this.ploneListing[type] = [];
+            let res = await this.QueryData(type, undefined, 'sortable_title', undefined, undefined, undefined);
+            console.log(res)
+            if (res === undefined) {
+                return
+            }
+
+            res = this.extractListingContent(res);
+            console.log(res)
+            if (res !== undefined) {
+                this.ploneListing[type] = res
+            } else {
+                this.ploneListing[type] = {
+                    'title': 'Inhalt nicht gefunden.',
+                    'description': '',
+                    'text': {'data': ''}
+                };
+            }
+            let message = 'Die Seite ' + title + ' wurde geladen.';
+            messageStore.write_polite(message);
+            messageStore.write_error('');
+            messageStore.write_assertive('');
+        },
         async ListingBySubject(type, tag, title) {
             console.log('Loading Listing Data for ' + type + ' ' + tag);
             let messageStore = this.get_message_store();

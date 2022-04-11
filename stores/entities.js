@@ -1,6 +1,7 @@
 import {defineStore} from 'pinia';
 import axios from 'axios';
 import {useMessageStore} from '~/stores/messages.js'
+import {useBreadcrumbStore} from '~/stores/breadcrumb.js'
 import {FLASK_UNREACHABLE_MESSAGE, SOLR_SUGGEST_URI, SOLR_SELECT_URI, SOLR_PICK_URI} from "/etc/pkan/nuxt_config";
 
 const facetsChoicesDefault = {
@@ -39,6 +40,9 @@ export const useEntityStore = defineStore({
     actions: {
         get_message_store() {
             return useMessageStore()
+        },
+        get_breadcrumb_store(){
+            return useBreadcrumbStore()
         },
         handle_error() {
             let messageStore = this.get_message_store();
@@ -131,6 +135,17 @@ export const useEntityStore = defineStore({
             };
             let dataset_res = await this.query_solr(SOLR_PICK_URI, data);
             this.dataset = dataset_res.data.response.docs[0];
+            let messageStore = this.get_message_store();
+            let breadcrumbStore = this.get_breadcrumb_store()
+            let title = 'Kein Titel vorhanden'
+            if (this.dataset.dct_title[0] !== undefined) {
+                title = this.dataset.dct_title[0]
+            }
+            breadcrumbStore.set_title(title);
+            let message = 'Die Seite ' + title + ' wurde geladen.';
+            messageStore.write_polite(message);
+            messageStore.write_error('');
+            messageStore.write_assertive('');
         }
     },
 

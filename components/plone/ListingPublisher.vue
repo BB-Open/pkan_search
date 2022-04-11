@@ -1,0 +1,67 @@
+<template>
+    <div>
+        <ul class="box_area nobull">
+            <li v-for="item in ploneStore.ploneListing['PublisherCard']" class="box" v-if="ploneStore.ploneListing['PublisherCard'].length">
+                <div class="plone_listing_element">
+                    <h2 class="element_title">{{ item.title }}</h2>
+                    <div class="element_date" v-if="item.date_text">{{ item.date_text }}</div>
+                    <div class="element_logo" v-if="item.logo"><img :src="item.logo.download" :alt="item.title + ' Logo'"/></div>
+                    <div class="element_description">{{ item.description }}</div>
+                    <NuxtLink :to="'/publisher/publisher-' + item.UID" :aria-label="item.title + ' weiterlesen'">Weiterlesen</NuxtLink>
+                </div>
+            </li>
+        </ul>
+        <div v-if="!ploneStore.ploneListing['PublisherCard'].length">
+            <p>Es sind keine Inhalte verfügbar oder diese werden noch geladen.</p>
+        </div>
+    </div>
+</template>
+
+<script setup type="ts">
+    import {usePloneStore} from '~/stores/plone.js'
+
+    const ploneStore = usePloneStore();
+
+    ploneStore.ListingByType('PublisherCard', 'Datenbereitsteller')
+
+</script>
+
+<style scoped>
+    .element_title {
+        font-weight: bold;
+        font-style: normal;
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .element_logo img {
+        max-width: 100px;
+    }
+
+    .element_date {
+        font-style: italic;
+    }
+
+    .plone_listing_element {
+        padding: 15px;
+        padding-left: 0;
+    }
+
+    .box .plone_listing_element {
+        padding-left: 15px;
+    }
+
+    @media (max-width: 640px) {
+        .plone_listing_element {
+            padding: 5px;
+            padding-left: 0;
+        }
+
+        .box .plone_listing_element {
+            padding-left: 5px;
+        }
+
+    }
+
+
+</style>

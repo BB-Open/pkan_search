@@ -36,6 +36,10 @@
         <nuxt-link class="router-link" to="/blog">Aktuelles</nuxt-link>
         <hr class="hidebigscreen"/>
       </li>
+      <li>
+        <nuxt-link class="router-link" to="/publisher">Datenbereitsteller</nuxt-link>
+        <hr class="hidebigscreen"/>
+      </li>
       <li class="hidebigscreen">
         <nuxt-link to="/accessibility" class="router-link">Barrierefreiheit</nuxt-link>
         <hr class="hidebigscreen"/>

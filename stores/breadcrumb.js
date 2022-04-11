@@ -8,7 +8,8 @@ export const useBreadcrumbStore = defineStore({
             '/': 'Startseite',
             '/blog': 'Aktuelles',
             '/problem': 'Fehler melden',
-            '/search': 'Suche'
+            '/search': 'Suche',
+            '/publisher': 'Datenbereitsteller'
         },
         elements: ['/'],
     }),

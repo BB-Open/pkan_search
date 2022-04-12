@@ -41,7 +41,9 @@
           <License v-if='entityStore.dataset.dct_license_facet' :license="entityStore.dataset.dct_license_facet">
           </License>
         </div>
-
+        <div class="header">
+          <RightsStatement v-if="entityStore.dataset.dct_rightsstatement" :statement="entityStore.dataset.dct_rightsstatement[0]"></RightsStatement>
+        </div>
       </div>
     </NuxtLayout>
 </template>
@@ -54,6 +56,7 @@
     import Publisher from "~/components/Publisher.vue";
     import ContactPoint from "~/components/ContactPoint.vue";
     import License from "~/components/License.vue";
+    import RightsStatement from "~/components/RightsStatement.vue";
 
     const entityStore = useEntityStore()
     const route = useRoute()

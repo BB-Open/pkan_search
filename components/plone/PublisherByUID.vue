@@ -3,19 +3,27 @@
     <div v-if="ploneStore.UID(props.uid)">
         <div class="box_area plone_box_area">
             <div class="text_area">
-                <h1>{{ ploneStore.UID(props.uid).title }}</h1>
+                <div class="header">
+                    <div>
+                        <h1>{{ ploneStore.UID(props.uid).title }}</h1>
+                        <div v-if="ploneStore.UID(props.uid).description" class="description">{{
+                            ploneStore.UID(props.uid).description}}
+                        </div>
+                    </div>
+                    <div class="element_logo" v-if="ploneStore.UID(props.uid).logo"><img
+                            :src="ploneStore.UID(props.uid).logo.download"
+                            :alt="ploneStore.UID(props.uid).title + ' Logo'"/></div>
+                </div>
+                <div v-html="ploneStore.removeSelfClosingTags(ploneStore.UID(props.uid).text)"
+                     v-if="ploneStore.UID(props.uid).text"></div>
 
-                <div v-if="ploneStore.UID(props.uid).description" class="description">{{ ploneStore.UID(props.uid).description}}</div>
-                <div v-html="ploneStore.removeSelfClosingTags(ploneStore.UID(props.uid).text.data)" v-if="ploneStore.UID(props.uid).text"></div>
             </div>
-
-            <div class="element_logo" v-if="ploneStore.UID(props.uid).logo"><img :src="ploneStore.UID(props.uid).logo.download" :alt="ploneStore.UID(props.uid).title + ' Logo'"/></div>
+            <button class="link" @click="onClick(ploneStore.UID(props.uid).foaf_name)">
+                Zu den Daten von "{{ploneStore.UID(props.uid).foaf_name}}"
+            </button>
         </div>
-        <button class="link" @click="onClick(ploneStore.UID(props.uid).foaf_name)">
-            Zu den Daten von "{{ploneStore.UID(props.uid).foaf_name}}"
-        </button>
     </div>
-    
+
 </template>
 
 <script setup lang="ts">
@@ -42,8 +50,18 @@
 </script>
 
 <style scoped>
+
+    .header {
+        display: flex;
+    }
+
+    .element_logo {
+        font-size: 2rem;
+        margin-top: 0.2em;
+    }
+
     .element_logo img {
-        max-width: 150px;
+        max-width: 250px;
     }
 
     .plone_box_area {
@@ -55,7 +73,7 @@
         background: none;
         border-radius: unset;
         border: none;
-        padding: 0!important;
+        padding: 0 !important;
         /*optional*/
         font-family: arial, sans-serif;
         /*input has OS specific font-family*/

@@ -105,7 +105,7 @@ export const usePloneStore = defineStore({
             this.ploneSubject[type][tag] = {
                 'title': 'Titel wird geladen.',
                 'description': 'Beschreibung wird geladen.',
-                'text': {'data': '<div>Text wird geladen.</div>'}
+                'text': '<div>Text wird geladen.</div>'
             };
             if (write_title === true) {
                 breadcrumbStore.set_title(this.ploneSubject[type][tag]['title']);
@@ -124,7 +124,7 @@ export const usePloneStore = defineStore({
                 this.ploneSubject[type][tag] = {
                     'title': 'Inhalt nicht gefunden.',
                     'description': '',
-                    'text': {'data': ''}
+                    'text': '',
                 };
             }
             if (write_title === true) {
@@ -217,7 +217,7 @@ export const usePloneStore = defineStore({
             this.ploneUID[uid] = {
                 'title': 'Titel wird geladen.',
                 'description': 'Beschreibung wird geladen.',
-                'text': {'data': '<div>Text wird geladen.</div>'}
+                'text': '<div>Text wird geladen.</div>'
             };
             breadcrumbStore.set_title(this.ploneUID[uid]['title']);
             let res = await this.QueryData(undefined, undefined, 'created', uid, 'reverse', 1);

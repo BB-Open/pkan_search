@@ -35,7 +35,7 @@
     }
 
     .element_logo img {
-        max-width: 250px;
+        width: 350px;
     }
 
     .element_date {
@@ -52,7 +52,7 @@
     }
 
     .box {
-        width: 300px;
+        width: 380px;
     }
 
     @media (max-width: 640px) {

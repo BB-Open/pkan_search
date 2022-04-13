@@ -61,7 +61,7 @@
     }
 
     .element_logo img {
-        max-width: 250px;
+        width: 250px;
     }
 
     .plone_box_area {

@@ -28,10 +28,16 @@
     import {useRouter} from 'nuxt3/app';
     import {useHead} from "@vueuse/head";
 
-    const router = useRouter()
-    const head = useHead({
-      title: 'Datenadler: Das OpenDataPortal für Brandenburg:' + router.currentRoute.value.name.toString()
-    })
+    if (process.client) {
+      const router = useRouter()
+      if (router) {
+        const head = useHead({
+
+          title: 'Datenadler: Das OpenDataPortal für Brandenburg:' + router.currentRoute.value.name.toString()
+        })
+      }
+    }
+
 </script>
 
 <style scoped>

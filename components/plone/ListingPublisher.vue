@@ -35,7 +35,7 @@
     }
 
     .element_logo img {
-        max-width: 100px;
+        width: 350px;
     }
 
     .element_date {
@@ -49,6 +49,10 @@
 
     .box .plone_listing_element {
         padding-left: 15px;
+    }
+
+    .box {
+        width: 380px;
     }
 
     @media (max-width: 640px) {

@@ -5,7 +5,7 @@
         <div>{{problemStore.infoMessage}}</div>
     </div>
     <form @submit.prevent="">
-        <label class="textsearch">
+        <div class="textsearch">
             <div class="textsearch_label">Ihre Nachricht</div>
             <textarea class="textsearch_area_problem" v-model="problemStore.message" placeholder="Geben Sie Ihre Nachricht ein" rows="8" aria-describedby="help" aria-label="Ihre Nachricht"></textarea>
             <div class="input_button">
@@ -17,7 +17,7 @@
                 </button>
             </div>
 
-        </label>
+        </div>
         <div class="help hidden_help_text" id="help">Mit diesem Formular können Sie Fehler auf der Seite melden. Fügen Sie dazu eine Beschreibung des Problems in das Textfeld ein</div>
     </form>
 </template>

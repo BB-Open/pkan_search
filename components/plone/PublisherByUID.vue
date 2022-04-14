@@ -10,7 +10,7 @@
                             ploneStore.UID(props.uid).description}}
                         </div>
                     </div>
-                    <div class="element_logo" v-if="ploneStore.UID(props.uid).logo"><img
+                    <div class="element_logo" ><img v-if="ploneStore.UID(props.uid).logo"
                             :src="ploneStore.UID(props.uid).logo.download"
                             :alt="ploneStore.UID(props.uid).title + ' Logo'"/></div>
                 </div>
@@ -53,11 +53,13 @@
 
     .header {
         display: flex;
+        width: 100%
     }
 
     .element_logo {
         font-size: 2rem;
         margin-top: 0.2em;
+        width: 250px
     }
 
     .element_logo img {

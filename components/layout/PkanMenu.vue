@@ -190,7 +190,7 @@
       display: block;
       text-align: left;
       padding-left: 5px;
-      width: 100vw;
+      width: 50vw;
       background-color: #f5f5f5;
     }
 

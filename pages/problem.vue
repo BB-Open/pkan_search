@@ -10,7 +10,7 @@
         name: "problem",
         components: {
             ProblemForm
-        }
+        },
     }
 </script>
 

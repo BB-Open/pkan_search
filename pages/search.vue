@@ -21,12 +21,13 @@
 
     import {useMessageStore} from '~/stores/messages'
     import Facets from "~/components/facets.vue";
+    import {useRouter} from "nuxt3/app";
+    import {useHead} from "@vueuse/head";
 
     const messageStore = useMessageStore();
     messageStore.write_polite('Die Suchseite für das Open-Data-Portal Brandenburg wurde geladen. Inhalte werden mit jeder Eingabe neu geladen.');
     messageStore.write_assertive('');
     messageStore.write_error('');
-
 </script>
 
 <style scoped>

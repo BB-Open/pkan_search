@@ -15,7 +15,7 @@ export default defineNuxtConfig({
         htmlAttrs: {
             lang: 'de'
         },
-        title: 'DatenAdler: Das Open-Data-Portal für Brandenburg',
+//        title: 'DatenAdler: Das Open-Data-Portal für Brandenburg',
         meta: [
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             { name: 'description', content: 'A vue frontend for pkan' }

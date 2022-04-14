@@ -16,7 +16,7 @@
     import StartFacets from "~/components/StartFacets"
     export default {
         name: "index",
-        components: {ContentBySubject, SearchField, StartFacets}
+        components: {ContentBySubject, SearchField, StartFacets},
     }
 
 

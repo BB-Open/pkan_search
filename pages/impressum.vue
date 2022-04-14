@@ -8,7 +8,7 @@
     import ContentBySubject from "~/components/plone/ContentBySubject"
     export default {
         name: "impressum",
-        components: {ContentBySubject}
+        components: {ContentBySubject},
     }
 </script>
 

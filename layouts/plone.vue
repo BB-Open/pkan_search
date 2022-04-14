@@ -19,7 +19,7 @@
     </div>
 </template>
 
-<script>
+<script setup lang='ts'>
     import PkanAria from "../components/layout/PkanAria.vue"
     import PkanFooter from "../components/layout/PkanFooter.vue"
     import PkanHeader from "../components/layout/PkanHeader.vue"
@@ -27,10 +27,14 @@
     import PkanStatus from "../components/layout/PkanStatus.vue";
     import PkanAside from "../components/layout/PkanAside";
     import PkanBreadcrumb from "../components/layout/PkanBreadcrumb";
-    export default {
-        name: "plone.vue",
-        components: {PkanBreadcrumb, PkanAside, PkanStatus, PkanMenu, PkanAria, PkanFooter, PkanHeader}
-    }
+
+    import {useRouter} from 'nuxt3/app';
+    import {useHead} from "@vueuse/head";
+
+    const router = useRouter()
+    const head = useHead({
+      title: 'Datenadler: Das OpenDataPortal für Brandenburg:' + router.currentRoute.value.name.toString()
+    })
 </script>
 
 <style scoped>

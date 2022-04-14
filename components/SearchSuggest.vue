@@ -1,5 +1,5 @@
 <template>
-  <label class="textsearch">
+  <div class="textsearch">
     <div class="hidden_help_text">Geben Sie hier die Suchbegriffe ein, um in den Datensätzen zu suchen. Die Ergebnisse werden dynamisch geladen.</div>
     <div class="simple-typeahead">
       <div class="simple-typeahead-input-block">
@@ -29,7 +29,7 @@
         </li>
       </div>
     </div>
-  </label>
+  </div>
 </template>
 
 <script setup lang="ts">

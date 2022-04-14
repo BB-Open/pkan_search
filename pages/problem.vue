@@ -11,6 +11,9 @@
         components: {
             ProblemForm
         },
+      head : {
+        title: 'Datenadler: Das OpenDataPortal für Brandenburg: Probleme'
+      }
     }
 </script>
 

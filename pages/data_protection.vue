@@ -8,7 +8,10 @@
     import ContentBySubject from "~/components/plone/ContentBySubject"
     export default {
         name: "data_protection",
-        components: {ContentBySubject}
+        components: {ContentBySubject},
+        head : {
+          title: 'Datenadler: Das OpenDataPortal für Brandenburg: Datenschutz'
+        },
     }
 </script>
 

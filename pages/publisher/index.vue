@@ -10,7 +10,10 @@
 
     export default {
         name: "index.vue",
-        components: {ListingPublisher}
+        components: {ListingPublisher},
+        head : {
+          title: 'Datenadler: Das OpenDataPortal für Brandenburg: Datenbereitsteller'
+        },
     }
 </script>
 

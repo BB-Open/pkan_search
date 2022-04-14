@@ -9,7 +9,10 @@
 
     export default {
         name: "accessibility",
-        components: {ContentBySubject}
+        components: {ContentBySubject},
+        head : {
+          title: 'Datenadler: Das OpenDataPortal für Brandenburg: Barrierefreiheit'
+        },
     }
 </script>
 

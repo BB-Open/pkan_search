@@ -8,7 +8,10 @@
     import PublisherByUID from "~/components/plone/PublisherByUID"
     export default {
         name: "publisher-[id].vue",
-        components: {PublisherByUID}
+        components: {PublisherByUID},
+        head : {
+          title: 'Datenadler: Das OpenDataPortal für Brandenburg: Datenbereitsteller Detail'
+        },
     }
 </script>
 

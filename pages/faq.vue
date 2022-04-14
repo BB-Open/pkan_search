@@ -9,7 +9,10 @@
 
     export default {
         name: "faq",
-        components: {ContentBySubject}
+        components: {ContentBySubject},
+        head : {
+          title: 'Datenadler: Das OpenDataPortal für Brandenburg: FAQ'
+        },
     }
 </script>
 

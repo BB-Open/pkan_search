@@ -9,7 +9,10 @@
     import ContentByUID from "~/components/plone/ContentByUID"
     export default {
         name: "blog-[id]",
-        components: {ContentByUID}
+        components: {ContentByUID},
+        head : {
+          title: 'Datenadler: Das OpenDataPortal für Brandenburg: Blog Detail'
+        },
     }
 </script>
 

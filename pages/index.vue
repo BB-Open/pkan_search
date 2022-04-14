@@ -17,6 +17,10 @@
     export default {
         name: "index",
         components: {ContentBySubject, SearchField, StartFacets},
+      head : {
+        title: 'Datenadler: Das OpenDataPortal für Brandenburg: Startseite'
+      }
+
     }
 
 

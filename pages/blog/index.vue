@@ -9,7 +9,10 @@
     import ListingBySubject from "~/components/plone/ListingBySubject"
     export default {
         name: "blog",
-        components: {ListingBySubject}
+        components: {ListingBySubject},
+        head : {
+          title: 'Datenadler: Das OpenDataPortal für Brandenburg: Blog'
+        },
     }
 </script>
 

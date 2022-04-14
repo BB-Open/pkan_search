@@ -57,15 +57,19 @@
     import ContactPoint from "~/components/ContactPoint.vue";
     import License from "~/components/License.vue";
     import RightsStatement from "~/components/RightsStatement.vue";
+    import {useHead} from "@vueuse/head";
 
     const entityStore = useEntityStore()
     const route = useRoute()
 
+    const head = useHead({
+      title: 'Datenadler: Das OpenDataPortal für Brandenburg: Datensatz Detail'
+    })
+
     onMounted( () => {
       entityStore.dataset_uri = route.params.dataset
       setTimeout(() => {entityStore.getDataset()}, 10)
-
-})
+    })
 
 </script>
 

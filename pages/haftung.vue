@@ -8,7 +8,11 @@
     import ContentBySubject from "~/components/plone/ContentBySubject"
     export default {
         name: "haftung",
-        components: {ContentBySubject}
+        components: {ContentBySubject},
+        head : {
+          title: 'Datenadler: Das OpenDataPortal für Brandenburg: Haftung'
+        }
+
     }
 </script>
 

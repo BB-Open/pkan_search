@@ -9,6 +9,10 @@
     export default {
         name: "impressum",
         components: {ContentBySubject},
+        head : {
+          title: 'Datenadler: Das OpenDataPortal für Brandenburg: Impressum'
+        }
+
     }
 </script>
 

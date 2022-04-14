@@ -34,6 +34,7 @@
     .breadcrumb a:hover, .breadcrumb a:active, .breadcrumb a:focus {
         background-color: unset;
         color: #C73C35;
+      text-decoration: underline;
     }
 
     .breadcrumb {

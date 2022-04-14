@@ -12,8 +12,6 @@ import {onMounted} from "vue";
 
 const entityStore = useEntityStore();
 
-entityStore.reset_all();
-
 const router = useRouter();
 
 function redirect_search() {

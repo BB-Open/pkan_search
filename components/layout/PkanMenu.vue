@@ -109,6 +109,7 @@
   .nuxt-link-exact-active {
     background-color: white;
     color: #C73C35;
+    text-decoration: underline;
   }
 
   .router-link.inexact.nuxt-link-active{

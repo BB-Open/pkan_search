@@ -11,7 +11,7 @@
                         ></i>
                         <br class="hidesmallscreen"/>
                     </div>
-                    <div class="category_text">{{item.title}}</div>
+                    <div class="category_text" aria-hidden="true">{{item.title}}</div>
                 </div>
             </a>
         </li>

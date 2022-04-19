@@ -91,6 +91,8 @@
 
     li div label:hover {
       text-decoration: underline;
+      background-color: unset;
+      color: #C73C35;
     }
 
     ul {

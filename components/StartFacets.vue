@@ -3,11 +3,10 @@
         <li class="box"
             v-for="item in elements"
             @click="onClick(item.title)">
-            <a class="lightbutton button vocabbutton" >
+            <a class="lightbutton button vocabbutton" :aria-label="item.title" >
                 <div class="category_label">
-                    <div :aria-label="item.title" class="category_icon">
+                    <div class="category_icon">
                         <div :class="item.icon + ' bb-ifa'">
-
                         </div>
                         <br class="hidesmallscreen"/>
                     </div>

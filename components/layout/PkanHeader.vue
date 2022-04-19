@@ -6,12 +6,12 @@
                                      title="Link zum Landesportal Brandenburg">
         <img
             src="/brandenburg-logo.png"
-            alt="Logo des Landes Brandenburg. Es zeigt einen roten Adler im Flug über einem weissem Feld mit dem Text 'Land Brandenburg'"
+            alt="Logo des Landes Brandenburg"
             aria-label='Link zum Landesportal Brandenburg'/></a>
       </div>
       <div class="logo logo-right"><a class="image-link" href="/" title="Link zur Startseite">
         <img src="/datenadler-logo.png"
-             alt="Logo des Datenadlers. Es zeigt den stylisierten Kopf eines Adlers wie man ihn auf einem Totem-Pfahl erwarten würde"
+             alt="Logo des Datenadlers"
              aria-label="Link zur Startseite"/></a>
       </div>
     </div>

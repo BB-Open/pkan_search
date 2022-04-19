@@ -5,9 +5,12 @@
       <label class="simple-typeahead-input-block">
         <input class="simple-typeahead-input"
                v-model="entityStore.query"
-               @keyup="entityStore.reset_pagination_and_solr_get"
+               @keyup="onKeyUp"
                @blur="onBlur"
                @focus="onFocus"
+               @keydown.down.prevent="onArrowDown"
+               @keydown.up.prevent="onArrowUp"
+               @keydown.enter.tab.prevent="onEnter"
                placeholder="Bitte Suchbegriffe eingeben"
                ref="searchInput"
                type="text"
@@ -35,17 +38,26 @@
 <script setup lang="ts">
 
   import {useEntityStore} from '~/stores/entities'
-  import {nextTick, onMounted, ref} from 'vue'
+  import {onMounted, ref} from 'vue'
 
-  const currentSelectionIndex = ref(undefined)
   const entityStore = useEntityStore()
-
+  const currentSelectionIndex = ref(0)
   const searchInput = ref()
 
   onMounted(() => {
     console.log('onMounted')
     setTimeout(() => {searchInput?.value?.focus()}, 10)
   })
+
+
+  const onKeyUp = (keyEvent) => {
+    if ((keyEvent.key == "ArrowDown") || (keyEvent.key == "ArrowUp")) {
+      return
+    }
+    entityStore.reset_pagination_and_solr_get()
+    currentSelectionIndex.value = 0
+  }
+
 
   const onSelectItem = (item) => {
     entityStore.query = item.label.replaceAll(/(<([^>]+)>)/gi, "");
@@ -61,9 +73,25 @@
     entityStore.isBlur = false
   }
 
+  const onArrowDown = () => {
+    if (currentSelectionIndex.value < entityStore.suggestionList.length - 1 ) {
+      currentSelectionIndex.value ++;
+    }
+  }
+
+  const onArrowUp = () => {
+    if (currentSelectionIndex.value > 0) {
+      currentSelectionIndex.value--;
+    }
+  }
+
+  const onEnter = () => {
+    onSelectItem(entityStore.suggestionList[currentSelectionIndex.value])
+  }
+
+
   const is_visible = computed( () => !entityStore.isBlur && entityStore.is_suggestions)
 
-  console.log('onSSR')
 
 </script>
 
@@ -112,6 +140,8 @@
 }
 .simple-typeahead .simple-typeahead-list .simple-typeahead-list-item.simple-typeahead-list-item-active {
   background-color: #e1e1e1;
+  text-decoration: underline;
+  color: #C73C35;
 }
   .simple-typeahead {
 /*    margin-bottom: 8%; */

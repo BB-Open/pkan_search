@@ -1,28 +1,5 @@
 <template>
   <nav :class="menu_class" aria-label="site">
-    <div class="icon_box">
-      <button @click="button_clicked()"
-              class="icon">
-        <span class="hidden_help_text">Menü</span>
-        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-             width="24" height="24"
-             viewBox="0 0 172 172"
-             style=" fill:#C73C35;">
-          <g transform="">
-            <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-               stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-               font-family="none" font-weight="normal" font-size="none" text-anchor="start"
-               style="mix-blend-mode: normal">
-              <path d="M0,172v-172h172v172z" fill="white"></path>
-              <g fill="#c73c35">
-                <path
-                  d="M14.33333,35.83333v14.33333h143.33333v-14.33333zM14.33333,78.83333v14.33333h143.33333v-14.33333zM14.33333,121.83333v14.33333h143.33333v-14.33333z"></path>
-              </g>
-            </g>
-          </g>
-        </svg>
-      </button>
-      <p>DatenAdler.de</p></div>
     <ul>
       <li>
         <nuxt-link class="router-link" to="/" >Start</nuxt-link>

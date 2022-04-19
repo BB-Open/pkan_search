@@ -4,10 +4,15 @@
     <div class="logo-container content_container">
       <div class="logo logo-left"><a class="image-link" href="https://www.brandenburg.de"
                                      title="Link zum Landesportal Brandenburg">
-        <img src="/brandenburg-logo.png" alt="Link zum Landesportal Brandenburg"/></a>
+        <img
+            src="/brandenburg-logo.png"
+            alt="Logo des Landes Brandenburg. Es zeigt einen roten Adler im Flug über einem weissem Feld mit dem Text 'Land Brandenburg'"
+            aria-label='Link zum Landesportal Brandenburg'/></a>
       </div>
       <div class="logo logo-right"><a class="image-link" href="/" title="Link zur Startseite">
-        <img src="/datenadler-logo.png" alt="Link zur Startseite"/></a>
+        <img src="/datenadler-logo.png"
+             alt="Logo des Datenadlers. Es zeigt den stylisierten Kopf eines Adlers wie man ihn auf einem Totem-Pfahl erwarten würde"
+             aria-label="Link zur Startseite"/></a>
       </div>
     </div>
 

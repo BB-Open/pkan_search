@@ -245,10 +245,6 @@
       display: block;
     }
 
-    .footer-line-rigth {
-      white-space: normal;
-    }
-
     .footer-line {
       height: auto;
       padding-right: 10px;

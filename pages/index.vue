@@ -12,7 +12,7 @@
 
 <script>
     import ContentBySubject from "~/components/plone/ContentBySubject"
-    import SearchField from "~/components/SearchField"
+    import SearchField from "~/components/StartSearchField"
     import StartFacets from "~/components/StartFacets"
     export default {
         name: "index",

@@ -92,20 +92,26 @@
                 service.brandenburg.de
               </a></li>
           </ul>
-
         </div>
       </div>
     </div>
     <div class="footer-line">
-      <div class="footer-line-text hidesmallscreen"><span>{{year}} | Land Brandenburg</span></div>
-      <div class="footer-line-left">
-        <nuxt-link to="/accessibility">Barrierefreiheit</nuxt-link>
-        |
-        <nuxt-link to="/data_protection">Datenschutz</nuxt-link>
-        |
-        <nuxt-link to="/impressum">Impressum</nuxt-link>
+      <div class="footer-line-left hidesmallscreen"><span>{{year}} | Land Brandenburg</span></div>
+      <div >
+        <ul class="footer-line-right nobull">
+          <li>
+            <nuxt-link to="/accessibility">Barrierefreiheit</nuxt-link>
+          </li>
+          |
+          <li>
+            <nuxt-link to="/data_protection">Datenschutz</nuxt-link>
+          </li>
+          |
+          <li>
+            <nuxt-link to="/impressum">Impressum</nuxt-link>
+          </li>
+        </ul>
       </div>
-
     </div>
   </footer>
 </template>
@@ -138,7 +144,8 @@
 
   .footer-line a:hover, .footer-line a:active, .footer-line a:focus {
     color: #161616;
-    background-color: #FFCC00;
+    background-color: unset;
+    text-decoration: underline;
   }
 
   .footerelement a {
@@ -149,16 +156,49 @@
   .footerelement a:hover, .footerelement a:active, .footerelement a:focus {
     color: #C73C35;
     background-color: unset;
+    text-decoration: underline;
   }
 
-  .footerbox, .footer-line {
+  .footerbox {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
   }
 
-  .footercontent .breadcrumb {
+  .footer-line {
+    height: 30px;
+    line-height: 30px;
+    background-color: #C73C35;
+    color: #fff;
+    white-space: nowrap;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .footer-line {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .footer-line-left {
+  }
+
+  .footer-line-right {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0;
+  }
+
+  .footer-line-right li {
+    display: block;
+  }
+
+  .footercontent  {
     padding: 15px;
   }
 
@@ -188,17 +228,6 @@
     line-height: 30px;
   }
 
-  .footer-line {
-    height: 30px;
-    line-height: 30px;
-    background-color: #C73C35;
-    color: #fff;
-    white-space: nowrap;
-    text-align: center;
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-
 
   @media (max-width: 640px) {
     .footerbox {
@@ -216,7 +245,7 @@
       display: block;
     }
 
-    .footer-line-left {
+    .footer-line-rigth {
       white-space: normal;
     }
 

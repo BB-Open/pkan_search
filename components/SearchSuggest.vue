@@ -129,9 +129,6 @@
   cursor: pointer;
   background-color: #f5f5f5;
   padding: 0.3rem 0.5rem;
-  /*border-bottom: 0.1rem solid #d1d1d1;
-  border-left: 0.1rem solid #d1d1d1;
-  border-right: 0.1rem solid #d1d1d1;*/
   font-size: 0.7rem;
 }
 

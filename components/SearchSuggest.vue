@@ -2,7 +2,7 @@
   <div class="textsearch">
     <div class="hidden_help_text">Geben Sie hier die Suchbegriffe ein, um in den Datensätzen zu suchen. Die Ergebnisse werden dynamisch geladen.</div>
     <div class="simple-typeahead">
-      <div class="simple-typeahead-input-block">
+      <label class="simple-typeahead-input-block">
         <input class="simple-typeahead-input"
                v-model="entityStore.query"
                @keyup="entityStore.reset_pagination_and_solr_get"
@@ -14,7 +14,7 @@
                autofocus
         />
         <span class="simple-typeahead-count">Treffer: {{entityStore.entityTotalCount}}</span>
-        </div>
+        </label>
       <div v-if="is_visible" class="simple-typeahead-list">
         <li
             class="simple-typeahead-list-item"

@@ -1,6 +1,6 @@
 <template>
     <NuxtLayout name="search">
-        <SearchField></SearchField>
+        <StartSearchField></StartSearchField>
         <ContentBySubject portal_type="Document" tag="startseite"></ContentBySubject>
         <div class="hidesmallscreen">
             <h2>Kategorien:</h2>

@@ -74,6 +74,7 @@
 
 .simple-typeahead-input-block {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 

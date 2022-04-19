@@ -3,7 +3,7 @@
         <h3 class='facet_name'>{{facetTitle}}</h3>
         <form>
             <ul class="nobull">
-                <li v-for='item in entries'>
+                <li  v-for='item in entries'>
                     <div v-if="item.count > 0 || item.checked">
                         <input type='checkbox' :checked='item.checked' @click='onClick(item.val)' :name="item.val"
                                :id="item.val">
@@ -87,6 +87,10 @@
     .count_column {
       margin-left: 1rem;
       font-size: 0.8rem;
+    }
+
+    li div label:hover {
+      text-decoration: underline;
     }
 
     ul {

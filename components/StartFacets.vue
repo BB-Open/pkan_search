@@ -6,9 +6,9 @@
             <a class="lightbutton button vocabbutton">
                 <div class="category_label">
                     <div class="category_icon">
-                        <i :class="item.icon + ' bb-ifa'"
+                        <div :class="item.icon + ' bb-ifa'"
                            :aria-label="item.title"
-                        ></i>
+                        ></div>
                         <br class="hidesmallscreen"/>
                     </div>
                     <div class="category_text" aria-hidden="true">{{item.title}}</div>

@@ -1,6 +1,7 @@
 <template>
   <div class="textsearch">
-    <div class="hidden_help_text">Geben Sie hier die Suchbegriffe ein, um in den Datensätzen zu suchen. Die Ergebnisse werden dynamisch geladen.</div>
+    <div class="hidden_help_text">Geben Sie hier die Suchbegriffe ein, um in den Datensätzen zu suchen. Die Ergebnisse werden dynamisch geladen.
+      Mit den Hoch-und Runter-Pfeiltasten können Sie zwischen den Vorschlägen navigieren und mit Enter übernehmen. Mit der Tab-Taste verlassen Sie das Suchfeld.</div>
     <div class="simple-typeahead">
       <label class="simple-typeahead-input-block">
         <input class="simple-typeahead-input"
@@ -10,7 +11,7 @@
                @focus="onFocus"
                @keydown.down.prevent="onArrowDown"
                @keydown.up.prevent="onArrowUp"
-               @keydown.enter.tab.prevent="onEnter"
+               @keydown.enter.prevent="onEnter"
                placeholder="Bitte Suchbegriffe eingeben"
                ref="searchInput"
                type="text"
@@ -18,7 +19,7 @@
         />
         <span class="simple-typeahead-count">Treffer: {{entityStore.entityTotalCount}}</span>
         </label>
-      <div v-if="is_visible" class="simple-typeahead-list">
+      <div v-if="is_visible && entityStore.suggestionList.length" class="simple-typeahead-list">
         <li
             class="simple-typeahead-list-item"
             :class="{ 'simple-typeahead-list-item-active': currentSelectionIndex === index }"
@@ -66,7 +67,7 @@
 
   const onBlur = () => {
     entityStore.isBlur = true
-    searchInput?.value?.focus()
+    // searchInput?.value?.focus()
   }
 
   const onFocus = () => {

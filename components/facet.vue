@@ -5,8 +5,8 @@
             <ul class="nobull">
                 <li  v-for='item in entries'>
                     <div v-if="item.count > 0 || item.checked">
-                        <input type='checkbox' :checked='item.checked' @click='onClick(item.val)' :name="item.val"
-                               :id="item.val">
+                        <input type='checkbox' :checked='item.checked' @click='onClick(item.val)' :name="item.val "
+                               :id="item.val" @keydown.enter.prevent="onClick(item.val)">
                         <label :for="item.val" :class="item.checked && 'checked'"><span class='name_column'>{{item.val}}</span> <span class='count_column'>{{item.count}}</span></label>
                     </div>
                 </li>

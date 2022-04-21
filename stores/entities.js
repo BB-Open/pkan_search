@@ -70,9 +70,10 @@ export const useEntityStore = defineStore({
             this.reset_pagination();
             console.log('Reset all');
         },
-        reset_pagination_and_solr_get(){
+        async reset_pagination_and_solr_get(){
             this.reset_pagination();
-            this.getSolr()
+            await this.getSolr();
+            console.log('New Data')
         },
         async query_solr(url, data) {
             return axios({

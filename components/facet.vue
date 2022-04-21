@@ -1,7 +1,7 @@
 <template>
     <div class='facet'>
         <h3 class='facet_name'>{{facetTitle}}</h3>
-        <form>
+        <form ref="checkboxForm">
             <ul class="nobull">
                 <li  v-for='item in entries'>
                     <div v-if="item.count > 0 || item.checked">
@@ -18,9 +18,10 @@
 <script setup lang="ts">
 
     import {useEntityStore} from '~/stores/entities'
-    import {computed} from "vue";
+    import {computed, ref, nextTick} from "vue";
 
     const entityStore = useEntityStore();
+    const checkboxForm = ref();
 
     const props = defineProps({
         facet: {type: Object, required: true},
@@ -51,13 +52,29 @@
         return choice in entityStore.facetsChoices[props.facetName]
     };
 
-    const onClick = (choice) => {
+    const onClick = async (choice) => {
         if (choice in entityStore.facetsChoices[props.facetName]) {
             delete entityStore.facetsChoices[props.facetName][choice]
         } else {
             entityStore.facetsChoices[props.facetName][choice] = 1
         }
-        entityStore.reset_pagination_and_solr_get();
+        await entityStore.reset_pagination_and_solr_get();
+        nextTick(() => {
+            // we need to reference form and get children, cause children are dynamic content and
+            // can't be called by ref() as Input
+            console.log('Set Focus for ' + choice);
+            let ref_facet  = checkboxForm.value
+            for (let i = 0; i < ref_facet.length; i++) {
+                let input = ref_facet[i];
+                if (input.id === choice) {
+                    input.focus();
+                    break
+                }
+            }
+        });
+
+
+        // ref(props.facetTitle + '_' + choice).focus()
     };
 </script>
 

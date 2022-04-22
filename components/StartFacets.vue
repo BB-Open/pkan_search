@@ -2,8 +2,9 @@
     <ul class="nobull category box_area">
         <li class="box"
             v-for="item in elements"
-            @click="onClick(item.title)">
-            <div class="lightbutton button vocabbutton" :aria-label="item.title" >
+            @click="onClick(item.title)"
+            @keydown.enter.prevent="onClick(item.title)" >
+            <div class="lightbutton button vocabbutton" :aria-label="item.title" tabindex="0">
                 <div class="category_label">
                     <div class="category_icon">
                         <div :class="item.icon + ' bb-ifa'">

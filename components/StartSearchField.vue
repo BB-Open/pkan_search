@@ -30,6 +30,7 @@ const startInput = ref()
 onMounted(() => {
   setTimeout(() => {startInput.value.focus()}, 10)
 })
+  entityStore.reset_all()
 </script>
 
 <style scoped>

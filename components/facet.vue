@@ -85,7 +85,9 @@
     }
 
     .facet {
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
+      background-color: #eeeeee;
+      padding: 0.1rem;
     }
 
     .facet h3{
@@ -109,7 +111,7 @@
     li div label:hover {
       text-decoration: underline;
       background-color: unset;
-      color: #C73C35;
+      color: #C13B33;
     }
 
     ul {

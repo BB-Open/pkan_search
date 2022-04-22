@@ -22,7 +22,7 @@
 
 <style scoped>
     .describer {
-        color: #C73C35;
+        color: #C13B33;
         font-weight: bold;
     }
 
@@ -33,7 +33,7 @@
 
     .breadcrumb a:hover, .breadcrumb a:active, .breadcrumb a:focus {
         background-color: unset;
-        color: #C73C35;
+        color: #C13B33;
       text-decoration: underline;
     }
 

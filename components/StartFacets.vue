@@ -95,15 +95,15 @@
         padding: 15px;
     }
 
-    a.vocabbutton {
+    .vocabbutton {
         text-decoration: none;
         display: block;
         height: 100%;
         width: 100%;
     }
 
-    a.vocabbutton:hover, a.vocabbutton:focus {
-        background-color: #C73C35;
+    .vocabbutton:hover, .vocabbutton:focus {
+        background-color: #C13B33;
         color: #fff;
     }
 

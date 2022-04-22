@@ -8,14 +8,14 @@
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
              width="24" height="24"
              viewBox="0 0 172 172"
-             style=" fill:#C73C35;" aria-label="Menü Icon">
+             style=" fill:#C13B33;" aria-label="Menü Icon">
           <g transform="">
             <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                font-family="none" font-weight="normal" font-size="none" text-anchor="start"
                style="mix-blend-mode: normal">
               <path d="M0,172v-172h172v172z" fill="white"></path>
-              <g fill="#c73c35">
+              <g fill="#C13B33">
                 <path
                   d="M14.33333,35.83333v14.33333h143.33333v-14.33333zM14.33333,78.83333v14.33333h143.33333v-14.33333zM14.33333,121.83333v14.33333h143.33333v-14.33333z"></path>
               </g>
@@ -109,13 +109,13 @@
   .router-link:focus,
   .nuxt-link-exact-active {
     background-color: white;
-    color: #C73C35;
+    color: #C13B33;
     text-decoration: underline;
   }
 
   .router-link.inexact.nuxt-link-active{
     background-color: white;
-    color: #C73C35;
+    color: #C13B33;
   }
 
   .menu .icon {
@@ -137,12 +137,12 @@
       float: left;
       position: relative;
       display: block;
-      background-color: #C73C35;
+      background-color: #C13B33;
       border: none;
     }
 
     .menu .icon_box button {
-      background-color: #C73C35;
+      background-color: #C13B33;
       border: none
     }
 
@@ -152,7 +152,7 @@
       left: 30px;
       margin: 2px;
       padding: 1px;
-      background-color: #C73C35;
+      background-color: #C13B33;
       color: white;
     }
 
@@ -172,7 +172,7 @@
 
     .menu.responsive ul {
       padding: 0;
-      background-color: #f5f5f5;
+      background-color: #eeeeee;
       justify-content: flex-start;
     }
 
@@ -193,7 +193,7 @@
       text-align: left;
       padding-left: 5px;
       width: 50vw;
-      background-color: #f5f5f5;
+      background-color: #eeeeee;
     }
 
     .menu.responsive ul li .hidebigscreen {

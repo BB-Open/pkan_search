@@ -83,7 +83,7 @@
     }
 
     .link, .link:visited {
-        color: #C73C35;
+        color: #C13B33;
         text-decoration: underline;
     }
 

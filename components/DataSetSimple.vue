@@ -33,6 +33,7 @@
       margin-bottom: 0.2rem; /* adjustable */
       font-size: 1.2rem; /* adjustable */
       color: inherit;
+      background-color: inherit;
     }
     .element_logo img {
         max-width: 100px;

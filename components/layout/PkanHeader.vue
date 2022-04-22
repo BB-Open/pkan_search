@@ -34,7 +34,7 @@
   .header-line {
     height: 30px;
     line-height: 30px;
-    background-color: #C73C35;
+    background-color: #C13B33;
     color: #fff;
     white-space: nowrap;
     text-align: left;

@@ -129,7 +129,7 @@
 
 <style scoped>
   .footer {
-    background-color: #f5f5f5;
+    background-color: #eeeeee;
   }
 
   .footercontent {
@@ -144,7 +144,7 @@
 
   .footer-line a:hover, .footer-line a:active, .footer-line a:focus {
     color: #161616;
-    background-color: unset;
+    background-color: #FFCC00;
     text-decoration: underline;
   }
 
@@ -154,7 +154,7 @@
   }
 
   .footerelement a:hover, .footerelement a:active, .footerelement a:focus {
-    color: #C73C35;
+    color: #C13B33;
     background-color: unset;
     text-decoration: underline;
   }
@@ -169,7 +169,7 @@
   .footer-line {
     height: 30px;
     line-height: 30px;
-    background-color: #C73C35;
+    background-color: #C13B33;
     color: #fff;
     white-space: nowrap;
     padding-left: 30px;

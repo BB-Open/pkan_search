@@ -117,7 +117,7 @@ p {
   padding: 0.5em 1em;
   margin: 2px;
   font-size: 1rem;
-  background-color: #C73C35;
+  background-color: #C13B33;
   color: #fff;
 }
 
@@ -139,8 +139,8 @@ button {
 
 .red_box, .button_remove {
   background-color: rgba(199, 60, 53, 0.1);
-  color: #C73C35;
-  border: 1px solid #C73C35;
+  color: #C13B33;
+  border: 1px solid #C13B33;
 }
 
 .criteria_button_unselected {
@@ -170,12 +170,12 @@ button {
 .button_remove:focus {
   background-color: rgba(199, 60, 53, 0.35);
   color: black;
-  border: 1px solid #C73C35;
+  border: 1px solid #C13B33;
 }
 
 .lightbutton {
   border: none;
-  background-color: #fafafa;
+  background-color: #eeeeee;
   color: #161616;
   padding: 0.5em 1em;
   margin: 2px;
@@ -183,7 +183,7 @@ button {
 
 button:hover,
 button:focus {
-  background-color: #C73C35;
+  background-color: #C13B33;
   color: #fff;
 }
 
@@ -193,7 +193,7 @@ button:focus {
 }
 
 .box{
-  background-color: #fafafa;
+  background-color: #eeeeee;
   width: 175px;
   text-align: center;
   border: 1px solid #eeeeee;
@@ -222,7 +222,7 @@ button:focus {
 }
 
 .columnsgrey {
-  background-color: #fafafa;
+  background-color: #eeeeee;
   column-count: 2;
   padding: 15px;
 }
@@ -242,7 +242,7 @@ button:focus {
 
 .info_column_right {
   width: 23%;
-  background-color: #f5f5f5;
+  background-color: #eeeeee;
 }
 
 .info_column_right p {
@@ -278,7 +278,7 @@ button:focus {
 }
 
 a, a:visited {
-  color: #C73C35;
+  color: #C13B33;
   text-decoration: underline;
 }
 
@@ -288,7 +288,7 @@ a:hover, a:active, a:focus {
 }
 
 .bb-ifa {
-  color: #C73C35;
+  color: #C13B33;
   display: inline-block;
   font: normal normal normal 70px/1 FontAwesome;
   text-rendering: auto;
@@ -299,13 +299,13 @@ a:hover, a:active, a:focus {
 
 .button:hover .bb-ifa,
 .button:focus .bb-ifa{
-  background-color: #C73C35;
+  background-color: #C13B33;
   color: #fff;
 }
 
 
 .breadcrumb i {
-  color: #C73C35;
+  color: #C13B33;
 }
 
 .fa {
@@ -345,7 +345,7 @@ input {
 }
 
 .portalMessage.error {
-  background-color: #C73C35;
+  background-color: #C13B33;
   color: rgba(255, 255, 255, 1);
   font-weight: bold;
 }
@@ -396,7 +396,7 @@ select {
 
 .page-link:hover {
   z-index: 2;
-  color: #C73C35;
+  color: #C13B33;
   text-decoration: none;
   background-color: #eeeeee;
   border-color: #eeeeee;
@@ -405,9 +405,9 @@ select {
 .page-link:focus {
   z-index: 2;
   outline: 0;
-  color: #C73C35;
+  color: #C13B33;
   background-color: #eeeeee;
-  box-shadow: 0 0 0 0 #C73C35;
+  box-shadow: 0 0 0 0 #C13B33;
 }
 
 .page-item:first-child .page-link {
@@ -425,14 +425,14 @@ select {
   z-index: 1;
   color: black;
   background-color: rgba(199, 60, 53, 0.1);
-  border-color: #C73C35;
+  border-color: #C13B33;
 }
 
 .page-item.active .page-link:hover, .page-item.active .page-link:focus {
   z-index: 1;
-  color: #C73C35;
+  color: #C13B33;
   background-color: #eeeeee;
-  box-shadow: 0 0 0 0 #C73C35;
+  box-shadow: 0 0 0 0 #C13B33;
   border: 1px solid;
 }
 
@@ -493,12 +493,12 @@ select {
 }
 
 .vdp-datepicker__calendar .cell.selected {
-  background: #C73C35 !important;
+  background: #C13B33 !important;
   color: white !important;
 }
 
 .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).day:hover, .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month:hover, .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year:hover {
-  border: 1px solid #C73C35 !important;
+  border: 1px solid #C13B33 !important;
 }
 
 .hidden_help_text {
@@ -587,7 +587,7 @@ select {
   }
 
   .box{
-    background-color: #fafafa;
+    background-color: #eeeeee;
     min-width: auto;
     width: 100%;
     text-align: center;
@@ -596,7 +596,7 @@ select {
   }
 
   .bb-ifa {
-    color: #C73C35;
+    color: #C13B33;
     display: inline-block;
     font: normal normal normal 35px/1 FontAwesome;
     text-rendering: auto;

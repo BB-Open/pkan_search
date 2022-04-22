@@ -121,14 +121,14 @@
   list-style-type: none; /* Remove bullets */
   left : 0;
   right : 0;
-  background-color: #f5f5f5 ;
+  background-color: #eeeeee ;
   margin-top: 0.3rem;
   margin-bottom: 0.3rem;
 }
 
 .simple-typeahead .simple-typeahead-list .simple-typeahead-list-item {
   cursor: pointer;
-  background-color: #f5f5f5;
+  background-color: #eeeeee;
   padding: 0.3rem 0.5rem;
   font-size: 0.7rem;
 }
@@ -139,7 +139,7 @@
 .simple-typeahead .simple-typeahead-list .simple-typeahead-list-item.simple-typeahead-list-item-active {
   background-color: #e1e1e1;
   text-decoration: underline;
-  color: #C73C35;
+  color: #C13B33;
 }
   .simple-typeahead {
 /*    margin-bottom: 8%; */

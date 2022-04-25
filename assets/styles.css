@@ -532,10 +532,8 @@ select {
 
 .columns {
   break-after: column;
-}
-
-.columns p {
   break-inside: avoid-column;
+  page-break-inside: avoid;
 }
 
 @media (max-width: 640px) {

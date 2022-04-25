@@ -531,10 +531,16 @@ select {
 }
 
 .columns {
-  break-after: column;
-  break-inside: avoid-column;
-  page-break-inside: avoid;
+  display: inline-block;
 }
+
+@supports (break-after: column) {
+  .columns {
+    display: inherit;
+    break-after: column;
+  }
+}
+
 
 @media (max-width: 640px) {
 

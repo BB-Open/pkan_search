@@ -15,9 +15,6 @@
         <h3 class="dataset_header">Angebotene Datensätze:</h3>
         <Datasets :datasets="JSON.parse(item.dcat_servesDataset)" ></Datasets>
       </div>
-      <div v-if="item.inq_priority">
-        <h3 class="dataset_header">Priorität:{{item.inq_priority}}</h3>
-      </div>
     </div>
 </template>
 

@@ -29,39 +29,6 @@
           </ul>
         </div>
         <div class="footerelement">
-          <h3 class="footerelementtitle">Open Source</h3>
-          <hr/>
-          <ul class="nobull">
-            <li>
-              <a class="footerelementlink" href="https://github.com/BB-Open/pkan.dcatapde"><span
-                class="hidden_help_text">Github Repositorium: </span>
-                PKAN <i class="fa fa-github"></i>
-              </a>
-              <hr class="hidesmallscreen"/>
-            </li>
-            <li>
-              <a class="footerelementlink" href="https://nuxtjs.org/"><span
-                class="hidden_help_text">Dokumentation zu </span>
-                Nuxt JS
-              </a>
-              <hr class="hidesmallscreen"/>
-            </li>
-            <li>
-              <a class="footerelementlink" href="https://rdf4j.org/"><span
-                class="hidden_help_text">Dokumentation zur </span>
-                RDF4J Datenbank
-              </a>
-              <hr class="hidesmallscreen"/>
-            </li>
-            <li>
-              <a class="footerelementlink" href="https://flask.palletsprojects.com/en/1.1.x/"><span
-                class="hidden_help_text">Dokumentation zu </span>
-                Flask
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="footerelement">
           <h3 class="footerelementtitle">Service</h3>
           <hr/>
           <ul class="nobull">
@@ -73,24 +40,44 @@
               <hr class="hidesmallscreen"/>
             </li>
             <li>
-              <nuxt-link class="footerelementlink" to="/haftung"
-              ><span class="hidden_help_text">Link zur Seite</span>
-                Haftung
+              <nuxt-link class="footerelementlink" to="/faq"
+              ><span class="hidden_help_text">Link zu </span>
+                Fragen & Antworten
               </nuxt-link>
               <hr class="hidesmallscreen"/>
             </li>
             <li>
-              <a class="footerelementlink" href="http://brandenburg.de" target="_blank"
+              <nuxt-link class="footerelementlink" to="/haftung"
               ><span class="hidden_help_text">Link zur Seite</span>
-                brandenburg.de
+                Haftungsauschluß
+              </nuxt-link>
+            </li>
+          </ul>
+        </div>
+        <div class="footerelement">
+          <h3 class="footerelementtitle">Landesportale</h3>
+          <hr/>
+          <ul class="nobull">
+            <li>
+              <a class="footerelementlink" href="https://brandenburg.de" target="_blank"
+              ><span class="hidden_help_text">Link zur Seite</span>
+                Landesportal Brandenburg
               </a>
               <hr class="hidesmallscreen"/>
             </li>
             <li>
-              <a class="footerelementlink" href="http://service.brandenburg.de" target="_blank"
+              <a class="footerelementlink" href="https://service.brandenburg.de" target="_blank"
               ><span class="hidden_help_text">Link zur Seite</span>
-                service.brandenburg.de
-              </a></li>
+                Serviceportal Brandenburg
+              </a>
+              <hr class="hidesmallscreen"/>
+            </li>
+            <li>
+              <a class="footerelementlink" href="https://mik.brandenburg.de" target="_blank"
+              ><span class="hidden_help_text">Link zur Seite</span>
+                MIK Brandenburg
+              </a>
+            </li>
           </ul>
         </div>
       </div>

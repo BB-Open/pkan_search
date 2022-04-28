@@ -13,7 +13,6 @@
             <div class="main_content ">
                 <slot />
             </div>
-            <PkanAside></PkanAside>
         </main>
         <PkanFooter></PkanFooter>
     </div>

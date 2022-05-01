@@ -2,28 +2,28 @@
   font-family: "FontAwesome";
   font-style: normal;
   font-weight: normal;
-  src: url("./fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("./fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("./fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("./fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("./fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
+  src: local("FontAwesome"), url("./fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2");
 }
 
 @font-face {
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
-  src: local("Open Sans"), local("OpenSans"), url("./fonts/OpenSans-Regular.ttf") format("truetype"), url("./fonts/OpenSans-Regular.woff") format("woff");
+  src: local("Open Sans"), local("OpenSans"), url("./fonts/OpenSans-Regular.woff") format("woff");
 }
 
 @font-face {
   font-family: "Open Sans";
   font-style: italic;
   font-weight: 400;
-  src: local("Open Sans Italic"), local("OpenSans-Italic"), url("./fonts/OpenSans-Italic.ttf") format("truetype"), url("./fonts/OpenSans-Italic.woff") format("woff");
+  src: local("Open Sans Italic"), local("OpenSans-Italic"), url("./fonts/OpenSans-Italic.woff") format("woff");
 }
 
 @font-face {
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
-  src: local("Open Sans Bold"), local("OpenSans-Bold"), url("./fonts/OpenSans-Bold.ttf") format("truetype"), url("./fonts/OpenSans-Bold.woff") format("woff");
+  src: local("Open Sans Bold"), local("OpenSans-Bold"), url("./fonts/OpenSans-Bold.woff") format("woff");
 }
 
 * {
@@ -273,7 +273,7 @@ button:focus {
 }
 
 .twocolumncontent .main_content {
-  width: 75%;
+  width: 100%;
   margin-right: 2%;
 }
 

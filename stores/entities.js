@@ -36,6 +36,7 @@ export const useEntityStore = defineStore({
         pagination_page: 1,
         suggestions: [],
         query: '',
+        sortOrder : 'desc',
     }),
     actions: {
         get_message_store() {
@@ -92,6 +93,7 @@ export const useEntityStore = defineStore({
         async getSolr() {
             let data = {
                 q: this.query,
+                sort: this.sortOrder,
                 start: (this.pagination_page - 1) * this.perPageResults,
                 rows: this.perPageResults,
                 choices: this.facetsChoices,

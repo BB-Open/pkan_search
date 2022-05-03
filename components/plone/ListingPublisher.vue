@@ -65,6 +65,10 @@
         width: 300px;
     }
 
+    .box_area {
+      justify-content: space-between;
+    }
+
     @media (max-width: 640px) {
         .plone_listing_element {
             padding: 5px;

@@ -15,7 +15,7 @@
                             :alt="ploneStore.UID(props.uid).title + ' Logo'"/></div>
                 </div>
                 <div v-html="ploneStore.removeSelfClosingTags(ploneStore.UID(props.uid).text)"
-                     v-if="ploneStore.UID(props.uid).text"></div>
+                     v-if="ploneStore.UID(props.uid).text" class="plone_content"></div>
 
             </div>
             <button class="link" @click="onClick(ploneStore.UID(props.uid).foaf_name)">
@@ -51,9 +51,18 @@
 
 <style scoped>
 
+    .text_area {
+        width: 100%;
+    }
+
     .header {
         display: flex;
-        width: 100%
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .plone_content {
+        width: 100%;
     }
 
     .element_logo {

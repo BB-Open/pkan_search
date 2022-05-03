@@ -4,7 +4,7 @@ import axios from 'axios';
 import {useMessageStore} from '~/stores/messages.js'
 import {useBreadcrumbStore} from '~/stores/breadcrumb.js'
 
-import {PLONE_UNREACHABLE_MESSAGE, BASE_URL} from '/etc/pkan/nuxt_config'
+import {PLONE_UNREACHABLE_MESSAGE, BASE_URL, FLASK_URL_PLONE} from '/etc/pkan/nuxt_config'
 
 export const usePloneStore = defineStore({
     id: 'plone-store',
@@ -65,16 +65,19 @@ export const usePloneStore = defineStore({
                 data_url += '&UID=' + uid
             }
 
-            return await axios({
-                    method: 'get',
-                    url: data_url,
-                    headers: {
-                        "Access-Control-Allow-Origin": "*",
-                        'Accept': 'application/json',
-                    }
+            let data = {
+                'plone_url': data_url
+            }
 
+            return axios({
+                method: 'POST',
+                url: FLASK_URL_PLONE,
+                data: data,
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    'Accept': 'application/json',
                 }
-            ).catch(function (error) {
+            }).catch(function (error) {
                 console.log('Error', error);
                 this.handle_error()
             }.bind(this));

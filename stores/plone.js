@@ -68,9 +68,9 @@ export const usePloneStore = defineStore({
                 'plone_url': data_url
             };
 
-            let res = await fetch(FLASK_URL_PLONE, {
+            let res = await useFetch(FLASK_URL_PLONE, {
                 method: 'POST',
-                body: JSON.stringify(data),
+                body: data,
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     'Accept': 'application/json',
@@ -80,8 +80,7 @@ export const usePloneStore = defineStore({
                 this.handle_error()
             }.bind(this));
 
-            return res.json()
-
+            return JSON.parse(res.data.value)
         },
         extractSingleContent(res) {
             return res.items[0]
@@ -252,7 +251,13 @@ export const usePloneStore = defineStore({
             return (portal_type, tag) => state.ploneSubject[portal_type][tag]
         },
         PortalTypeSubjectListing: state => {
-            return (portal_type, tag) => state.ploneListing[portal_type][tag]
+            return (portal_type, tag) => {
+                if (state.ploneListing[portal_type]) {
+                return state.ploneListing[portal_type][tag]
+                } else {
+                    return undefined
+                }
+            }
         },
         UID: state => {
             return (uid) => state.ploneUID[uid]

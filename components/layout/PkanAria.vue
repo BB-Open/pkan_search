@@ -1,4 +1,5 @@
 <template>
+    <client-only>
     <div>
         <div class="hidden_help_text" role="status" aria-live="polite" aria-relevant="all" aria-atomic="true" id="pkan_aria_polite">
             {{messageStore.politeMessage}}
@@ -7,6 +8,7 @@
             {{messageStore.assertiveMessage}}
         </div>
     </div>
+    </client-only>
 </template>
 
 <script setup lang="ts">

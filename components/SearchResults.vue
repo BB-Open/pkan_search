@@ -14,15 +14,21 @@
     import { useEntityStore } from '~/stores/entities'
     import Pagination from "~/components/Pagination.vue";
     import DataSetSimple from '~/components/DataSetSimple.vue'
+    import {onMounted, onServerPrefetch} from 'vue'
+
 
     const entityStore = useEntityStore();
 
-    onMounted(() => {
-        entityStore.reset_pagination_and_solr_get()
+    onMounted(async () => {
+        await entityStore.reset_pagination_and_solr_get()
+    })
+
+    onServerPrefetch(async () => {
+        await entityStore.getSolr()
+
     })
 
     // Load entity store for SSR
-    entityStore.reset_pagination_and_solr_get()
 
 </script>
 

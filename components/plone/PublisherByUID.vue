@@ -29,6 +29,7 @@
 <script setup lang="ts">
     import {usePloneStore} from '~/stores/plone.js'
     import {useEntityStore} from '~/stores/entities'
+    import {onMounted, onServerPrefetch} from 'vue'
 
     const entityStore = useEntityStore();
 
@@ -40,7 +41,13 @@
         uid: {required: true},
     });
 
-    ploneStore.ContentByUID(props.uid);
+    onMounted(async () => {
+        await ploneStore.ContentByUID(props.uid);
+    })
+
+    onServerPrefetch(async () => {
+        await ploneStore.ContentByUID(props.uid);
+    })
 
     const onClick = (choice) => {
         entityStore.reset_all();

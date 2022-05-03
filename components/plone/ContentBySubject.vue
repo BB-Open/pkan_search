@@ -1,11 +1,12 @@
 <template>
-    <h1>{{ ploneStore.PortalTypeSubject(props.portal_type, props.tag).title }}</h1>
-    <div class="description" v-if="ploneStore.PortalTypeSubject(props.portal_type, props.tag).description">{{ ploneStore.PortalTypeSubject(props.portal_type, props.tag).description}}</div>
-    <div v-html="ploneStore.removeSelfClosingTags(ploneStore.PortalTypeSubject(props.portal_type, props.tag).text.data)"></div>
+    <h1 v-if="ploneStore.PortalTypeSubject(props.portal_type, props.tag)">{{ ploneStore.PortalTypeSubject(props.portal_type, props.tag).title }}</h1>
+    <div class="description" v-if="ploneStore.PortalTypeSubject(props.portal_type, props.tag) && ploneStore.PortalTypeSubject(props.portal_type, props.tag).description">{{ ploneStore.PortalTypeSubject(props.portal_type, props.tag).description}}</div>
+    <div v-html="ploneStore.PortalTypeSubject(props.portal_type, props.tag) && ploneStore.removeSelfClosingTags(ploneStore.PortalTypeSubject(props.portal_type, props.tag).text.data)"></div>
 </template>
 
 <script setup lang="ts">
     import {usePloneStore} from '~/stores/plone.js'
+    import {onMounted, onServerPrefetch} from 'vue'
 
     const ploneStore = usePloneStore();
 
@@ -14,7 +15,16 @@
         tag: {type: String, required: true},
     });
 
-    ploneStore.ContentBySubject(props.portal_type, props.tag);
+    onMounted(async () => {
+        console.log('Mounted')
+        await ploneStore.ContentBySubject(props.portal_type, props.tag);
+    })
+
+    onServerPrefetch(async () => {
+        console.log('Prefetch')
+        await ploneStore.ContentBySubject(props.portal_type, props.tag);
+    })
+
 </script>
 
 <style scoped>

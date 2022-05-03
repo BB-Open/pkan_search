@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang='ts'>
-    import {onMounted} from 'vue';
+    import {onMounted, onServerPrefetch} from 'vue';
     import {useEntityStore} from '~/stores/entities'
     import Distributions from "~/components/Distributions.vue";
     import Endpoints from "~/components/Endpoints.vue";
@@ -66,9 +66,14 @@
       title: 'Datenadler: Das OpenDataPortal für Brandenburg: Datensatz Detail'
     })
 
-    onMounted( () => {
+    onMounted( async () => {
       entityStore.dataset_uri = route.params.dataset
-      setTimeout(() => {entityStore.getDataset()}, 10)
+      await entityStore.getDataset()
+    })
+
+    onServerPrefetch(async () => {
+      entityStore.dataset_uri = route.params.dataset
+      await entityStore.getDataset()
     })
 
 </script>

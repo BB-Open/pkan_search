@@ -1,5 +1,4 @@
 import {defineStore} from 'pinia';
-import axios from 'axios';
 import {useMessageStore} from '~/stores/messages.js'
 import {useBreadcrumbStore} from '~/stores/breadcrumb.js'
 import {FLASK_UNREACHABLE_MESSAGE, SOLR_SUGGEST_URI, SOLR_SELECT_URI, SOLR_PICK_URI} from "/etc/pkan/nuxt_config";
@@ -81,10 +80,9 @@ export const useEntityStore = defineStore({
             console.log('New Data')
         },
         async query_solr(url, data) {
-            return axios({
+            let res = await useFetch(url, {
                 method: 'POST',
-                url: url,
-                data: data,
+                body: data,
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     'Accept': 'application/json',
@@ -93,6 +91,7 @@ export const useEntityStore = defineStore({
                 console.log('Error', error);
                 this.handle_error()
             }.bind(this));
+            return JSON.parse(res.data.value)
         },
         async getSolr() {
             let data = {
@@ -107,33 +106,42 @@ export const useEntityStore = defineStore({
             if (dataset_res === undefined) {
 
             } else {
-                //console.log(dataset_res)
-                this.entities = dataset_res.data.response.docs;
-                this.entityTotalCount = dataset_res.data.response.numFound;
-                if (dataset_res.data.facets.count == 0) {
-                    this.reset_facets()
-                } else
-                    {
-                        this.facets = dataset_res.data.facets;
-                    }
-            }
+                 console.log(dataset_res);
+                 this.entities = dataset_res.response.docs;
+                 this.entityTotalCount = dataset_res.response.numFound;
+                 if (dataset_res.facets.count == 0) {
+                     this.reset_facets()
+                 } else
+                     {
+                         this.facets = dataset_res.facets;
+                     }
+             }
 
-            data = {
-                params: {
-                    'suggest.q': this.query,
-                }
+             data = {
+                 params: {
+                     'suggest.q': this.query,
+                 }
             };
 
-            let suggest_res = await this.query_solr(SOLR_SUGGEST_URI, data);
+            let suggest_res;
+
+            try {
+                suggest_res = await this.query_solr(SOLR_SUGGEST_URI, data);
+            } catch {
+                // SSR
+                suggest_res = undefined;
+            }
+
+            console.log(suggest_res)
 
             if (suggest_res === undefined) {
 
             } else {
-                if (suggest_res.data.suggest.mySuggester[this.query].numFound > 0) {
-                    this.suggestions = suggest_res.data.suggest.mySuggester[this.query].suggestions
-                } else {
-                    this.suggestions = []
-                }
+                  if (suggest_res.suggest.mySuggester[this.query].numFound > 0) {
+                      this.suggestions = suggest_res.suggest.mySuggester[this.query].suggestions
+                  } else {
+                      this.suggestions = []
+                  }
             }
         },
         async getDataset() {
@@ -141,7 +149,7 @@ export const useEntityStore = defineStore({
                 q: this.dataset_uri,
             };
             let dataset_res = await this.query_solr(SOLR_PICK_URI, data);
-            this.dataset = dataset_res.data.response.docs[0];
+            this.dataset = dataset_res.response.docs[0];
             let messageStore = this.get_message_store();
             let breadcrumbStore = this.get_breadcrumb_store()
             let title = 'Kein Titel vorhanden'

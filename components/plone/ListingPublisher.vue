@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul class="box_area nobull">
-            <li v-for="item in ploneStore.ploneListing['PublisherCard']" class="box" v-if="ploneStore.ploneListing['PublisherCard'].length">
+            <li v-for="item in ploneStore.ploneListing['PublisherCard']" class="box" v-if="ploneStore.ploneListing['PublisherCard'] && ploneStore.ploneListing['PublisherCard'].length">
                 <div class="plone_listing_element">
                     <h2 class="element_title">{{ item.title }}</h2>
                     <div class="element_date" v-if="item.date_text">{{ item.date_text }}</div>
@@ -11,7 +11,7 @@
                 </div>
             </li>
         </ul>
-        <div v-if="!ploneStore.ploneListing['PublisherCard'].length">
+        <div v-if="!ploneStore.ploneListing['PublisherCard'] || !ploneStore.ploneListing['PublisherCard'].length">
             <p>Es sind keine Inhalte verfügbar oder diese werden noch geladen.</p>
         </div>
     </div>
@@ -19,10 +19,20 @@
 
 <script setup type="ts">
     import {usePloneStore} from '~/stores/plone.js'
+    import {onMounted, onServerPrefetch} from 'vue'
+
 
     const ploneStore = usePloneStore();
 
-    ploneStore.ListingByType('PublisherCard', 'Datenbereitsteller')
+    onMounted(async () => {
+        await ploneStore.ListingByType('PublisherCard', 'Datenbereitsteller')
+    })
+
+    onServerPrefetch(async () => {
+        await ploneStore.ListingByType('PublisherCard', 'Datenbereitsteller')
+    })
+
+
 
 </script>
 

@@ -6,10 +6,19 @@
 
 <script setup lang="ts">
     import {usePloneStore} from '~/stores/plone.js'
+    import {onMounted, onServerPrefetch} from 'vue'
 
     const ploneStore = usePloneStore();
 
-    ploneStore.ContentBySubject('Document', 'seitentext', false);
+    onMounted(async () => {
+        await ploneStore.ContentBySubject('Document', 'seitentext', false);
+
+    })
+
+    onServerPrefetch(async () => {
+        console.log('Prefetch')
+        await ploneStore.ContentBySubject('Document', 'seitentext', false);
+    })
 </script>
 
 <style scoped>

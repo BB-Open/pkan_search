@@ -7,6 +7,7 @@
                 <SearchResults></SearchResults>
             </div>
             <section class="hidesmallscreen">
+                <order></order>
                 <facets></facets>
             </section>
         </div>
@@ -21,6 +22,7 @@
 
     import {useMessageStore} from '~/stores/messages'
     import Facets from "~/components/facets.vue";
+    import Order from "~/components/order.vue";
     import {useHead} from "@vueuse/head";
 
     const messageStore = useMessageStore();

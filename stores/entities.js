@@ -36,7 +36,7 @@ export const useEntityStore = defineStore({
         pagination_page: 1,
         suggestions: [],
         query: '',
-        sortOrder : 'desc',
+        sortOrder : 'score',
     }),
     actions: {
         get_message_store() {
@@ -64,11 +64,15 @@ export const useEntityStore = defineStore({
         reset_pagination(){
             this.pagination_page = 1
         },
+        reset_sortorder(){
+            this.sortOrder = 'score'
+        },
         reset_all(){
             this.reset_facets();
             this.reset_facetsChoices();
             this.reset_query();
             this.reset_pagination();
+            this.reset_sortorder();
             console.log('Reset all');
         },
         async reset_pagination_and_solr_get(){

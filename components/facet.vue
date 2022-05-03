@@ -4,10 +4,13 @@
         <form ref="checkboxForm">
             <ul class="nobull">
                 <li  v-for='item in entries'>
-                    <div v-if="item.count > 0 || item.checked">
+                    <div v-if="item.count > 0 || item.checked" class="parent">
+                        <div class="input_checkbox">
                         <input type='checkbox' :checked='item.checked' @click='onClick(item.val)' :name="item.val "
                                :id="item.val" @keydown.enter.prevent="onClick(item.val)">
-                        <label :for="item.val" :class="item.checked && 'checked'"><span class='name_column'>{{item.val}}</span> <span class='count_column'>{{item.count}}</span></label>
+                        </div>
+                        <div class="label">
+                        <label :for="item.val" :class="item.checked && 'checked'"><span class='name_column'>{{item.val}}</span> <span class='count_column'>[{{item.count}}]</span></label></div>
                     </div>
                 </li>
             </ul>
@@ -80,6 +83,14 @@
 
 <style scoped>
 
+    .label {
+        padding-left: 2px;
+    }
+
+    .parent {
+        display: flex;
+    }
+
     .checked {
       font-weight: 700;
     }
@@ -104,7 +115,6 @@
     }
 
     .count_column {
-      margin-left: 1rem;
       font-size: 0.8rem;
     }
 

@@ -2,7 +2,7 @@
     <NuxtLayout name="plone">
       <div v-if="entityStore.dataset">
         <div class="header">
-          <h1 class="dct_title" v-if="entityStore.dataset.dct_title">{{ entityStore.dataset.dct_title[0] }}</h1>
+          <h1 class="dct_title" v-if="entityStore.dataset.dct_title">{{ entityStore.dataset.dct_title }}</h1>
         </div>
 
         <div class="header">

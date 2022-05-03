@@ -145,8 +145,8 @@ export const useEntityStore = defineStore({
             let messageStore = this.get_message_store();
             let breadcrumbStore = this.get_breadcrumb_store()
             let title = 'Kein Titel vorhanden'
-            if (this.dataset.dct_title[0] !== undefined) {
-                title = this.dataset.dct_title[0]
+            if (this.dataset.dct_title !== undefined) {
+                title = this.dataset.dct_title
             }
             breadcrumbStore.set_title(title);
             let message = 'Die Seite ' + title + ' wurde geladen.';

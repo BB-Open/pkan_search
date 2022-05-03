@@ -86,8 +86,16 @@
 </script>
 
 <style scoped>
-    li.box {
-        display: block;
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .box {
+        width: 200px;
     }
 
     .vocabbutton {

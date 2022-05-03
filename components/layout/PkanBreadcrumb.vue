@@ -39,6 +39,8 @@
 
     .breadcrumb {
         font-size: 0.8125rem;
+        padding-top: 15px;
+        padding-bottom: 15px;
     }
 
     .breadcrumb p {

@@ -43,6 +43,8 @@
     .order label select {
         font-size: 1rem;
         background-color: white;
+        width: 100%;
+        margin-bottom: 0.45rem;
     }
 
 </style>

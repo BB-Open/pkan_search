@@ -29,6 +29,8 @@
 <style scoped>
     .result-list {
       margin: unset; /* important for vertical allignment */
+        padding-bottom: 15px;
+        padding-top: 15px;
     }
 
     ul li {

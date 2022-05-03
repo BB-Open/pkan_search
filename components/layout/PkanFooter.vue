@@ -75,7 +75,8 @@
             <li>
               <a class="footerelementlink" href="https://mik.brandenburg.de" target="_blank"
               ><span class="hidden_help_text">Link zur Seite</span>
-                MIK Brandenburg
+                Ministerium des Innern und für Kommunales
+                Brandenburg
               </a>
             </li>
           </ul>
@@ -83,7 +84,7 @@
       </div>
     </div>
     <div class="footer-line">
-      <div class="footer-line-left hidesmallscreen"><span>{{year}} | Land Brandenburg</span></div>
+      <div class="footer-line-left hidesmallscreen"><span>{{year}} | Landesregierung Brandenburg</span></div>
       <div >
         <ul class="footer-line-right nobull">
           <li>
@@ -115,6 +116,11 @@
 </script>
 
 <style scoped>
+  hr, ul {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
   .footer {
     background-color: #eeeeee;
   }

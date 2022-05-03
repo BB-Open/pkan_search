@@ -1,5 +1,4 @@
 import {defineStore} from 'pinia';
-import axios from 'axios';
 
 import {useMessageStore} from '~/stores/messages.js'
 import {useBreadcrumbStore} from '~/stores/breadcrumb.js'
@@ -67,12 +66,11 @@ export const usePloneStore = defineStore({
 
             let data = {
                 'plone_url': data_url
-            }
+            };
 
-            return axios({
+            let res = await fetch(FLASK_URL_PLONE, {
                 method: 'POST',
-                url: FLASK_URL_PLONE,
-                data: data,
+                body: JSON.stringify(data),
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     'Accept': 'application/json',
@@ -82,12 +80,14 @@ export const usePloneStore = defineStore({
                 this.handle_error()
             }.bind(this));
 
+            return res.json()
+
         },
         extractSingleContent(res) {
-            return res.data.items[0]
+            return res.items[0]
         },
         extractListingContent(res) {
-            return res.data.items
+            return res.items
         },
         async ContentBySubject(type, tag, write_title=true) {
             console.log('Loading Data for ' + type + ' ' + tag);

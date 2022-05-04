@@ -64,18 +64,19 @@ export const usePloneStore = defineStore({
                 data['UID'] = uid
             }
 
-
-            let res = await useFetch(FLASK_URL_PLONE, {
-                method: 'POST',
-                body: data,
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    'Accept': 'application/json',
-                }
-            }).catch(function (error) {
+            try {
+                let res = await useFetch(FLASK_URL_PLONE, {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        "Access-Control-Allow-Origin": "*",
+                        'Accept': 'application/json',
+                    }
+                })
+            } catch {
                 console.log('Error', error);
                 this.handle_error()
-            }.bind(this));
+            }
             try {
                 return JSON.parse(res.data.value)
             } catch {
@@ -83,10 +84,18 @@ export const usePloneStore = defineStore({
             }
         },
         extractSingleContent(res) {
-            return res.items[0]
+            try {
+                return res.items[0]
+            } catch {
+                this.handle_error()
+            }
         },
         extractListingContent(res) {
-            return res.items
+            try {
+                return res.items
+            } catch {
+                this.handle_error()
+            }
         },
         async ContentBySubject(type, tag, write_title=true) {
             console.log('Loading Data for ' + type + ' ' + tag);

@@ -4,8 +4,12 @@ import {defineStore} from 'pinia';
 export const useBreadcrumbStore = defineStore({
     id: 'breadcrumb',
     state: () => ({
-        titles: {
-            '/': 'Startseite',
+        // never changed titles, not overwritten by dynamic Content e.g. Plone
+        static_titles: {
+            '/': 'Start',
+        },
+        // includes some initial values which can be changed by dynamic content
+        dynamic_titles: {
             '/blog': 'Aktuelles',
             '/problem': 'Fehler melden',
             '/search': 'Suche',
@@ -29,7 +33,7 @@ export const useBreadcrumbStore = defineStore({
             let router = this.get_router();
             if (router!==undefined){
                 let path = router.currentRoute.value.path;
-                this.titles[path] = title;
+                this.dynamic_titles[path] = title;
             }
         },
         get_elements(){
@@ -62,7 +66,13 @@ export const useBreadcrumbStore = defineStore({
     },
     getters: {
         BCTitle: state => {
-            return (url) => state.titles[url]
+            return (url) => {
+                if (url in state.static_titles) {
+                    return state.static_titles[url]
+                } else {
+                    return state.dynamic_titles[url]
+                }
+            }
         },
         BCElements: state => state.elements
     }

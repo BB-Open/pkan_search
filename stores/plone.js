@@ -3,7 +3,7 @@ import {defineStore} from 'pinia';
 import {useMessageStore} from '~/stores/messages.js'
 import {useBreadcrumbStore} from '~/stores/breadcrumb.js'
 
-import {PLONE_UNREACHABLE_MESSAGE, BASE_URL, FLASK_URL_PLONE} from '/etc/pkan/nuxt_config'
+import {PLONE_UNREACHABLE_MESSAGE, FLASK_URL_PLONE} from '/etc/pkan/nuxt_config'
 
 export const usePloneStore = defineStore({
     id: 'plone-store',
@@ -39,34 +39,31 @@ export const usePloneStore = defineStore({
             return newHtml + split[split.length - 1];
         },
         async QueryData(type, tag, sort_on, uid, sort_order, max_number) {
-            let data_url = BASE_URL;
+            let data = {};
 
             if (type !== undefined) {
-                data_url += '&portal_type=' + type
+                data['portal_type'] = type
             }
 
             if (sort_on !== undefined) {
-                data_url += '&sort_on=' + sort_on
+                data['sort_on'] = sort_on
             }
 
             if (sort_order !== undefined) {
-                data_url += '&sort_order=' + sort_order
+                data['sort_order'] = sort_order
             }
             if (max_number !== undefined) {
-                data_url += '&sort_limit=' + max_number
+                data['sort_limit'] = max_number
             }
 
             if (tag !== undefined) {
-                data_url += '&Subject=' + tag
+                data['Subject'] = tag
             }
 
             if (uid !== undefined) {
-                data_url += '&UID=' + uid
+                data['UID'] = uid
             }
 
-            let data = {
-                'plone_url': data_url
-            };
 
             let res = await useFetch(FLASK_URL_PLONE, {
                 method: 'POST',

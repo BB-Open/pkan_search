@@ -76,8 +76,11 @@ export const usePloneStore = defineStore({
                 console.log('Error', error);
                 this.handle_error()
             }.bind(this));
-
-            return JSON.parse(res.data.value)
+            try {
+                return JSON.parse(res.data.value)
+            } catch {
+                this.handle_error()
+            }
         },
         extractSingleContent(res) {
             return res.items[0]

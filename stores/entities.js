@@ -91,7 +91,11 @@ export const useEntityStore = defineStore({
                 console.log('Error', error);
                 this.handle_error()
             }.bind(this));
-            return JSON.parse(res.data.value)
+            try {
+                return JSON.parse(res.data.value)
+            } catch {
+                this.handle_error()
+            }
         },
         async getSolr() {
             let data = {

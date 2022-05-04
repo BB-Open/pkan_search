@@ -80,8 +80,9 @@ export const useEntityStore = defineStore({
             console.log('New Data')
         },
         async query_solr(url, data) {
+            let res;
             try {
-                let res = await useFetch(url, {
+                res = await useFetch(url, {
                     method: 'POST',
                     body: data,
                     headers: {
@@ -89,13 +90,14 @@ export const useEntityStore = defineStore({
                         'Accept': 'application/json',
                     }
                 })
-            } catch {
+            } catch (error) {
                 console.log('Error', error);
                 this.handle_error()
             }
             try {
                 return JSON.parse(res.data.value)
-            } catch {
+            } catch (error) {
+                console.log('Error', error);
                 this.handle_error()
             }
         },
@@ -131,8 +133,8 @@ export const useEntityStore = defineStore({
 
             try {
                 suggest_res = await this.query_solr(SOLR_SUGGEST_URI, data);
-            } catch {
-                // SSR
+            } catch (error) {
+                console.log('Error', error);
                 suggest_res = undefined;
             }
 

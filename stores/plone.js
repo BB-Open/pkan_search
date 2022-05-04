@@ -64,8 +64,10 @@ export const usePloneStore = defineStore({
                 data['UID'] = uid
             }
 
+            let res;
+
             try {
-                let res = await useFetch(FLASK_URL_PLONE, {
+                res = await useFetch(FLASK_URL_PLONE, {
                     method: 'POST',
                     body: data,
                     headers: {
@@ -73,27 +75,32 @@ export const usePloneStore = defineStore({
                         'Accept': 'application/json',
                     }
                 })
-            } catch {
+            } catch (error) {
                 console.log('Error', error);
                 this.handle_error()
             }
             try {
                 return JSON.parse(res.data.value)
-            } catch {
+            } catch (error) {
+                console.log('Error', error);
                 this.handle_error()
             }
         },
         extractSingleContent(res) {
             try {
                 return res.items[0]
-            } catch {
+            } catch (error) {
+                console.log('Error', error);
+                console.log(res)
                 this.handle_error()
             }
         },
         extractListingContent(res) {
             try {
                 return res.items
-            } catch {
+            } catch (error) {
+                console.log('Error', error);
+                console.log(res)
                 this.handle_error()
             }
         },

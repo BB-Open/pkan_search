@@ -2,13 +2,14 @@
     <div>
         <ul class="box_area nobull">
             <li v-for="item in ploneStore.ploneListing['PublisherCard']" class="box" v-if="ploneStore.ploneListing['PublisherCard'] && ploneStore.ploneListing['PublisherCard'].length">
+              <NuxtLink :to="'/publisher/publisher-' + item.UID" :aria-label="item.title + ' weiterlesen'">
                 <div class="plone_listing_element">
                     <h2 class="element_title">{{ item.title }}</h2>
                     <div class="element_date" v-if="item.date_text">{{ item.date_text }}</div>
                     <div class="element_logo" v-if="item.logo"><img :src="item.logo.download" :alt="item.title + ' Logo'"/></div>
                     <div class="element_description">{{ item.description }}</div>
-                    <NuxtLink :to="'/publisher/publisher-' + item.UID" :aria-label="item.title + ' weiterlesen'">Weiterlesen</NuxtLink>
                 </div>
+              </NuxtLink>
             </li>
         </ul>
         <div v-if="!ploneStore.ploneListing['PublisherCard'] || !ploneStore.ploneListing['PublisherCard'].length">
@@ -59,6 +60,11 @@
 
     .box .plone_listing_element {
         padding-left: 15px;
+    }
+
+    .plone_listing_element:hover, .plone_listing_element:focus {
+      background-color: #C13B33;
+      color: #fff;
     }
 
     .box {

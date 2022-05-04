@@ -110,7 +110,6 @@ export const useEntityStore = defineStore({
             if (dataset_res === undefined) {
 
             } else {
-                 console.log(dataset_res);
                  this.entities = dataset_res.response.docs;
                  this.entityTotalCount = dataset_res.response.numFound;
                  if (dataset_res.facets.count == 0) {
@@ -135,8 +134,6 @@ export const useEntityStore = defineStore({
                 // SSR
                 suggest_res = undefined;
             }
-
-            console.log(suggest_res)
 
             if (suggest_res === undefined) {
 

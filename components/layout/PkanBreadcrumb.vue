@@ -14,10 +14,16 @@
 
 <script setup lang="ts">
     import {useBreadcrumbStore} from '~/stores/breadcrumb.js'
+    import {onMounted} from 'vue'
 
     const breadcrumbStore = useBreadcrumbStore();
 
-    breadcrumbStore.get_elements();
+    onMounted(() => {
+        console.log('Mounted')
+        breadcrumbStore.get_elements();
+    })
+
+
 </script>
 
 <style scoped>

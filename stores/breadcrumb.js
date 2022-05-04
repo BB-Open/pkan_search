@@ -42,7 +42,7 @@ export const useBreadcrumbStore = defineStore({
                 let res = [];
                 let path = router.currentRoute.value.path;
                 if (path === '/'){
-                    this.elements = ['/']
+                    this.elements = ['/'];
                     return
                 }
                 let elements = path.split('/');
@@ -52,8 +52,8 @@ export const useBreadcrumbStore = defineStore({
                     sub_path += item;
                     sub_path = sub_path.replace('//', '/');
                     res.push(sub_path);
-                    if (!sub_path in this.titles){
-                        this.titles[sub_path] = sub_path
+                    if (!sub_path in this.dynamic_titles){
+                        this.dynamic_titles[sub_path] = sub_path
                     }
 
                 }, this);
@@ -67,7 +67,7 @@ export const useBreadcrumbStore = defineStore({
     getters: {
         BCTitle: state => {
             return (url) => {
-                if (url in state.static_titles) {
+                if ( url in state.static_titles) {
                     return state.static_titles[url]
                 } else {
                     return state.dynamic_titles[url]

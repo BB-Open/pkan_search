@@ -150,13 +150,11 @@ export const usePloneStore = defineStore({
             }
             this.ploneListing[type] = [];
             let res = await this.QueryData(type, undefined, 'sortable_title', undefined, undefined, undefined);
-            console.log(res)
             if (res === undefined) {
                 return
             }
 
             res = this.extractListingContent(res);
-            console.log(res)
             if (res !== undefined) {
                 this.ploneListing[type] = res
             } else {

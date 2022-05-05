@@ -29,10 +29,10 @@
         <nuxt-link class="router-link" to="/" >Start</nuxt-link>
         <hr class="hidebigscreen"/>
       </li>
-      <li>
-        <nuxt-link class="router-link" to="/faq">Fragen und Antworten</nuxt-link>
-        <hr class="hidebigscreen"/>
-      </li>
+<!--      <li>-->
+<!--        <nuxt-link class="router-link" to="/faq">Fragen und Antworten</nuxt-link>-->
+<!--        <hr class="hidebigscreen"/>-->
+<!--      </li>-->
       <li>
         <nuxt-link class="router-link" to="/blog">Aktuelles</nuxt-link>
         <hr class="hidebigscreen"/>

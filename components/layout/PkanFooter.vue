@@ -9,20 +9,20 @@
           <hr/>
           <ul class="nobull">
             <li>
-              <a class="footerelementlink" href="https://www.dcat-ap.de/"><span
+              <a class="footerelementlink" href="https://www.dcat-ap.de/" target="_blank"><span
                 class="hidden_help_text">Metadatenmodell </span>
                 DCAT-AP.de
               </a>
               <hr class="hidesmallscreen"/>
             </li>
             <li>
-              <a class="footerelementlink" href="https://www.govdata.de/"><span class="hidden_help_text">Bund-Länder-Portal </span>
+              <a class="footerelementlink" href="https://www.govdata.de/" target="_blank"><span class="hidden_help_text">Bund-Länder-Portal </span>
                 GovData.de
               </a>
               <hr class="hidesmallscreen"/>
             </li>
             <li>
-              <a class="footerelementlink" href="https://data.europa.eu/de"><span class="hidden_help_text">Open-Data-Portal für Europa: </span>
+              <a class="footerelementlink" href="https://data.europa.eu/de" target="_blank"><span class="hidden_help_text">Open-Data-Portal für Europa: </span>
                 EuropeanDataportal.eu
               </a>
             </li>
@@ -59,21 +59,21 @@
           <hr/>
           <ul class="nobull">
             <li>
-              <a class="footerelementlink" href="https://brandenburg.de" 
+              <a class="footerelementlink" href="https://brandenburg.de" target="_blank"
               ><span class="hidden_help_text">Link zur Seite</span>
                 Landesportal Brandenburg
               </a>
               <hr class="hidesmallscreen"/>
             </li>
             <li>
-              <a class="footerelementlink" href="https://service.brandenburg.de" 
+              <a class="footerelementlink" href="https://service.brandenburg.de" target="_blank"
               ><span class="hidden_help_text">Link zur Seite</span>
                 Serviceportal Brandenburg
               </a>
               <hr class="hidesmallscreen"/>
             </li>
             <li>
-              <a class="footerelementlink" href="https://mik.brandenburg.de" 
+              <a class="footerelementlink" href="https://mik.brandenburg.de" target="_blank"
               ><span class="hidden_help_text">Link zur Seite</span>
                 Ministerium des Innern und für Kommunales
                 Brandenburg

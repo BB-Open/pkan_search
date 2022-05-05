@@ -59,21 +59,21 @@
           <hr/>
           <ul class="nobull">
             <li>
-              <a class="footerelementlink" href="https://brandenburg.de" target="_blank"
+              <a class="footerelementlink" href="https://brandenburg.de" 
               ><span class="hidden_help_text">Link zur Seite</span>
                 Landesportal Brandenburg
               </a>
               <hr class="hidesmallscreen"/>
             </li>
             <li>
-              <a class="footerelementlink" href="https://service.brandenburg.de" target="_blank"
+              <a class="footerelementlink" href="https://service.brandenburg.de" 
               ><span class="hidden_help_text">Link zur Seite</span>
                 Serviceportal Brandenburg
               </a>
               <hr class="hidesmallscreen"/>
             </li>
             <li>
-              <a class="footerelementlink" href="https://mik.brandenburg.de" target="_blank"
+              <a class="footerelementlink" href="https://mik.brandenburg.de" 
               ><span class="hidden_help_text">Link zur Seite</span>
                 Ministerium des Innern und für Kommunales
                 Brandenburg

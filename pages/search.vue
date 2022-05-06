@@ -36,21 +36,6 @@
       title: 'Datenadler: Das OpenDataPortal für Brandenburg: Suche'
     })
 
-    const entityStore = useEntityStore();
-    const router = useRouter();
-
-    watch( () => entityStore.showDeepLinks, (showDeepLinks) => {
-      let currentRoute = router.currentRoute
-      if (showDeepLinks) {
-        router.replace(currentRoute.value.path + '#/?' + entityStore.getParams)
-      } else
-      {
-        router.replace(currentRoute.value.path)
-      }
-    })
-
-
-
 </script>
 
 <style scoped>

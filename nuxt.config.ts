@@ -1,8 +1,8 @@
 import { defineNuxtConfig } from 'nuxt3'
-
+import legacy from '@vitejs/plugin-legacy'
 
 export default defineNuxtConfig({
-    buildModules: ['@pinia/nuxt'],
+    buildModules: ['@pinia/nuxt','@vitejs/plugin-legacy'],
     server: {
         port: 3001,
     },
@@ -15,11 +15,18 @@ export default defineNuxtConfig({
         htmlAttrs: {
             lang: 'de'
         },
-//        title: 'DatenAdler: Das Open-Data-Portal für Brandenburg',
         meta: [
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             { name: 'description', content: 'A vue frontend for pkan' }
         ],
         link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     },
+    vite: {
+        plugins: [
+            legacy({
+                targets: ['ie >= 11'],
+                additionalLegacyPolyfills: ['regenerator-runtime/runtime']
+            })
+        ]
+    }
 })

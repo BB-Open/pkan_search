@@ -55,6 +55,7 @@
     if ((keyEvent.key == "ArrowDown") || (keyEvent.key == "ArrowUp")) {
       return
     }
+
     entityStore.reset_pagination_and_solr_get()
     currentSelectionIndex.value = 0
   }

@@ -33,9 +33,10 @@ export const useEntityStore = defineStore({
         isBlur: false,
         perPageResults: 10,
         pagination_page: 1,
+        showDeepLinks : false,
+        sortOrder: 'score',
         suggestions: [],
         query: '',
-        sortOrder: 'score',
     }),
     actions: {
         get_message_store() {
@@ -73,6 +74,9 @@ export const useEntityStore = defineStore({
             this.reset_pagination();
             this.reset_sortorder();
             console.log('Reset all');
+        },
+        toggleDeepLinks() {
+            this.showDeepLinks = !this.showDeepLinks
         },
         async reset_pagination_and_solr_get() {
             this.reset_pagination();
@@ -183,7 +187,17 @@ export const useEntityStore = defineStore({
         suggestionList: state => state.suggestions.map(
             sug => {
                 return {label: sug.term, count: sug.weight}
-            }),
+            }
+        ),
+        getParams: state => {
+            if (!state.showDeepLinks) {
+                return ''
+            }
+            let params = '';
+            params += "query=" + state.query;
+            params += "&facets=" + JSON.stringify(state.facetsChoices);
+            return params
+        }
     },
 
 });

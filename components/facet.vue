@@ -10,7 +10,8 @@
                                :id="item.val" @keydown.enter.prevent="onClick(item.val)">
                         </div>
                         <div class="label">
-                        <label :for="item.val" :class="item.checked && 'checked'"><span class='name_column'>{{item.val}}</span> <span class='count_column'>[{{item.count}}]</span></label></div>
+                          <label :for="item.val" :class="item.checked && 'checked'"><span class='name_column'>{{item.val}}</span> <span class='count_column'>[{{item.count}}]</span></label>
+                        </div>
                     </div>
                 </li>
             </ul>

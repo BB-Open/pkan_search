@@ -31,7 +31,7 @@
         entityStore.load_query()
     });
 
-    watch(() => [entityStore.state, entityStore.getParams], entityStore.set_deep_link)
+    watch(() => [entityStore.showDeepLinksVal, entityStore.getParams], entityStore.set_deep_link)
 </script>
 
 <style scoped>

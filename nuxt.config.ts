@@ -1,8 +1,8 @@
 import { defineNuxtConfig } from 'nuxt3'
-import legacy from '@vitejs/plugin-legacy'
 
 export default defineNuxtConfig({
-    buildModules: ['@pinia/nuxt','@vitejs/plugin-legacy'],
+    buildModules: ['@pinia/nuxt'
+    ],
     server: {
         port: 3001,
     },
@@ -21,12 +21,5 @@ export default defineNuxtConfig({
         ],
         link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     },
-    vite: {
-        plugins: [
-            legacy({
-                targets: ['ie >= 11'],
-                additionalLegacyPolyfills: ['regenerator-runtime/runtime']
-            })
-        ]
-    }
+
 })

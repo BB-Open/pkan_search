@@ -1,12 +1,12 @@
 <template>
     <div class="result">
-    <Pagination></Pagination>
-    <ul class="result-list" :start='entityStore.offset'>
+    <Pagination element_id="top"></Pagination>
+    <ol class="result-list nobull" :start='entityStore.offset'>
         <li class="result-list-item" v-if="entityStore.entityTotalCount > 0" v-for="item in entityStore.entities" >
             <DataSetSimple :item="item"></DataSetSimple>
         </li>
-    </ul>
-    <Pagination></Pagination>
+    </ol>
+    <Pagination element_id="bottom"></Pagination>
     </div>
 </template>
 

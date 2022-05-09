@@ -7,9 +7,9 @@
                 <SearchResults></SearchResults>
             </div>
             <section class="hidesmallscreen">
-                <deep></deep>
                 <order></order>
                 <facets></facets>
+                <deep></deep>
             </section>
         </div>
     </NuxtLayout>

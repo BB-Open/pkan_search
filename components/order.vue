@@ -1,5 +1,6 @@
 <template>
     <h2 class="hidden_help_text">Sortierung</h2>
+    <h3>Sortieren nach</h3>
     <div class="order">
         <form @submit.prevent="">
             <label aria-label="Wählen Sie die Sortierreihenfolge der Suchergebnisse.">

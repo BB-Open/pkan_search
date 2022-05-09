@@ -49,7 +49,7 @@
             <li>
               <nuxt-link class="footerelementlink" to="/haftung"
               ><span class="hidden_help_text">Link zur Seite</span>
-                Haftungsauschluss
+                Haftungsausschluss
               </nuxt-link>
             </li>
           </ul>

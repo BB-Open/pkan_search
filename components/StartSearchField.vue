@@ -23,7 +23,7 @@
       >
         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none"
-           font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+            font-size="none" style="mix-blend-mode: normal">
           <path d="M0,172v-172h172v172z" fill="none"></path>
           <g fill="#c73c35">
             <path

@@ -21,7 +21,8 @@
   watch( () => entityStore.showDeepLinks, (showDeepLinks) => {
     let currentRoute = router.currentRoute
     if (showDeepLinks) {
-      router.replace(currentRoute.value.path + '#/?' + entityStore.getParams)
+      let newPath = currentRoute.value.path + "#/" + entityStore.getParams
+      router.replace(newPath)
     } else
     {
       router.replace(currentRoute.value.path)

@@ -2,7 +2,7 @@
     <client-only>
         <h2 class="hidden_help_text">Suche konfigurieren</h2>
         <div class="deep">
-            <h3 class="facet_name">Deep Links</h3>
+            <h3 class="facet_name">Suchparameter:</h3>
             <form @submit.prevent="">
                 <div class="parent">
                     <div class="input_checkbox">
@@ -13,7 +13,7 @@
                                @keydown.enter.prevent="entityStore.toggleDeepLinks">
                     </div>
                     <div class="label" @click='entityStore.toggleDeepLinks'><label
-                            :class="entityStore.showDeepLinks && 'checked'"><span class="name_column">Suchlink im Browser anzeigen</span></label>
+                            :class="entityStore.showDeepLinks && 'checked'"><span class="name_column">Suchparameter im Browser anzeigen</span></label>
                     </div>
                 </div>
 

@@ -33,9 +33,10 @@ export const useEntityStore = defineStore({
         isBlur: false,
         perPageResults: 10,
         pagination_page: 1,
+        showDeepLinks : false,
+        sortOrder: 'score',
         suggestions: [],
         query: '',
-        sortOrder: 'score',
     }),
     actions: {
         get_message_store() {
@@ -43,6 +44,63 @@ export const useEntityStore = defineStore({
         },
         get_breadcrumb_store() {
             return useBreadcrumbStore()
+        },
+        get_router(){
+            let router;
+            try {
+                router = useRouter()}
+            catch (e){
+                // Router not avaible on SSR, Deeplink is Client-Only content, but store is called by other stores
+                // catch errors on SSR
+                router = undefined
+            }
+            return router
+        },
+
+        set_deep_link() {
+            let router = this.get_router();
+            if (router !== undefined) {
+                let currentRoute = router.currentRoute;
+                let path = currentRoute.value.path;
+                if (this.showDeepLinks) {
+                    let newPath = currentRoute.value.path + "#/?" + this.getParams;
+                    router.replace(newPath);
+                } else {
+                    router.replace(path)
+                }
+            }
+
+        },
+        load_query(){
+          let router = this.get_router();
+          if (router !== undefined) {
+              let reset = true
+              let query = router.currentRoute.value.query;
+              console.log(router);
+              console.log(query);
+              if ('query' in query) {
+                  this.query = query['query']
+              }
+              if ('facets' in query) {
+                  this.facetsChoices = JSON.parse(query["facets"]);
+                  console.log(this.facets)
+              }
+              if ('sortOrder' in query) {
+                  this.sortOrder = query['sortOrder']
+              }
+              if ('pagination_page' in query) {
+                  this.pagination_page = parseInt(query['pagination_page'])
+                  reset = false
+              }
+              if (query && Object.keys(query).length !== 0) {
+                  this.showDeepLinks = true
+              }
+              if (reset) {
+                  this.reset_pagination_and_solr_get();
+              } else {
+                  this.getSolr()
+              }
+          }
         },
         handle_error() {
             let messageStore = this.get_message_store();
@@ -73,6 +131,9 @@ export const useEntityStore = defineStore({
             this.reset_pagination();
             this.reset_sortorder();
             console.log('Reset all');
+        },
+        toggleDeepLinks() {
+            this.showDeepLinks = !this.showDeepLinks
         },
         async reset_pagination_and_solr_get() {
             this.reset_pagination();
@@ -183,7 +244,20 @@ export const useEntityStore = defineStore({
         suggestionList: state => state.suggestions.map(
             sug => {
                 return {label: sug.term, count: sug.weight}
-            }),
+            }
+        ),
+        getParams: state => {
+            if (!state.showDeepLinks) {
+                return ''
+            }
+            let params = '';
+            params += "query=" + state.query;
+            params += "&facets=" + JSON.stringify(state.facetsChoices);
+            params += "&sortOrder=" + state.sortOrder;
+            params += "&pagination_page=" + state.pagination_page;
+            return params
+        },
+        showDeepLinksVal: state => state.showDeepLinks
     },
 
 });

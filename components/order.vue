@@ -1,7 +1,6 @@
 <template>
+    <h2 class="hidden_help_text">Sortierung</h2>
     <div class="order">
-        <h2 class="hidden_help_text">Sortierung</h2>
-        <h3>Sortieren nach</h3>
         <form @submit.prevent="">
             <label aria-label="Wählen Sie die Sortierreihenfolge der Suchergebnisse.">
                 <select v-model="entityStore.sortOrder" @change="entityStore.reset_pagination_and_solr_get()">

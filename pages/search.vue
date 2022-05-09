@@ -7,11 +7,11 @@
                 <SearchResults></SearchResults>
             </div>
             <section class="hidesmallscreen">
+                <deep></deep>
                 <order></order>
                 <facets></facets>
             </section>
         </div>
-
     </NuxtLayout>
 </template>
 
@@ -20,9 +20,11 @@
     import SearchSuggest from "~/components/SearchSuggest.vue";
     import SearchResults from "~/components/SearchResults.vue"
 
+    import {useEntityStore} from '~/stores/entities'
     import {useMessageStore} from '~/stores/messages'
     import Facets from "~/components/facets.vue";
     import Order from "~/components/order.vue";
+    import Deep from "~/components/deep.vue";
     import {useHead} from "@vueuse/head";
 
     const messageStore = useMessageStore();

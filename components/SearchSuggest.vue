@@ -17,6 +17,13 @@
                type="text"
                autofocus
         />
+        <span class="input_button">
+    <button
+            @click="delete_clicked()"
+            class="button textsearch_button"
+            type="submit" aria-label="Suchtext löschen" title="Löschen">
+      X
+    </button></span>
         <span class="simple-typeahead-count">Treffer: {{entityStore.entityTotalCount}}</span>
         </label>
       <div v-if="is_visible && entityStore.suggestionList.length" class="simple-typeahead-list">
@@ -50,11 +57,18 @@
     setTimeout(() => {searchInput?.value?.focus()}, 10)
   })
 
+  const delete_clicked = () => {
+    entityStore.reset_query()
+    entityStore.reset_pagination_and_solr_get()
+    setTimeout(() => {searchInput?.value?.focus()}, 10)
+  }
+
 
   const onKeyUp = (keyEvent) => {
     if ((keyEvent.key == "ArrowDown") || (keyEvent.key == "ArrowUp")) {
       return
     }
+
     entityStore.reset_pagination_and_solr_get()
     currentSelectionIndex.value = 0
   }
@@ -97,6 +111,20 @@
 </script>
 
 <style scoped>
+  .textsearch_button:hover, .textsearch_button:focus {
+    border: 2px solid #C13B33;
+    background-color: #eeeeee;
+    color: #C13B33;
+  }
+
+  .textsearch_button{
+    padding: 0;
+    margin: 0;
+    height: 30px;
+    width: 30px;
+    border-radius: 2px;
+  }
+
 .simple-typeahead {
   margin-bottom: 0.3rem;
 }

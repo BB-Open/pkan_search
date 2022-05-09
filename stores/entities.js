@@ -45,6 +45,51 @@ export const useEntityStore = defineStore({
         get_breadcrumb_store() {
             return useBreadcrumbStore()
         },
+        get_router(){
+            let router;
+            try {
+                router = useRouter()}
+            catch (e){
+                // Router not avaible on SSR, Deeplink is Client-Only content, but store is called by other stores
+                // catch errors on SSR
+                router = undefined
+            }
+            return router
+        },
+
+        set_deep_link() {
+            let router = this.get_router();
+            if (router !== undefined) {
+                let currentRoute = router.currentRoute;
+                let path = currentRoute.value.path;
+                if (this.showDeepLinks) {
+                    let newPath = currentRoute.value.path + "#/?" + this.getParams;
+                    router.replace(newPath);
+                } else {
+                    router.replace(path)
+                }
+            }
+
+        },
+        load_query(){
+          let router = this.get_router();
+          if (router !== undefined) {
+              let query = router.currentRoute.value.query;
+              console.log(router);
+              console.log(query);
+              if ('query' in query) {
+                  this.query = query['query']
+              }
+              if ('facets' in query) {
+                  this.facetsChoices = JSON.parse(query["facets"]);
+                  console.log(this.facets)
+              }
+              if (query && Object.keys(query).length !== 0) {
+                  this.showDeepLinks = true
+              }
+              this.reset_pagination_and_solr_get();
+          }
+        },
         handle_error() {
             let messageStore = this.get_message_store();
             messageStore.write_assertive(FLASK_UNREACHABLE_MESSAGE);

@@ -19,14 +19,16 @@
 
     const entityStore = useEntityStore();
 
-    onMounted(async () => {
-        await entityStore.reset_pagination_and_solr_get()
-    })
+    // this is done by deep_link
 
-    onServerPrefetch(async () => {
-        await entityStore.getSolr()
-
-    })
+    // onMounted(async () => {
+    //     await entityStore.reset_pagination_and_solr_get()
+    // })
+    //
+    // onServerPrefetch(async () => {
+    //     await entityStore.getSolr()
+    //
+    // })
 
     // Load entity store for SSR
 

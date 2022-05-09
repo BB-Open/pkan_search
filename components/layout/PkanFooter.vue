@@ -88,13 +88,11 @@
       <div >
         <ul class="footer-line-right nobull">
           <li>
-            <nuxt-link to="/accessibility">Barrierefreiheit</nuxt-link>
+            <nuxt-link to="/accessibility">Barrierefreiheit</nuxt-link>|
           </li>
-          |
           <li>
-            <nuxt-link to="/data_protection">Datenschutz</nuxt-link>
+            <nuxt-link to="/data_protection">Datenschutz</nuxt-link>|
           </li>
-          |
           <li>
             <nuxt-link to="/impressum">Impressum</nuxt-link>
           </li>

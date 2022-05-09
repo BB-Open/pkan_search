@@ -1,5 +1,6 @@
 <template>
-  <label class="textsearch">
+  <div class="textsearch">
+  <label class="">
     <span class="hidden_help_text">Geben Sie hier die Suchbegriffe ein, um in den Datensätzen zu suchen. Sie werden automatisch zur Suchseite weiter geleitet, sobald Sie eine Taste betätigen.</span>
     <input
         ref="startInput"
@@ -7,8 +8,8 @@
         v-model="entityStore.query"
         placeholder="In den Datensätzen suchen"
         class="single_line_edit"
-        @keyup="redirect_search">
-    <div class="input_button">
+        @keyup="redirect_search"></label>
+    <span class="input_button">
     <button
             @click="router.push('/search')"
             class="button textsearch_button"
@@ -30,8 +31,7 @@
           </g>
         </g>
       </svg>
-    </button></div>
-  </label>
+    </button></span></div>
 </template>
 
 <script setup lang="ts">

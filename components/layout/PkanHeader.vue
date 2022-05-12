@@ -31,6 +31,15 @@
 </script>
 
 <style scoped>
+  .logo a[href^="https://"]:not([href*="https://datenadler.de"])::after {
+    content: "";
+  }
+
+
+  .logo a[href^="http://"]:not([href*="http://datenadler.de"])::after {
+    content: "";
+  }
+
   .header-line {
     height: 30px;
     line-height: 30px;

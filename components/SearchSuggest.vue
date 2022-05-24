@@ -2,11 +2,11 @@
     <div class="textsearch">
         <div class="simple-typeahead">
             <label class="simple-typeahead-input-block">
-                <div class="hidden_help_text">Geben Sie hier die Suchbegriffe ein, um in den Datensätzen zu suchen. Die
+                <span class="hidden_help_text">Geben Sie hier die Suchbegriffe ein, um in den Datensätzen zu suchen. Die
                     Ergebnisse werden dynamisch geladen.
                     Mit den Hoch-und Runter-Pfeiltasten können Sie zwischen den Vorschlägen navigieren und mit Enter
                     übernehmen. Mit der Tab-Taste verlassen Sie das Suchfeld.
-                </div>
+                </span>
                 <input class="simple-typeahead-input"
                        v-model="entityStore.query"
                        @keyup="onKeyUp"

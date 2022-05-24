@@ -12,7 +12,7 @@
                                @click='entityStore.toggleDeepLinks'
                                @keydown.enter.prevent="entityStore.toggleDeepLinks">
                     </div>
-                    <div class="label" @click='entityStore.toggleDeepLinks'><label
+                    <div class="label" @click='entityStore.toggleDeepLinks' for="Suchlink anzeigen"><label
                             :class="entityStore.showDeepLinks && 'checked'"><span class="name_column">Suchparameter im Browser anzeigen</span></label>
                     </div>
                 </div>

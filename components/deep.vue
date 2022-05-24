@@ -8,11 +8,12 @@
                     <div class="input_checkbox">
                         <input type='checkbox'
                                name='Suchlink anzeigen'
+                               id='deep'
                                :checked='entityStore.showDeepLinks'
                                @click='entityStore.toggleDeepLinks'
                                @keydown.enter.prevent="entityStore.toggleDeepLinks">
                     </div>
-                    <div class="label" @click='entityStore.toggleDeepLinks' for="Suchlink anzeigen"><label
+                    <div class="label" @click='entityStore.toggleDeepLinks' ><label for="deep"
                             :class="entityStore.showDeepLinks && 'checked'"><span class="name_column">Suchparameter im Browser anzeigen</span></label>
                     </div>
                 </div>

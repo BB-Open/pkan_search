@@ -3,7 +3,8 @@ import {defineStore} from 'pinia';
 import {useMessageStore} from '~/stores/messages.js'
 import {useBreadcrumbStore} from '~/stores/breadcrumb.js'
 
-import {PLONE_UNREACHABLE_MESSAGE, FLASK_URL_PLONE} from '/etc/pkan/nuxt_config'
+import {FLASK_URL_PLONE, PLONE_UNREACHABLE_MESSAGE} from '/etc/pkan/nuxt_config'
+import {is_external_link} from "~/stores/utils";
 
 export const usePloneStore = defineStore({
     id: 'plone-store',
@@ -25,18 +26,42 @@ export const usePloneStore = defineStore({
           messageStore.write_assertive(PLONE_UNREACHABLE_MESSAGE);
           messageStore.write_error(PLONE_UNREACHABLE_MESSAGE);
         },
-        removeSelfClosingTags(html) {
+        improveAccessibility(html) {
             // this is ugly but we need it to clean plone html
+
             if (html === undefined) {
                 return ''
             }
+            // aria-label to external a tags
+            let parser = undefined
+            try {
+                parser = new DOMParser();
+            } catch {
+                console.log('No Parser available')
+            }
+            console.log(html)
+            if (parser !== undefined){
+                let htmlDoc = parser.parseFromString(html, 'text/html');
+                let elements = htmlDoc.getElementsByTagName( 'a' )
+                Array.from(elements).forEach((a_tag) => {
+                    let href = a_tag.href
+                    if (is_external_link(href)){
+                        a_tag.innerHTML += '<span class="external_link" aria-label="Externer Link"></span>'
+                    }
+                })
+                html = htmlDoc.body.innerHTML
+                html = html.replaceAll('&nbsp;', ' ')
+            }
+            // remove self closing tags
             var split = html.split("/>");
             var newHtml = "";
             for (var i = 0; i < split.length - 1; i++) {
                 var edsplit = split[i].split("<");
                 newHtml += split[i] + "></" + edsplit[edsplit.length - 1].split(" ")[0] + ">";
             }
-            return newHtml + split[split.length - 1];
+            newHtml = newHtml + split[split.length - 1];
+            console.log(newHtml)
+            return newHtml
         },
         async QueryData(type, tag, sort_on, uid, sort_order, max_number) {
             let data = {};

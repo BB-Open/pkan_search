@@ -114,6 +114,10 @@
             padding-left: 5px;
         }
 
+        .box {
+          width: 100%;
+        }
+
     }
 
 

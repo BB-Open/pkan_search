@@ -116,4 +116,11 @@
         color: #fff;
     }
 
+    @media (max-width: 640px) {
+
+      .box {
+        width: 100%;
+      }
+    }
+
 </style>

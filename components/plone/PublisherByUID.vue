@@ -14,8 +14,10 @@
                             :src="ploneStore.UID(props.uid).logo.download"
                             :alt="ploneStore.UID(props.uid).title + ' Logo'"/></div>
                 </div>
-                <div v-html="ploneStore.removeSelfClosingTags(ploneStore.UID(props.uid).text)"
-                     v-if="ploneStore.UID(props.uid).text" class="plone_content"></div>
+              <client-only>
+
+              <div v-html="ploneStore.improveAccessibility(ploneStore.UID(props.uid).text)"
+                   v-if="ploneStore.UID(props.uid).text" class="plone_content"></div></client-only>
 
             </div>
             <button class="link" @click="onClick(ploneStore.UID(props.uid).foaf_name)">

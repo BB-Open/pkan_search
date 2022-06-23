@@ -1,7 +1,9 @@
 <template>
     <h1 v-if="ploneStore.PortalTypeSubject(props.portal_type, props.tag)">{{ ploneStore.PortalTypeSubject(props.portal_type, props.tag).title }}</h1>
     <div class="description" v-if="ploneStore.PortalTypeSubject(props.portal_type, props.tag) && ploneStore.PortalTypeSubject(props.portal_type, props.tag).description">{{ ploneStore.PortalTypeSubject(props.portal_type, props.tag).description}}</div>
-    <div v-html="ploneStore.PortalTypeSubject(props.portal_type, props.tag) && ploneStore.removeSelfClosingTags(ploneStore.PortalTypeSubject(props.portal_type, props.tag).text.data)"></div>
+  <client-only>
+  <div v-html="ploneStore.PortalTypeSubject(props.portal_type, props.tag) && ploneStore.improveAccessibility(ploneStore.PortalTypeSubject(props.portal_type, props.tag).text.data)"></div>
+  </client-only>
 </template>
 
 <script setup lang="ts">

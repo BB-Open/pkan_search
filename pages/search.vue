@@ -6,7 +6,7 @@
             <div class="content">
                 <SearchResults></SearchResults>
             </div>
-            <section class="hidesmallscreen">
+            <section class="">
                 <order></order>
                 <facets></facets>
                 <deep></deep>
@@ -67,8 +67,22 @@
     }
 
     @media (max-width: 640px) {
+
+        .search {
+          display: block;
+        }
+
         .content {
             width: 100%;
+        }
+
+        .search {
+          width: 100%;
+        }
+
+        section {
+          width: 100%;
+          padding-left: 0;
         }
     }
 

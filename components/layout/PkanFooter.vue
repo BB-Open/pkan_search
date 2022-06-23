@@ -12,18 +12,21 @@
               <a class="footerelementlink" href="https://www.dcat-ap.de/" target="_blank"><span
                 class="hidden_help_text">Metadatenmodell </span>
                 DCAT-AP.de
+                <span class="external_link" aria-label="Externer Link"></span>
               </a>
               <hr class="hidesmallscreen"/>
             </li>
             <li>
               <a class="footerelementlink" href="https://www.govdata.de/" target="_blank"><span class="hidden_help_text">Bund-Länder-Portal </span>
                 GovData.de
+                <span class="external_link" aria-label="Externer Link"></span>
               </a>
               <hr class="hidesmallscreen"/>
             </li>
             <li>
               <a class="footerelementlink" href="https://data.europa.eu/de" target="_blank"><span class="hidden_help_text">Open-Data-Portal für Europa: </span>
                 EuropeanDataportal.eu
+                <span class="external_link" aria-label="Externer Link"></span>
               </a>
             </li>
           </ul>
@@ -62,6 +65,7 @@
               <a class="footerelementlink" href="https://brandenburg.de" target="_blank"
               ><span class="hidden_help_text">Link zur Seite</span>
                 Landesportal Brandenburg
+                <span class="external_link" aria-label="Externer Link"></span>
               </a>
               <hr class="hidesmallscreen"/>
             </li>
@@ -69,6 +73,7 @@
               <a class="footerelementlink" href="https://service.brandenburg.de" target="_blank"
               ><span class="hidden_help_text">Link zur Seite</span>
                 Serviceportal Brandenburg
+                <span class="external_link" aria-label="Externer Link"></span>
               </a>
               <hr class="hidesmallscreen"/>
             </li>
@@ -77,6 +82,7 @@
               ><span class="hidden_help_text">Link zur Seite</span>
                 Ministerium des Innern und für Kommunales
                 Brandenburg
+                <span class="external_link" aria-label="Externer Link"></span>
               </a>
             </li>
           </ul>

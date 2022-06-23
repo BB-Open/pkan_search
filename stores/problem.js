@@ -1,6 +1,5 @@
 import {defineStore} from 'pinia';
 import {useMessageStore} from '~/stores/messages.js'
-import axios from 'axios';
 
 import {MY_URL, FLASK_UNREACHABLE_MESSAGE, FLASK_URL_MESSAGE} from '/etc/pkan/nuxt_config'
 

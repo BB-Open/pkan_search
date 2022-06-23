@@ -2,7 +2,7 @@
     <NuxtLayout name="search">
         <StartSearchField></StartSearchField>
         <ContentBySubject portal_type="Document" tag="startseite"></ContentBySubject>
-        <div class="hidesmallscreen">
+        <div class="">
             <h2>Kategorien:</h2>
             <StartFacets></StartFacets>
         </div>

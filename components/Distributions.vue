@@ -3,12 +3,12 @@
       <li class="distribution_item" v-for="dist in distributions">
         <a v-if="dist.dcat_downloadURL" :href="dist.dcat_downloadURL">
           <span v-if="dist.dct_title" >{{dist.dct_title}}</span> <span v-if="dist.dct_format">[{{dist.dct_format}}]</span>
-          <span v-if="is_external_link(dist.dcat_downloadURL)" class="external_link" aria-label="Externer Link"></span>
+          <em v-if="is_external_link(dist.dcat_downloadURL)" class="external_link" aria-label="Externer Link"></em>
         </a>
         <a v-else v-if="dist.dcat_accessURL" :href="dist.dcat_accessURL">
           <span v-if="dist.dct_title" >{{dist.dct_title}}</span>
           <span v-if="dist.dct_format">[{{dist.dct_format}}]</span>
-          <span v-if="is_external_link(dist.dcat_accessURL)" class="external_link" aria-label="Externer Link"></span>
+          <em v-if="is_external_link(dist.dcat_accessURL)" class="external_link" aria-label="Externer Link"></em>
         </a>
       </li>
     </ul>

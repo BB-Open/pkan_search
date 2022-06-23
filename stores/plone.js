@@ -46,7 +46,7 @@ export const usePloneStore = defineStore({
                 Array.from(elements).forEach((a_tag) => {
                     let href = a_tag.href
                     if (is_external_link(href)){
-                        a_tag.innerHTML += '<em class="external_link" aria-label="Externer Link"></em>'
+                        a_tag.innerHTML += '<em class="external_link" title="Externer Link"></em>'
                     }
                 })
                 html = htmlDoc.body.innerHTML

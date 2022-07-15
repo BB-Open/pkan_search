@@ -12,10 +12,10 @@
   <div class="contact_email" v-if="contactPoint.vcard_email">{{contactPoint.vcard_email}}</div>
   <div class="contact_email" v-if="contactPoint.vcard_hasEmail">{{contactPoint.vcard_hasEmail}}</div>
   <div class="contact_voice" v-if="contactPoint.vcard_voice">Tel. {{contactPoint.vcard_voice}}</div>
-    <div class="contact_voice" v-if="contactPoint.hasTelephone">Tel. {{contactPoint.hasTelephone}}</div>
+    <div class="contact_voice" v-if="contactPoint.vcard_hasTelephone">Tel. {{contactPoint.vcard_hasTelephone}}</div>
   <div class="contact_fax" v-if="contactPoint.vcard_fax">Fax {{contactPoint.vcard_fax}}</div>
     <div class="contact_fax" v-if="contactPoint.vcard_Fax">Fax {{contactPoint.vcard_Fax}}</div>
-    <div class="contact_form" v-if="contactPoint.hasURL">Kontaktformular: {{contactPoint.hasURL}}</div>
+    <div class="contact_form" v-if="contactPoint.vcard_hasURL">Kontaktformular: {{contactPoint.vcard_hasURL}}</div>
   </div>
 </template>
 

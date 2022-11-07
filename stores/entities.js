@@ -1,7 +1,13 @@
 import {defineStore} from 'pinia';
 import {useMessageStore} from '~/stores/messages.js'
 import {useBreadcrumbStore} from '~/stores/breadcrumb.js'
-import {FLASK_UNREACHABLE_MESSAGE, SOLR_SUGGEST_URI, SOLR_SELECT_URI, SOLR_PICK_URI} from "/etc/pkan/nuxt_config";
+import {
+    FLASK_UNREACHABLE_MESSAGE,
+    SOLR_SUGGEST_URI,
+    SOLR_SELECT_URI,
+    SOLR_PICK_URI,
+    SOLR_ROULETTE_URI
+} from "/etc/pkan/nuxt_config";
 
 const facetsChoicesDefault = {
     'dct_publisher_facet': {},
@@ -33,10 +39,11 @@ export const useEntityStore = defineStore({
         isBlur: false,
         perPageResults: 10,
         pagination_page: 1,
-        showDeepLinks : false,
+        showDeepLinks: false,
         sortOrder: 'score',
         suggestions: [],
         query: '',
+        solr_roulette: undefined,
     }),
     actions: {
         get_message_store() {
@@ -45,18 +52,17 @@ export const useEntityStore = defineStore({
         get_breadcrumb_store() {
             return useBreadcrumbStore()
         },
-        get_router(){
+        get_router() {
             let router;
             try {
-                router = useRouter()}
-            catch (e){
+                router = useRouter()
+            } catch (e) {
                 // Router not avaible on SSR, Deeplink is Client-Only content, but store is called by other stores
                 // catch errors on SSR
                 router = undefined
             }
             return router
         },
-
         set_deep_link() {
             let router = this.get_router();
             if (router !== undefined) {
@@ -71,36 +77,36 @@ export const useEntityStore = defineStore({
             }
 
         },
-        load_query(){
-          let router = this.get_router();
-          if (router !== undefined) {
-              let reset = true
-              let query = router.currentRoute.value.query;
-              console.log(router);
-              console.log(query);
-              if ('query' in query) {
-                  this.query = query['query']
-              }
-              if ('facets' in query) {
-                  this.facetsChoices = JSON.parse(query["facets"]);
-                  console.log(this.facets)
-              }
-              if ('sortOrder' in query) {
-                  this.sortOrder = query['sortOrder']
-              }
-              if ('pagination_page' in query) {
-                  this.pagination_page = parseInt(query['pagination_page'])
-                  reset = false
-              }
-              if (query && Object.keys(query).length !== 0) {
-                  this.showDeepLinks = true
-              }
-              if (reset) {
-                  this.reset_pagination_and_solr_get();
-              } else {
-                  this.getSolr()
-              }
-          }
+        load_query() {
+            let router = this.get_router();
+            if (router !== undefined) {
+                let reset = true
+                let query = router.currentRoute.value.query;
+                console.log(router);
+                console.log(query);
+                if ('query' in query) {
+                    this.query = query['query']
+                }
+                if ('facets' in query) {
+                    this.facetsChoices = JSON.parse(query["facets"]);
+                    console.log(this.facets)
+                }
+                if ('sortOrder' in query) {
+                    this.sortOrder = query['sortOrder']
+                }
+                if ('pagination_page' in query) {
+                    this.pagination_page = parseInt(query['pagination_page'])
+                    reset = false
+                }
+                if (query && Object.keys(query).length !== 0) {
+                    this.showDeepLinks = true
+                }
+                if (reset) {
+                    this.reset_pagination_and_solr_get();
+                } else {
+                    this.getSolr()
+                }
+            }
         },
         handle_error() {
             let messageStore = this.get_message_store();
@@ -226,7 +232,17 @@ export const useEntityStore = defineStore({
             messageStore.write_polite(message);
             messageStore.write_error('');
             messageStore.write_assertive('');
-        }
+        },
+        async getSolrRoulette() {
+            let data = {}
+            let roulette_res = await this.query_solr(SOLR_ROULETTE_URI, data)
+            this.solr_roulette = roulette_res.response.docs[0];
+            let message = 'Neuer Roulette-Eintrag wurde geladen.';
+            let messageStore = this.get_message_store();
+            messageStore.write_polite(message);
+            messageStore.write_error('');
+            messageStore.write_assertive('');
+        },
     },
 
     getters: {
@@ -257,7 +273,8 @@ export const useEntityStore = defineStore({
             params += "&pagination_page=" + state.pagination_page;
             return params
         },
-        showDeepLinksVal: state => state.showDeepLinks
+        showDeepLinksVal: state => state.showDeepLinks,
+        roulette: state => state.solr_roulette,
     },
 
 });

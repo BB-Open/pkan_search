@@ -27,7 +27,7 @@
           </Datasets>
         </div>
 
-        <div class="header" v-if="entityStore.dataset.dcat_servesDataset">
+        <div class="header" v-if="entityStore.dataset.dct_publisher">
           <Publisher v-if='entityStore.dataset.dct_publisher' :publisher="entityStore.dataset.dct_publisher">
           </Publisher>
         </div>

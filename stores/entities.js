@@ -243,8 +243,7 @@ export const useEntityStore = defineStore({
             this.solr_roulette = roulette_res.response.docs[0];
             console.log(roulette_res)
             let chars_title = 100
-            let lines_desc = 6
-            let chars_desc = 125 * lines_desc
+            let chars_desc = 250
 
             if (this.solr_roulette.dct_title.length > chars_title) {
                 this.solr_roulette.dct_title = this.solr_roulette.dct_title.slice(0, chars_title) + '...'

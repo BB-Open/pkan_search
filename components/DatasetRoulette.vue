@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Open Data Roulette (zufällig ausgewählter Datensatz)</h2>
+    <h2>Open-Data-Roulette (zufällig ausgewählter Datensatz)</h2>
     <div class='dataset' v-if="entityStore.roulette">
       <h3 class="dataset_title">{{ entityStore.roulette.dct_title }}</h3>
       <div>

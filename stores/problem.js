@@ -29,23 +29,35 @@ export const useProblemStore = defineStore({
         set_route(message) {
             this.route = message
         },
-        async send_message() {
-            let messageStore = this.get_message_store();
-            let dataset_res = await axios({
-                method: 'POST',
-                url: FLASK_URL_MESSAGE,
-                data: {
-                    message: this.message,
-                    link: MY_URL + this.route
-                },
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    'Accept': 'application/json',
-                }}
-            ).catch(function (error) {
+        async query_flask(url, data) {
+            let res;
+            try {
+                res = await useFetch(url, {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        "Access-Control-Allow-Origin": "*",
+                        'Accept': 'application/json',
+                    }
+                })
+            } catch (error) {
                 console.log('Error', error);
                 this.handle_error()
-            }.bind(this));
+            }
+            try {
+                return JSON.parse(res.data.value)
+            } catch (error) {
+                console.log('Error', error);
+                this.handle_error()
+            }
+        },
+
+        async send_message() {
+            let messageStore = this.get_message_store();
+            let dataset_res = await this.query_flask(FLASK_URL_MESSAGE,  {
+                    message: this.message,
+                    link: MY_URL + this.route
+                })
 
             this.message = '';
             this.info = 'Ihre Nachricht wurde gesendet.';

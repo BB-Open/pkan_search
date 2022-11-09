@@ -364,6 +364,10 @@ input {
   font-weight: bold;
 }
 
+.portalMessage.info{
+  background-color: rgba(153, 204, 102, 0.5);
+}
+
 select {
   border-color: black;
   background-color: #eeeeee;

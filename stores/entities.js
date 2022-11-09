@@ -44,6 +44,7 @@ export const useEntityStore = defineStore({
         suggestions: [],
         query: '',
         solr_roulette: undefined,
+        timer: undefined,
     }),
     actions: {
         get_message_store() {
@@ -234,15 +235,40 @@ export const useEntityStore = defineStore({
             messageStore.write_assertive('');
         },
         async getSolrRoulette() {
-            let data = {}
+            // generate random int on client to avoid browser request caching
+            let data = {
+                'random_int': Math.random() * 10000
+            }
             let roulette_res = await this.query_solr(SOLR_ROULETTE_URI, data)
             this.solr_roulette = roulette_res.response.docs[0];
+            console.log(roulette_res)
+            let chars_title = 100
+            let lines_desc = 6
+            let chars_desc = 125 * lines_desc
+
+            if (this.solr_roulette.dct_title.length > chars_title) {
+                this.solr_roulette.dct_title = this.solr_roulette.dct_title.slice(0, chars_title) + '...'
+            }
+
+            if (this.solr_roulette.dct_description[0].length > chars_desc) {
+                this.solr_roulette.dct_description[0] = this.solr_roulette.dct_description[0].slice(0, chars_desc) + '...'
+            }
             let message = 'Neuer Roulette-Eintrag wurde geladen.';
             let messageStore = this.get_message_store();
             messageStore.write_polite(message);
             messageStore.write_error('');
             messageStore.write_assertive('');
+            console.log(this.solr_roulette.dct_title)
         },
+        setUpTimer() {
+            let seconds = 30
+            this.timer = setInterval(() => {
+                this.getSolrRoulette()
+            }, seconds * 1000)
+        },
+        destroyTimer() {
+            clearInterval(this.timer)
+        }
     },
 
     getters: {

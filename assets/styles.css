@@ -333,6 +333,7 @@ a:hover, a:active, a:focus {
 
 label {
   font-size: 1rem;
+  word-break: break-word;
 }
 
 input {

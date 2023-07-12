@@ -209,7 +209,9 @@ export const useEntityStore = defineStore({
             if (suggest_res === undefined) {
 
             } else {
-                if (suggest_res.suggest.mySuggester[this.query].numFound > 0) {
+                if (suggest_res.suggest.mySuggester[this.query] === undefined){
+                    console.log('Response from old query')
+                } else if (suggest_res.suggest.mySuggester[this.query].numFound > 0) {
                     this.suggestions = suggest_res.suggest.mySuggester[this.query].suggestions
                 } else {
                     this.suggestions = []

@@ -565,12 +565,26 @@ progress[value] {
   appearance: none;
 }
 
+progress {
+  background: #C13B33;
+  border: #161616 1px solid;
+}
+
 progress[value]::-webkit-progress-bar {
   background-color: #C13B33;
   border: #161616 1px solid;
 }
 
+:indeterminate::-moz-progress-bar {
+  background-color: #C13B33;
+  border: #161616 1px solid;
+}
+
 progress[value]::-webkit-progress-value {
+  background-color: white;
+}
+
+::-moz-progress-bar {
   background-color: white;
 }
 

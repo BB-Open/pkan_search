@@ -45,6 +45,8 @@ export const useEntityStore = defineStore({
         query: '',
         solr_roulette: undefined,
         timer: undefined,
+        timer_active: false,
+        timer_time_left: 0,
     }),
     actions: {
         get_message_store() {
@@ -262,14 +264,26 @@ export const useEntityStore = defineStore({
             console.log(this.solr_roulette.dct_title)
         },
         setUpTimer() {
-            let seconds = 30
+            let messageStore = this.get_message_store();
+            messageStore.write_polite("Das Open-Data-Roulette wurde gestartet.")
+            this.timer_time_left = 30
+            this.getSolrRoulette()
             this.timer = setInterval(() => {
-                this.getSolrRoulette()
-            }, seconds * 1000)
+                this.timer_time_left = this.timer_time_left - 1
+                if (this.timer_time_left === 0){
+                    this.getSolrRoulette()
+                    this.timer_time_left = 30
+                }
+            }, 1000)
+            this.timer_active = true
         },
         destroyTimer() {
+            let messageStore = this.get_message_store();
+            messageStore.write_polite("Das Open-Data-Roulette wurde pausiert.")
             clearInterval(this.timer)
+            this.timer_active = false
         }
+
     },
 
     getters: {
@@ -302,6 +316,8 @@ export const useEntityStore = defineStore({
         },
         showDeepLinksVal: state => state.showDeepLinks,
         roulette: state => state.solr_roulette,
+        TimerActive: state => state.timer_active,
+        TimerTimeLeft: state => state.timer_time_left,
     },
 
 });

@@ -3,6 +3,9 @@ import { defineNuxtConfig } from 'nuxt3'
 export default defineNuxtConfig({
     buildModules: ['@pinia/nuxt'
     ],
+    devServer: {
+        port: 3001
+    },
     server: {
         port: 3001,
     },

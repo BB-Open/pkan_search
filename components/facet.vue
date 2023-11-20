@@ -16,16 +16,23 @@
                 </li>
             </ul>
         </form>
+      <div v-if="entries_length > DEFAULT_DISPLAY_AMOUNT_FACET">
+        <button @click="displayAll=!displayAll"><span v-if="!displayAll">Mehr</span><span v-else>Weniger</span></button>
+      </div>
     </div>
 </template>
 
 <script setup lang="ts">
 
-    import {useEntityStore} from '~/stores/entities'
-    import {computed, ref, nextTick} from "vue";
+import {useEntityStore} from '~/stores/entities'
+import {computed, nextTick, ref} from "vue";
+import {DEFAULT_DISPLAY_AMOUNT_FACET} from '/etc/pkan/nuxt_config'
 
-    const entityStore = useEntityStore();
+
+const entityStore = useEntityStore();
     const checkboxForm = ref();
+const displayAll = ref(false)
+const entries_length = ref(0)
 
     const props = defineProps({
         facet: {type: Object, required: true},
@@ -45,10 +52,14 @@
                 if (key in res) {
                     res[key].checked = true
                 } else {
-                    res[key] = {val: key, checked: true, count: 0}
+                  res[key] = {val: key, checked: true, count: 0}
                 }
             })
         }
+      entries_length.value = Object.keys(res).length
+      if (!displayAll.value) {
+        return Object.fromEntries(Object.entries(res).slice(0, DEFAULT_DISPLAY_AMOUNT_FACET))
+      }
         return res
     })
 

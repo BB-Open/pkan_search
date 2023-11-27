@@ -87,6 +87,7 @@
             </li>
           </ul>
         </div>
+        <div class="footerelement"><DownloadAll></DownloadAll></div>
       </div>
     </div>
     <div class="footer-line">

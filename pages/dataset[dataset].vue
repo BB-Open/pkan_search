@@ -44,6 +44,9 @@
         <div class="header">
           <RightsStatement v-if="entityStore.dataset.dct_rightsstatement" :statement="entityStore.dataset.dct_rightsstatement[0]"></RightsStatement>
         </div>
+        <div class="header">
+          <DownloadOne></DownloadOne>
+        </div>
       </div>
     </NuxtLayout>
 </template>
@@ -58,6 +61,7 @@
     import License from "~/components/License.vue";
     import RightsStatement from "~/components/RightsStatement.vue";
     import {useHead} from "@vueuse/head";
+    import DownloadOne from "~/components/download/DownloadOne.vue";
 
     const entityStore = useEntityStore()
     const route = useRoute()

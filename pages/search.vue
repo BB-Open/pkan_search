@@ -2,8 +2,10 @@
     <NuxtLayout name="search">
         <h1>Suche</h1>
         <SearchSuggest></SearchSuggest>
-        <div class="search">
+
+      <div class="search">
             <div class="content">
+              <DownloadSearch></DownloadSearch>
                 <SearchResults></SearchResults>
             </div>
             <section class="">
@@ -17,17 +19,16 @@
 
 
 <script setup lang="ts">
-    import SearchSuggest from "~/components/SearchSuggest.vue";
-    import SearchResults from "~/components/SearchResults.vue"
+import SearchSuggest from "~/components/SearchSuggest.vue";
+import SearchResults from "~/components/SearchResults.vue"
+import {useMessageStore} from '~/stores/messages'
+import Facets from "~/components/facets.vue";
+import Order from "~/components/order.vue";
+import Deep from "~/components/deep.vue";
+import {useHead} from "@vueuse/head";
+import DownloadSearch from "~/components/download/DownloadSearch.vue";
 
-    import {useEntityStore} from '~/stores/entities'
-    import {useMessageStore} from '~/stores/messages'
-    import Facets from "~/components/facets.vue";
-    import Order from "~/components/order.vue";
-    import Deep from "~/components/deep.vue";
-    import {useHead} from "@vueuse/head";
-
-    const messageStore = useMessageStore();
+const messageStore = useMessageStore();
     messageStore.write_polite('Die Suchseite für das Open-Data-Portal Brandenburg wurde geladen. Inhalte werden mit jeder Eingabe neu geladen.');
     messageStore.write_assertive('');
     messageStore.write_error('');

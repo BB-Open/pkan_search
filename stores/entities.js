@@ -72,7 +72,7 @@ export const useEntityStore = defineStore({
                 let currentRoute = router.currentRoute;
                 let path = currentRoute.value.path;
                 if (this.showDeepLinks) {
-                    let newPath = currentRoute.value.path + "#/?" + this.getParams;
+                    let newPath = currentRoute.value.path + "#/?" + this.DeepLinkParams;
                     router.replace(newPath);
                 } else {
                     router.replace(path)
@@ -303,10 +303,13 @@ export const useEntityStore = defineStore({
                 return {label: sug.term, count: sug.weight}
             }
         ),
-        getParams: state => {
+        DeepLinkParams: state => {
             if (!state.showDeepLinks) {
                 return ''
             }
+            return state.SearchParams
+        },
+        SearchParams: state => {
             let params = '';
             params += "query=" + state.query;
             params += "&facets=" + JSON.stringify(state.facetsChoices);

@@ -17,7 +17,7 @@
             </ul>
         </form>
       <div v-if="entries_length > DEFAULT_DISPLAY_AMOUNT_FACET">
-        <button @click="displayAll=!displayAll"><span v-if="!displayAll">Mehr</span><span v-else>Weniger</span></button>
+        <button @click="displayAll=!displayAll" class="facet_button"><span v-if="!displayAll">weiter &gt;&gt;</span><span v-else>weniger &lt;&lt;</span></button>
       </div>
     </div>
 </template>
@@ -139,6 +139,18 @@ const entries_length = ref(0)
     ul {
       margin-top: 0;  /* important for vertical alignment */
       margin-bottom: 0; /* important for vertical alignment */
+    }
+
+    .facet_button {
+      font-size: 0.8rem;
+      border-radius: 0;
+      border: 1px solid #C13B33;
+      padding: 2px;
+    }
+
+    .facet_button:hover, .facet_button:focus {
+      background: white;
+      color: #C13B33;
     }
 
 </style>

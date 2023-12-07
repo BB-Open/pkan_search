@@ -3,7 +3,7 @@
       <li class="distribution_item" v-for="dist in distributions">
         <p>Medientyp oder Erweiterung: {{dist.dct_format}}<br/>{{dist.dct_title}}</p>
         <p>
-          <span v-if="dist.dct_license">Lizens: {{dist.dct_license}}</span><span v-else>Lizens: Keine Lizens</span><br/>
+          <span v-if="dist.dct_license">Lizenz: {{dist.dct_license}}</span><span v-else>Lizenz: Keine Lizenz</span><br/>
           Download URL: <a v-if="dist.dcat_downloadURL" :href="dist.dcat_downloadURL">
           <span v-if="dist.dct_title" >{{dist.dct_title}}</span> <span v-if="dist.dct_format">[{{dist.dct_format}}]</span>
           <em v-if="is_external_link(dist.dcat_downloadURL)" class="external_link" title="Externer Link"></em>

@@ -10,7 +10,7 @@
       bestimmten Informationen genannt.”</p>
     <p>Quelle: <a href="https://data.europa.eu/sites/default/files/d2.1.2_training_module_1.4_introduction_to_metadata_
 management_de_edp.pdf">https://data.europa.eu/sites/default/files/d2.1.2_training_module_1.4_introduction_to_metadata_
-      management_de_edp.pdf</a></p>
+      management_de_edp.pdf <em class="external_link" title="Externer Link"></em></a></p>
     <DownloadAll></DownloadAll>
   </NuxtLayout>
 </template>

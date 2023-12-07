@@ -13,7 +13,8 @@ export const useBreadcrumbStore = defineStore({
             '/blog': 'Aktuelles',
             '/problem': 'Fehler melden',
             '/search': 'Suche',
-            '/publisher': 'Datenbereitsteller'
+            '/publisher': 'Datenbereitsteller',
+            '/metadata': 'Metadaten'
         },
         elements: ['/'],
     }),

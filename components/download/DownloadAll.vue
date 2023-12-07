@@ -1,9 +1,9 @@
 <template>
-  <h3>Metadaten Download:</h3>
-  <ul>
-    <li>RDF/XML exportieren: <a :href="DOWNLOAD_ALL">Metadaten herunterladen</a></li>
-    <li>RDF/JSON exportieren: <a :href="DOWNLOAD_ALL + '?format=rdf/json'">Metadaten herunterladen</a></li>
-    <li>RDF/TTL exportieren: <a :href="DOWNLOAD_ALL + '?format=rdf/ttl'">Metadaten herunterladen</a></li>
+  <p>Links zu den Metadaten in folgenden Formaten:</p>
+  <ul class="nobull">
+    <li><a :href="DOWNLOAD_ALL">RDF/XML exportieren</a></li>
+    <li><a :href="DOWNLOAD_ALL + '?format=rdf/json'">RDF/JSON exportieren</a></li>
+    <li><a :href="DOWNLOAD_ALL + '?format=rdf/ttl'">RDF/TTL exportieren</a></li>
   </ul>
 </template>
 

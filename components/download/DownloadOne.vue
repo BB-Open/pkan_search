@@ -1,9 +1,9 @@
 <template>
-  <h3>Metadaten Download:</h3>
-  <ul>
-    <li>RDF/XML exportieren: <a :href="DOWNLOAD_ONE + '?id=' + encodeURIComponent(entityStore.dataset_uri)">Metadaten herunterladen</a></li>
-    <li>RDF/JSON exportieren: <a :href="DOWNLOAD_ONE + '?format=rdf/json&id=' + encodeURIComponent(entityStore.dataset_uri)">Metadaten herunterladen</a></li>
-    <li>RDF/TTL exportieren: <a :href="DOWNLOAD_ONE + '?format=rdf/ttl&id=' + encodeURIComponent(entityStore.dataset_uri)">Metadaten herunterladen</a></li>
+  <p class="metadata">Links zu den Metadaten in folgenden Formaten:</p>
+  <ul class="nobull metadata">
+    <li><a :href="DOWNLOAD_ONE + '?id=' + encodeURIComponent(entityStore.dataset_uri)">RDF/XML exportieren</a></li>
+    <li><a :href="DOWNLOAD_ONE + '?format=rdf/json&id=' + encodeURIComponent(entityStore.dataset_uri)">RDF/JSON exportieren</a></li>
+    <li><a :href="DOWNLOAD_ONE + '?format=rdf/ttl&id=' + encodeURIComponent(entityStore.dataset_uri)">RDF/TTL exportieren</a></li>
   </ul>
 </template>
 
@@ -18,5 +18,10 @@ const entityStore = useEntityStore()
 
 
 <style scoped>
+  .metadata {
+    margin-top: unset;
+    padding-top: unset;
+    margin-bottom: unset;
+  }
 
 </style>

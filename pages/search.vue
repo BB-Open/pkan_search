@@ -5,7 +5,6 @@
 
       <div class="search">
             <div class="content">
-              <DownloadSearch></DownloadSearch>
                 <SearchResults></SearchResults>
             </div>
             <section class="">

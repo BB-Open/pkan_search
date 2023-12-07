@@ -72,7 +72,7 @@ onBeforeUnmount(() => {
 }
 
 .controll_button {
-  padding: 5px;
+  padding: 0px;
   border: unset;
 }
 
@@ -91,6 +91,9 @@ onBeforeUnmount(() => {
   width: 50px;
   border-radius: 2px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  height: 5px;
+  vertical-align: middle;
+  border: unset;
 }
 
 </style>

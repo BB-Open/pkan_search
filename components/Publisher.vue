@@ -1,6 +1,5 @@
 <template>
-  <h3>Herausgeber:</h3>
-  <div>{{publisher[0]}}</div>
+  <div><p>Herausgeber: {{publisher[0]}}</p></div>
 </template>
 
 <script setup lang="ts">

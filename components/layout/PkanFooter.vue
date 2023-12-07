@@ -54,6 +54,13 @@
               ><span class="hidden_help_text">Link zur Seite</span>
                 Haftungsausschluss
               </nuxt-link>
+              <hr class="hidesmallscreen"/>
+            </li>
+            <li>
+              <nuxt-link class="footerelementlink" to="/metadata"
+              ><span class="hidden_help_text">Link zur Seite</span>
+                Metadaten
+              </nuxt-link>
             </li>
           </ul>
         </div>
@@ -87,7 +94,6 @@
             </li>
           </ul>
         </div>
-        <div class="footerelement"><DownloadAll></DownloadAll></div>
       </div>
     </div>
     <div class="footer-line">

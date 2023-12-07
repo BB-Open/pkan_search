@@ -6,25 +6,8 @@
         </div>
 
         <div class="header">
-          <h2 class="dct_description" v-if='entityStore.dataset.dct_description'>{{ entityStore.dataset.dct_description[0] }}</h2>
-        </div>
-
-        <div class="header" v-if="entityStore.dataset.dcat_distribution">
-          <h3 class="dataset_header">Links:</h3>
-          <Distributions v-if='entityStore.dataset.dcat_distribution' :distributions="JSON.parse(entityStore.dataset.dcat_distribution)" >
-          </Distributions>
-        </div>
-
-        <div class="header" v-if="entityStore.dataset.dcat_endpointURL">
-          <h3 class="dataset_header">Service URIs:</h3>
-          <Endpoints v-if='entityStore.dataset.dcat_endpointURL' :endpoints="JSON.parse(entityStore.dataset.dcat_endpointURL)" >
-          </Endpoints>
-        </div>
-
-        <div class="header" v-if="entityStore.dataset.dcat_servesDataset">
-          <h3 class="dataset_header">Angebotene Datensätze:</h3>
-          <Datasets v-if='entityStore.dataset.dcat_servesDataset' :datasets="JSON.parse(entityStore.dataset.dcat_servesDataset)" >
-          </Datasets>
+          <p class="dct_description" v-if='entityStore.dataset.dct_description'>{{ entityStore.dataset.dct_description[0] }}</p>
+          <p class="dct_description" v-if="entityStore.dataset.dcat_landingpage">Webseite: <a :href="entityStore.dataset.dcat_landingpage">{{entityStore.dataset.dcat_landingpage}}</a></p>
         </div>
 
         <div class="header" v-if="entityStore.dataset.dct_publisher">
@@ -33,20 +16,41 @@
         </div>
 
         <div class="header">
-          <ContactPoint v-if='entityStore.dataset.dcat_contactPoint' :contactPoint="JSON.parse(entityStore.dataset.dcat_contactPoint[0])">
-          </ContactPoint>
+          <p class="dct_description" v-if="entityStore.dataset.dcat_theme_facet">Kategorie: {{entityStore.dataset.dcat_theme_facet.join(', ')}}</p>
+          <p class="dct_description" v-if="entityStore.dataset.dct_modified">Letzte Änderung: {{entityStore.dataset.dct_modified}}</p>
+          <p class="dct_description" v-if="entityStore.dataset.dcat_keyword">Schlagwörter: {{entityStore.dataset.dcat_keyword.join(', ')}}</p>
         </div>
 
         <div class="header">
-          <License v-if='entityStore.dataset.dct_license_facet' :license="entityStore.dataset.dct_license_facet">
-          </License>
-        </div>
-        <div class="header">
-          <RightsStatement v-if="entityStore.dataset.dct_rightsstatement" :statement="entityStore.dataset.dct_rightsstatement[0]"></RightsStatement>
-        </div>
-        <div class="header">
           <DownloadOne></DownloadOne>
         </div>
+
+        <div class="header" v-if="entityStore.dataset.dcat_endpointURL">
+          <h2 class="dataset_header">Service URIs:</h2>
+          <Endpoints v-if='entityStore.dataset.dcat_endpointURL' :endpoints="JSON.parse(entityStore.dataset.dcat_endpointURL)" >
+          </Endpoints>
+        </div>
+
+        <div class="header" v-if="entityStore.dataset.dcat_servesDataset">
+          <h2 class="dataset_header">Angebotene Datensätze:</h2>
+          <Datasets v-if='entityStore.dataset.dcat_servesDataset' :datasets="JSON.parse(entityStore.dataset.dcat_servesDataset)" >
+          </Datasets>
+        </div>
+
+        <div class="header" v-if="entityStore.dataset.dcat_distribution">
+          <h2 class="dataset_header">Distributionen:</h2>
+          <DistributionDetail v-if='entityStore.dataset.dcat_distribution' :distributions="JSON.parse(entityStore.dataset.dcat_distribution)" >
+          </DistributionDetail>
+        </div>
+
+<!--        <div class="header">-->
+<!--          <License v-if='entityStore.dataset.dct_license_facet' :license="entityStore.dataset.dct_license_facet">-->
+<!--          </License>-->
+<!--        </div>-->
+<!--        <div class="header">-->
+<!--          <RightsStatement v-if="entityStore.dataset.dct_rightsstatement" :statement="entityStore.dataset.dct_rightsstatement[0]"></RightsStatement>-->
+<!--        </div>-->
+
       </div>
     </NuxtLayout>
 </template>
@@ -85,14 +89,13 @@
 <style scoped>
     .dct_title {
        margin-bottom: 5px;
-       font-size: 1.8rem;
-        color: inherit;
+      color: inherit;
     }
 
     .dct_description {
         margin-bottom: 0;
         margin-top: 0;
-        font-size: 1.2rem;
+      font-size: 1rem;
     }
 
     .header {

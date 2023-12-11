@@ -89,11 +89,11 @@ onBeforeUnmount(() => {
 
 .timer {
   width: 50px;
-  border-radius: 2px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
   height: 5px;
   vertical-align: middle;
-  border: unset;
+  border: 0px;
+  transform: rotate(180deg);
 }
 
 </style>

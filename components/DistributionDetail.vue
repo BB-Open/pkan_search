@@ -28,7 +28,7 @@
     .distribution_item {
       padding-right: 1rem;
       padding-left: 1rem;
-      border: #d9d9d9 3px solid;
+      border-top: #d9d9d9 2px solid;
       margin-bottom: 1px;
     }
 

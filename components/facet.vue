@@ -17,7 +17,7 @@
             </ul>
         </form>
       <div v-if="entries_length > DEFAULT_DISPLAY_AMOUNT_FACET">
-        <button @click="displayAll=!displayAll" class="facet_button"><span v-if="!displayAll">weiter »</span><span v-else>weniger «</span></button>
+        <button @click="displayAll=!displayAll" class="facet_button"><span v-if="!displayAll">mehr »</span><span v-else>weniger «</span></button>
       </div>
     </div>
 </template>

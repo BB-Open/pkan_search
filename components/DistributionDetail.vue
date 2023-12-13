@@ -2,8 +2,11 @@
     <ul class="distribution_div nobull">
 
       <li class="distribution_item" v-for="dist in distributions">
-        <p><span v-if="dist.dct_format">Medientyp oder Erweiterung: {{dist.dct_format}}<br/></span>{{dist.dct_title}}</p>
-        <p v-if="dist.dct_description">Beschreibung: {{dist.dct_description}}</p>
+        <p>
+          <span v-if="dist.dct_format">Medientyp oder Erweiterung: {{dist.dct_format}}<br/></span>
+          <span v-if="dist.dct_title">Titel: {{dist.dct_title}}<br/></span>
+          <span v-if="dist.dct_description">Beschreibung: {{dist.dct_description}}</span>
+        </p>
         <p>
           <span v-if="dist.dct_license">Lizenz: {{dist.dct_license}}</span><span v-else>Lizenz: Keine Lizenz</span><br/>
           Download URL: <a v-if="dist.dcat_downloadURL" :href="dist.dcat_downloadURL">

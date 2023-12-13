@@ -1,5 +1,5 @@
 <template>
-  <p>Links zu den Metadaten in folgenden Formaten:</p>
+  <p>Links zu allen Metadaten des Datenadlers in folgenden Formaten:</p>
   <ul class="nobull">
     <li><a :href="DOWNLOAD_ALL">RDF/XML exportieren</a></li>
     <li><a :href="DOWNLOAD_ALL + '?format=rdf/json'">RDF/JSON exportieren</a></li>
